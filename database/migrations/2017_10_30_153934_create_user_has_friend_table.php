@@ -14,7 +14,8 @@ class CreateUserHasFriendTable extends Migration
     public function up()
     {
         Schema::create('user_has_friend', function (Blueprint $table) {
-            $table->increments('id');
+            $table->integer('user_id');
+            $table->integer('friend_id');
             $table->timestamps();
         });
     }

@@ -14,7 +14,8 @@ class CreateGoalHasMilestoneTable extends Migration
     public function up()
     {
         Schema::create('goal_has_milestone', function (Blueprint $table) {
-            $table->increments('id');
+            $table->integer('goal_id');
+            $table->integer('milestone_id');
             $table->timestamps();
         });
     }

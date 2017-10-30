@@ -14,7 +14,8 @@ class CreateWishHasImageTable extends Migration
     public function up()
     {
         Schema::create('wish_has_image', function (Blueprint $table) {
-            $table->increments('id');
+            $table->integer('img_id');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }
