@@ -10,7 +10,17 @@ use App\Image;
 class TestController extends Controller
 {
     public function index() {
-        die('Hello');
+        $wish = Wish::all();
+
+        $wish_2 = Wish::find(2);
+
+        $wishes_with_m = Wish::where('name', 'like', 'm%')->get();
+
+
+        $view = view('test/index');
+        $view->wishes_with_m = $wishes_with_m;
+        return $view;
+
     }
 
     public function create() {
