@@ -14,7 +14,8 @@ class CreateGoalHasImageTable extends Migration
     public function up()
     {
         Schema::create('goal_has_image', function (Blueprint $table) {
-            $table->increments('id');
+            $table->integer('img_id');
+            $table->integer('goal_id');
             $table->timestamps();
         });
     }

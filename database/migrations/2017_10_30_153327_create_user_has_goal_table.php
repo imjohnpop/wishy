@@ -14,7 +14,8 @@ class CreateUserHasGoalTable extends Migration
     public function up()
     {
         Schema::create('user_has_goal', function (Blueprint $table) {
-            $table->increments('id');
+            $table->integer('user_id');
+            $table->integer('goal_id');
             $table->timestamps();
         });
     }
