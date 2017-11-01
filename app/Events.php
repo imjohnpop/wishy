@@ -4,14 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Goals extends Model
+class Events extends Model
 {
     //
     protected $fillable = [
+        'user_id',
         'name',
         'description',
-        'is_public',
-        'nr_encouragements',
-        'status_id'
+        'date'
     ];
 }

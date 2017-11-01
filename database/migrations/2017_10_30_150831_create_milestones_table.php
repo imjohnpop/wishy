@@ -18,6 +18,7 @@ class CreateMilestonesTable extends Migration
             $table->string('text',300);
             $table->date('due_date')->nullable();
             $table->integer('is_done');
+            $table->integer('goal_id');
             $table->timestamps();
         });
     }

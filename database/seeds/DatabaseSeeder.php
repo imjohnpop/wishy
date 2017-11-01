@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Comments;
+use App\Goals;
+use App\Milestones;
+use App\Wishes;
 
 class DatabaseSeeder extends Seeder
 {
@@ -12,5 +16,122 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // $this->call(UsersTableSeeder::class);
+        Comments::create([
+            'user_id' => 1,
+            'goal_id' => 1,
+            'text' => 'This is so cool!'
+        ]);
+
+        Comments::create([
+            'user_id' => 2,
+            'goal_id' => 1,
+            'text' => 'Go ahead man!'
+        ]);
+
+        Comments::create([
+            'user_id' => 2,
+            'goal_id' => 2,
+            'text' => 'Just be careful!'
+        ]);
+
+        Goals::create([
+            'name' =>'Win a wrestle with a bear',
+            'description' => 'The name is quite explanatory',
+            'is_public' => 1,
+            'nr_encouragements' => 2,
+            'status_id'=> 2
+        ]);
+        
+        Goals::create([
+            'name' =>'Overcome misophonia',
+            'description' => 'I wish to stop getting pissed when people is eating apples',
+            'is_public' => 0,
+            'nr_encouragements' => 0,
+            'status_id'=> 1
+        ]);
+
+        Goals::create([
+            'name' =>'Win the Amazing Race',
+            'description' => 'Even though it will be hard, I believe I can accomplish this',
+            'is_public' => 1,
+            'nr_encouragements' => 10,
+            'status_id'=> 3
+        ]);
+
+        Milestones::create([
+            'text' => 'Learn boxing',
+            'due_date' => date('Y-m-d'),
+            'is_done' => 0,
+            'goal_id' => 1
+        ]);
+        
+        Milestones::create([
+            'text' => 'Start running',
+            'due_date' => date('Y-m-d'),
+            'is_done' => 1,
+            'goal_id' => 1
+        ]);
+        
+        Milestones::create([
+            'text' => 'Find a bear',
+            'due_date' => date('Y-m-d'),
+            'is_done' => 0,
+            'goal_id' => 1
+        ]);
+        
+        Milestones::create([
+            'text' => 'Listen to relaxing music',
+            'due_date' => date('Y-m-d'),
+            'is_done' => 1,
+            'goal_id' => 2
+        ]);
+        
+        Milestones::create([
+            'text' => 'Smile when you get annoyed',
+            'due_date' => date('Y-m-d'),
+            'is_done' => 0,
+            'goal_id' => 2
+        ]);
+        
+        Milestones::create([
+            'text' => 'Start running',
+            'due_date' => date('Y-m-d'),
+            'is_done' => 1,
+            'goal_id' => 3
+        ]);
+        
+        Milestones::create([
+            'text' => 'Sign up for the race',
+            'due_date' => date('Y-m-d'),
+            'is_done' => 1,
+            'goal_id' => 3
+        ]);
+
+        Wishes::create([
+            'name' => 'Water bottle',
+            'description' => 'literally any water bottle',
+            'is_public' => 1,
+            'user_id' => 1,
+            'status_id'=> 3,
+            'nr_encouragements'=> 0
+        ]);
+
+        Wishes::create([
+            'name' => 'Adidas shoes',
+            'description' => 'I would prefer them purple',
+            'is_public' => 1,
+            'user_id' => 1,
+            'status_id'=> 1,
+            'nr_encouragements'=> 10
+        ]);
+
+        Wishes::create([
+            'name' => 'New notebook',
+            'description' => 'basically anything I can write on',
+            'is_public' => 0,
+            'user_id' => 1,
+            'status_id'=> 3,
+            'nr_encouragements'=> 0
+        ]);
     }
 }

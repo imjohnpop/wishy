@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGoalHasMilestoneTable extends Migration
+class CreateEventsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,12 @@ class CreateGoalHasMilestoneTable extends Migration
      */
     public function up()
     {
-        Schema::create('goal_has_milestone', function (Blueprint $table) {
-            $table->integer('goal_id');
-            $table->integer('milestone_id');
+        Schema::create('events', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('user_id');
+            $table->string('name');
+            $table->string('description');
+            $table->date('date');
             $table->timestamps();
         });
     }
@@ -27,6 +30,6 @@ class CreateGoalHasMilestoneTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('goal_has_milestone');
+        Schema::dropIfExists('events');
     }
 }
