@@ -1,0 +1,87 @@
+.wishy-switcher {
+    height: 350px;
+    font-family: 'Raleway';
+    background-color: rgb(38, 39, 59);
+    color: #B5B5B7;
+}
+
+.wishy-login {
+    height: 450px;
+    background-color: grey;
+    border: 1px solid black;
+    position: absolute;
+    top: -50px;
+    left: 25px;
+    font-family: 'Raleway';
+}
+
+.wishy-flipper-container {
+    position: relative;
+}
+
+.wishy-login input {
+    border-width: 0px;
+    border-bottom: 1px solid black;
+    border-radius: 0px;
+}
+
+.wishy-form-headline {
+    color: #F9B800;
+    font-weight: bolder;
+}
+
+.wishy-login input:focus {
+    border-width: 0px;
+    border-bottom: 1px solid #F9B800;
+    outline: none !important;
+    box-shadow: 0 1px 0px #F9B800 !important;
+}
+
+label {
+    color: #777777;
+    text-align: right;
+}
+
+.wishy-login i {
+    position: absolute;
+    top: 30px;
+    right: 26px;
+    z-index: 10;
+}
+
+.fa-unlock-alt {
+    margin-right: 4px;
+}
+
+.wishy-btn {
+    color: #fff;
+    background-color: #F9B800;
+    border-color: #F9B800;
+}
+
+.wishy-btn:hover {
+    background-color: #ba8800;
+    border-color: #ba8800;
+}
+
+.wishy-link {
+    font-weight: 400;
+    color: #F9B800;
+    background-color: transparent;
+}
+
+.wishy-link:hover {
+    text-decoration: underline;
+}
+
+.wishy-ml {
+    margin-left: 4.5rem;
+}
+
+.wishy-mr {
+    margin-right: 4.5rem;
+}
+
+.hidden {
+    display: none;
+}
