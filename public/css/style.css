@@ -1,8 +1,36 @@
+.content {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    padding-bottom: 300px;
+    overflow: hidden;
+}
+.wishy-background {
+    width: 100%;
+    height: 100%;
+    min-height:1100px;
+
+    background: black url('/img/background-image.jpg') 0px -10px/cover fixed;
+    animation: scroll-bg 70s infinite;
+    animation-fill-mode: forwards;
+    padding-bottom: 300px;
+    position: absolute;
+}
+
+.wishy-body-cover {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 0%;
+    left: 0%;
+}
 .wishy-switcher {
     height: 350px;
     font-family: 'Raleway';
     background-color: rgb(38, 39, 59);
     color: #B5B5B7;
+    box-shadow: 0px 0px 10px #888888;
 }
 
 .wishy-login {
@@ -84,4 +112,34 @@ label {
 
 .hidden {
     display: none;
+}
+
+@keyframes scroll-bg {
+    0% {
+        -webkit-transform: translateY(0px);
+        -moz-transform: translateY(0px);
+        -ms-transform: translateY(0px);
+        -o-transform: translateY(0px);
+        transform: translateY(0px);
+    }
+    50% {
+        -webkit-transform: translateY(-300px);
+        -moz-transform: translateY(-300px);
+        -ms-transform: translateY(-300px);
+        -o-transform: translateY(-300px);
+        transform: translateY(-300px);
+    }
+    100% {
+        -webkit-transform: translateY(0px);
+        -moz-transform: translateY(0px);
+        -ms-transform: translateY(0px);
+        -o-transform: translateY(0px);
+        transform: translateY(0px);
+    }
+}
+
+.wishy-container-position {
+    position: absolute;
+    top: 25%;
+    left: 10%;
 }
