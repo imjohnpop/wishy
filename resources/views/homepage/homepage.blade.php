@@ -42,7 +42,7 @@
 
                                         {{--  LOGIN FORM --}}
 
-                                        <div id="login" class="panel-body mt-4 sign hidden">
+                                        <div id="login" class="panel-body mt-4 sign">
                                             <h4 class="text-uppercase wishy-form-headline ml-3">Sign Up</h4>
                                             <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                                                 {{ csrf_field() }}
@@ -97,8 +97,8 @@
                                                             Login
                                                         </button>
 
-                                                        <a class="btn wishy-link"
-                                                           href="{{ route('password.request') }}">
+                                                        <a id="pw-reset" class="btn wishy-link"
+                                                           href="">
                                                             Forgot Your Password?
                                                         </a>
                                                     </div>
@@ -109,7 +109,7 @@
                                         {{--  END OF LOGIN FORM --}}
 
                                         {{--  REGISTRATION FORM --}}
-                                        <div id="register" class="panel-body mt-4">
+                                        <div id="register" class="panel-body mt-4 hidden">
                                             <h4 class="text-uppercase wishy-form-headline ml-3">Sign In</h4>
                                             <form class="form-horizontal" method="POST"
                                                   action="{{ route('register') }}">
@@ -184,6 +184,45 @@
                                             </form>
                                         </div>
                                         {{--  END OF REGISTRATION FORM --}}
+                                        {{--  START OF PASSWORD RESET FORM--}}
+                                        <div id="reset" class="panel-body mt-4 hidden">
+                                            <h4 class="text-uppercase wishy-form-headline ml-3">Reset password</h4>
+                                            @if (session('status'))
+                                                <div class="alert alert-success">
+                                                    {{ session('status') }}
+                                                </div>
+                                            @endif
+
+                                            <form class="form-horizontal" method="POST"
+                                                  action="{{ route('password.email') }}">
+                                                {{ csrf_field() }}
+
+                                                <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                                                    <label for="email" class="col control-label"><i
+                                                                class="fa fa-envelope" aria-hidden="true"></i></label>
+
+                                                    <div class="col">
+                                                        <input id="email" type="email" class="form-control" name="email"
+                                                               value="{{ old('email') }}" required placeholder="EMAIL">
+
+                                                        @if ($errors->has('email'))
+                                                            <span class="help-block">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                                        @endif
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="col">
+                                                        <button type="submit" class="btn wishy-btn">
+                                                            Send Password Reset Link
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        {{--  END OF PASSWORD RESET FORM--}}
                                     </div>
                                 </div>
                             </div>
@@ -200,6 +239,7 @@
         $('#signup').click(function () {
 
             $('#register').hide();
+            $('#reset').hide();
             $('#login').fadeIn('slow');
 
 
@@ -216,6 +256,7 @@
         $('#signin').click(function () {
 
             $('#login').hide();
+            $('#reset').hide();
             $('#register').fadeIn('slow');
 
 
@@ -227,6 +268,12 @@
                 }, 200)
 
             })
+        })
+
+        $('#pw-reset').click(function (ev) {
+            ev.preventDefault();
+            $('#login').hide();
+            $('#reset').fadeIn('slow');
         })
     </script>
 @endsection
