@@ -5,6 +5,17 @@
 @endsection
 
 @section('content')
+    <li>
+        <a href="{{ route('logout') }}"
+           onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+            Logout
+        </a>
+
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+            {{ csrf_field() }}
+        </form>
+    </li>
     <div class="content">
         <div class="wishy-background-image-try">
             <img src="/img/background-image.jpg" alt="">
@@ -45,7 +56,7 @@
 
                                         {{--  LOGIN FORM --}}
 
-                                        <div id="login" class="panel-body mt-4 sign">
+                                        <div id="login" class="panel-body mt-4 sign @if(isset($token)) hidden @endif">
                                             <h4 class="text-uppercase wishy-form-headline ml-3">Sign Up</h4>
                                             <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                                                 {{ csrf_field() }}
@@ -210,8 +221,8 @@
 
                                                         @if ($errors->has('email'))
                                                             <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
+                                                                <strong>{{ $errors->first('email') }}</strong>
+                                                            </span>
                                                         @endif
                                                     </div>
                                                 </div>
@@ -225,6 +236,76 @@
                                                 </div>
                                             </form>
                                         </div>
+                                        {{--  END OF PASSWORD RESET FORM--}}
+                                        {{--  START OF PASSWORD RESET FORM--}}
+                                        @if(isset($token))
+                                        <div id="finalreset" class="panel-body mt-4">
+                                            <h4 class="text-uppercase wishy-form-headline ml-3">Set new password</h4>
+                                            <form class="form-horizontal" method="POST"
+                                                  action="">
+                                                {{ csrf_field() }}
+
+                                                <input type="hidden" name="token" value="{{ $token }}">
+
+                                                <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                                                    <label for="email" class="col-md-4 control-label"><i
+                                                                class="fa fa-envelope" style="right: -262px" aria-hidden="true"></i></label>
+
+                                                    <div class="col">
+                                                        <input id="email" type="email" class="form-control" name="email"
+                                                               value="{{ $email or old('email') }}" required placeholder="EMAIL">
+
+                                                        @if ($errors->has('email'))
+                                                            <span class="help-block">
+                                                                <strong>{{ $errors->first('email') }}</strong>
+                                                            </span>
+                                                        @endif
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                                                    <label for="password"
+                                                           class="col control-label"><i
+                                                                class="fa fa-unlock-alt" aria-hidden="true"></i></label>
+
+                                                    <div class="col">
+                                                        <input id="password" type="password" class="form-control"
+                                                               name="password" required placeholder="PASSWORD">
+
+                                                        @if ($errors->has('password'))
+                                                            <span class="help-block">
+                                                                <strong>{{ $errors->first('password') }}</strong>
+                                                            </span>
+                                                        @endif
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
+                                                    <label for="password-confirm" class="col-md-4 control-label"><i
+                                                                class="fa fa-unlock-alt" style="right: -262px" aria-hidden="true"></i></label>
+                                                    <div class="col">
+                                                        <input id="password-confirm" type="password"
+                                                               class="form-control" name="password_confirmation"
+                                                               required placeholder="CONFIRM PASSWORD">
+
+                                                        @if ($errors->has('password_confirmation'))
+                                                            <span class="help-block">
+                                                                <strong>{{ $errors->first('password_confirmation') }}</strong>
+                                                            </span>
+                                                        @endif
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="col">
+                                                        <button type="submit" class="btn wishy-btn">
+                                                            Reset Password
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        @endif
                                         {{--  END OF PASSWORD RESET FORM--}}
                                     </div>
                                 </div>
