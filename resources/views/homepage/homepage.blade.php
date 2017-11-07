@@ -12,15 +12,19 @@
                     <div class="w-100 wishy-switcher d-flex align-items-center">
                         <div class="row d-flex justify-content-between align-items-center">
                             <div class="col-4 wishy-ml text-center">
-                                <h4>Don't have an account?</h4>
-                                <p>In case you want to became a part of gift and goals sharing society create a free
-                                    account. Don't waste your time anymore</p>
-                                <button id="signup" type="button" class="btn btn-outline-light">Sign in</button>
+                                <div id="left">
+                                    <h4>Don't have an account?</h4>
+                                    <p>In case you want to became a part of gift and goals sharing society create a free
+                                        account. Don't waste your time anymore</p>
+                                    <button id="signin" type="button" class="btn btn-outline-light">Sign in</button>
+                                </div>
                             </div>
                             <div class="col-4 wishy-mr text-center">
-                                <h4>Already have an account?</h4>
-                                <p>Ok, let's login, and share your wishes with others!</p>
-                                <button id="signin" type="button" class="btn btn-outline-light">Sign up</button>
+                                <div id="right">
+                                    <h4>Already have an account?</h4>
+                                    <p>Ok, let's login, and share your wishes with others!</p>
+                                    <button id="signup" type="button" class="btn btn-outline-light">Sign up</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -170,10 +174,13 @@
 
 
     <script>
-        $('#signin').click(function () {
+        $('#signup').click(function () {
 
             $('#register').hide();
             $('#login').fadeIn('slow');
+
+
+
             $('.wishy-login').animate({
                 left: '480px'
             }, 600, function () {
@@ -184,10 +191,13 @@
             })
         });
 
-        $('#signup').click(function () {
+        $('#signin').click(function () {
 
             $('#login').hide();
             $('#register').fadeIn('slow');
+
+
+
             $('.wishy-login').animate({
                 left: '-10px'
             }, 600, function () {
