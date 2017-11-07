@@ -6,8 +6,9 @@
 
 @section('content')
     <div class="content">
-    <div class="wishy-background">
-    </div>
+        <div class="wishy-background-image-try">
+            <img src="/img/background-image.jpg" alt="">
+        </div>
         <div class="wishy-body-cover">
             <div class="container wishy-container-position">
                 <div class="row">
@@ -18,16 +19,19 @@
                                     <div class="col-4 wishy-ml text-center">
                                         <div id="left">
                                             <h4>Don't have an account?</h4>
-                                            <p>In case you want to became a part of gift and goals sharing society create a free
+                                            <p>In case you want to became a part of gift and goals sharing society
+                                                create a free
                                                 account. Don't waste your time anymore</p>
-                                            <button id="signin" type="button" class="btn btn-outline-light">Sign in</button>
+                                            <button id="signin" type="button" class="btn btn-outline-light">Sign in
+                                            </button>
                                         </div>
                                     </div>
                                     <div class="col-4 wishy-mr text-center">
                                         <div id="right">
                                             <h4>Already have an account?</h4>
                                             <p>Ok, let's login, and share your wishes with others!</p>
-                                            <button id="signup" type="button" class="btn btn-outline-light">Sign up</button>
+                                            <button id="signup" type="button" class="btn btn-outline-light">Sign up
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -44,7 +48,8 @@
                                                 {{ csrf_field() }}
 
                                                 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                                    <label for="email" class="col control-label text-uppercase"><i class="fa fa-envelope" aria-hidden="true"></i></label>
+                                                    <label for="email" class="col control-label text-uppercase"><i
+                                                                class="fa fa-envelope" aria-hidden="true"></i></label>
 
                                                     <div class="col">
                                                         <input id="email" type="email" class="form-control" name="email"
@@ -59,7 +64,8 @@
                                                 </div>
 
                                                 <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                                                    <label for="password" class="col control-label text-uppercase"><i class="fa fa-unlock-alt" aria-hidden="true"></i></label>
+                                                    <label for="password" class="col control-label text-uppercase"><i
+                                                                class="fa fa-unlock-alt" aria-hidden="true"></i></label>
 
                                                     <div class="col">
                                                         <input id="password" type="password" class="form-control"
@@ -91,7 +97,8 @@
                                                             Login
                                                         </button>
 
-                                                        <a class="btn wishy-link" href="{{ route('password.request') }}">
+                                                        <a class="btn wishy-link"
+                                                           href="{{ route('password.request') }}">
                                                             Forgot Your Password?
                                                         </a>
                                                     </div>
@@ -104,14 +111,17 @@
                                         {{--  REGISTRATION FORM --}}
                                         <div id="register" class="panel-body mt-4">
                                             <h4 class="text-uppercase wishy-form-headline ml-3">Sign In</h4>
-                                            <form class="form-horizontal" method="POST" action="{{ route('register') }}">
+                                            <form class="form-horizontal" method="POST"
+                                                  action="{{ route('register') }}">
                                                 {{ csrf_field() }}
 
                                                 <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                                                    <label for="name" class="col control-label"><i class="fa fa-user" aria-hidden="true"></i></label>
+                                                    <label for="name" class="col control-label"><i class="fa fa-user"
+                                                                                                   aria-hidden="true"></i></label>
 
                                                     <div class="col">
-                                                        <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required placeholder="NAME">
+                                                        <input id="name" type="text" class="form-control" name="name"
+                                                               value="{{ old('name') }}" required placeholder="NAME">
 
                                                         @if ($errors->has('name'))
                                                             <span class="help-block">
@@ -122,10 +132,12 @@
                                                 </div>
 
                                                 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                                    <label for="email" class="col control-label"><i class="fa fa-envelope" aria-hidden="true"></i></label>
+                                                    <label for="email" class="col control-label"><i
+                                                                class="fa fa-envelope" aria-hidden="true"></i></label>
 
                                                     <div class="col">
-                                                        <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required placeholder="EMAIL">
+                                                        <input id="email" type="email" class="form-control" name="email"
+                                                               value="{{ old('email') }}" required placeholder="EMAIL">
 
                                                         @if ($errors->has('email'))
                                                             <span class="help-block">
@@ -136,10 +148,12 @@
                                                 </div>
 
                                                 <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                                                    <label for="password" class="col control-label"><i class="fa fa-unlock-alt" aria-hidden="true"></i></label>
+                                                    <label for="password" class="col control-label"><i
+                                                                class="fa fa-unlock-alt" aria-hidden="true"></i></label>
 
                                                     <div class="col">
-                                                        <input id="password" type="password" class="form-control" name="password" required placeholder="PASSWORD">
+                                                        <input id="password" type="password" class="form-control"
+                                                               name="password" required placeholder="PASSWORD">
 
                                                         @if ($errors->has('password'))
                                                             <span class="help-block">
@@ -150,10 +164,13 @@
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label for="password-confirm" class="col control-label"><i class="fa fa-unlock-alt" aria-hidden="true"></i></label>
+                                                    <label for="password-confirm" class="col control-label"><i
+                                                                class="fa fa-unlock-alt" aria-hidden="true"></i></label>
 
                                                     <div class="col">
-                                                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required placeholder="CONFIRM PASSWORD">
+                                                        <input id="password-confirm" type="password"
+                                                               class="form-control" name="password_confirmation"
+                                                               required placeholder="CONFIRM PASSWORD">
                                                     </div>
                                                 </div>
 
@@ -186,7 +203,6 @@
             $('#login').fadeIn('slow');
 
 
-
             $('.wishy-login').animate({
                 left: '480px'
             }, 600, function () {
@@ -201,7 +217,6 @@
 
             $('#login').hide();
             $('#register').fadeIn('slow');
-
 
 
             $('.wishy-login').animate({
