@@ -45,7 +45,8 @@
     position: relative;
 }
 
-.wishy-login input {
+.wishy-login input,
+.wishy-navbar input {
     border-width: 0px;
     border-bottom: 1px solid black;
     border-radius: 0px;
@@ -56,7 +57,8 @@
     font-weight: bolder;
 }
 
-.wishy-login input:focus {
+.wishy-login input:focus,
+.wishy-navbar input:focus {
     border-width: 0px;
     border-bottom: 1px solid #F9B800;
     outline: none !important;
@@ -141,4 +143,78 @@ label {
     position: absolute;
     top: 25%;
     left: 10%;
+}
+
+.wishy-navbar {
+    background-color: rgb(38, 39, 59);
+    font-family: 'Raleway';
+}
+
+.wishy-logo img {
+    width: 180px;
+    height: 120px;
+}
+
+.wishy-navbar-search {
+    border-right: 1px solid #a8a8a8;
+    border-left: 1px solid #a8a8a8;
+}
+
+.wishy-navbar-search input {
+    background-color: rgb(38, 39, 59) !important;
+}
+
+.wishy-navbar input {
+    border-width: 0;
+    margin-top: 21px;
+    padding-left: 30px;
+    color: white !important;
+}
+
+.wishy-navbar input::placeholder {
+    color: white;
+}
+
+.wishy-navbar i {
+    color: white;
+}
+.wishy-navbar-search i {
+    position: absolute;
+    top: 29px;
+    left: 22px;
+}
+.wishy-navbar .options i {
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.options .row {
+    margin-top: 15px;
+    line-height: 0;
+}
+.options .row span{
+    margin-top: 15px;
+    line-height: 0;
+    font-size: 0.75em;
+}
+
+.options .row a{
+    color: white;
+    text-decoration: none;
+}
+
+.options .row a:hover {
+    color: white;
+    text-decoration: underline;
+
+}
+
+.options .row li a {
+    color: black;
+    text-decoration: none;
+}
+
+.options .row li a:hover {
+    color: black;
+    text-decoration: underline;
 }

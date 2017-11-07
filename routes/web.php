@@ -43,6 +43,7 @@ Route::post('/feed/{id}', 'FeedPostController@destroy');
 
 // --------------- Profile Page
 
+Route::get('/profile', 'ProfileController@index');
 Route::get('/profile/{name}.{id}', 'ProfileController@view');
 Route::post('/profile/{name}.{id}', 'ProfileController@store');
 /*

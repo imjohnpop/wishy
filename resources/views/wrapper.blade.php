@@ -24,7 +24,55 @@
         src="https://code.jquery.com/jquery-3.2.1.js"
         integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
         crossorigin="anonymous"></script>
+@if(auth()->check())
+<div class="container-fluid">
+    <div class="row wishy-navbar">
+        <div class="col-3 wishy-logo d-flex justify-content-around">
+            <h2 class="text-uppercase text-white mt-3">wishy</h2>
+        </div>
+        <div class="col-5 wishy-navbar-search">
+            <form action="" method="get">
+                {{ csrf_field() }}
+                <div class="form-group">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    <input id="search" type="text" class="form-control" name="search" placeholder="SEARCH...">
+                </div>
+            </form>
+        </div>
+        <div class="col-4 options">
+            <div class="row d-flex justify-content-around text-center text-white">
+                <a href="" class="col-3 feed">
+                    <p><i class="fa fa-rss" aria-hidden="true"></i></p>
+                    <span>Feed</span>
+                </a>
+                <a href="" class="col-3 notification">
+                    <p><i class="fa fa-bell" aria-hidden="true"></i></p>
+                    <span>Notifications</span>
+                </a>
+                <div class="dropdown">
+                    <a href="" class="col-3 user dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        <p><i class="fa fa-user" aria-hidden="true"></i></p>
+                        <span>Me</span>
+                    </a>
+                    <ul class="dropdown-menu text-black" role="menu">
+                        <li>
+                            <a href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                                                         document.getElementById('logout-form').submit();">
+                                Logout
+                            </a>
 
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                {{ csrf_field() }}
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endif
 @yield('content')
 
 <!-- SCRIPTS -->
