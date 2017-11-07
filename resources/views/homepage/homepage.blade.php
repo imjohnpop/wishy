@@ -18,6 +18,9 @@
                                 <div class="row d-flex justify-content-between align-items-center">
                                     <div class="col-4 wishy-ml text-center">
                                         <div id="left">
+                                            @if(Auth::check())
+                                                Loged in
+                                            @endif
                                             <h4>Don't have an account?</h4>
                                             <p>In case you want to became a part of gift and goals sharing society
                                                 create a free
