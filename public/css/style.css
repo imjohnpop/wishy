@@ -188,6 +188,10 @@ label {
     text-align: center;
 }
 
+.wishy-navbar .options i:hover {
+    color: #F9B800;
+}
+
 .options .row {
     margin-top: 10px;
     line-height: 0;
@@ -204,9 +208,8 @@ label {
 }
 
 .options .row a:hover {
-    color: white;
+    color: #F9B800;
     text-decoration: underline;
-
 }
 
 .options .row li a {
@@ -225,4 +228,8 @@ label {
 
 .wishy-navbar-search .form-group {
     margin-bottom: 0.25em;
+}
+
+.wishy-navbar h1 {
+    font-size: 2em;
 }

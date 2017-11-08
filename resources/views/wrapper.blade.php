@@ -12,6 +12,7 @@
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="description" content="Do you have a dream? Don't you want to acomplish something ? Or maybe your heart desires a nice new product ? Probably your wish is even to get somewhere, but you don't know how to acomplish it or how to approach the task. Just post it to Wishy, make it public there and see who can help you out or even someone will surprise you!">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Raleway:200" rel="stylesheet">
@@ -28,7 +29,7 @@
 <div class="container-fluid">
     <div class="row wishy-navbar">
         <div class="col-3 wishy-logo d-flex justify-content-around">
-            <h2 class="text-uppercase text-white mt-1">wishy</h2>
+            <h1 class="text-uppercase text-white mt-1">wishy</h1>
         </div>
         <div class="col-5 wishy-navbar-search">
             <form action="" method="get">
