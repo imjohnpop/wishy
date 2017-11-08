@@ -287,8 +287,8 @@ label {
   margin-bottom: 0.5em;
 }
 
-.wishy-navbar .options h1 {
-  font-size: 2em;
+.wishy-navbar h1 {
+  font-size: 2em !important;
 }
 
 .wishy-logo img {
