@@ -15,7 +15,8 @@
     <meta name="description" content="Your gift and goals sharing social network. Don't you know witch present you should buy to your friends? We have a solution for you, check Wishy!">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Raleway:200" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:200, 600" rel="stylesheet">
+
     <link rel="stylesheet" href="/css/style.css">
     <title>@yield('title') | Wishy</title>
 </head>

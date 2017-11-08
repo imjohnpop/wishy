@@ -50,7 +50,8 @@ body {
 }
 
 .wishy-login input,
-.wishy-navbar input {
+.wishy-navbar input,
+.wishy-friends-search input{
     border-width: 0px;
     border-bottom: 1px solid black;
     border-radius: 0px;
@@ -62,7 +63,8 @@ body {
 }
 
 .wishy-login input:focus,
-.wishy-navbar input:focus {
+.wishy-navbar input:focus,
+.wishy-friends-search input:focus {
     border-width: 0px;
     border-bottom: 1px solid #F9B800;
     outline: none !important;
@@ -242,7 +244,83 @@ label {
     box-shadow: 0 0px 8px rgb(38, 39, 59) !important;
 }
 
-.wishy-profile.col-3 {
+.wishy-profile.col-3,
+.wishy-profile.col-12 {
     padding-left: 0 !important;
     padding-right: 0 !important;
+}
+
+.wishy-rounded {
+    border-radius: 15px;
+}
+
+.wishy-rounded-top {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.wishy-bold {
+    font-weight: 600;
+}
+
+.wishy-profile-info {
+    position: relative;
+}
+
+.wishy-profile-bt {
+    border-top: 2px solid black;
+}
+
+.wishy-profile-bb {
+    border-bottom: 1px solid lightgrey;
+}
+
+.wishy-profile-bx {
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+}
+
+.wishy-line-heigth {
+    line-height: 1em;
+}
+
+.wishy-profile .form-group i {
+    position: absolute;
+    top: 10px;
+}
+
+.wishy-profile input {
+    padding-left: 20px;
+    background-color: transparent !important;
+}
+
+.online {
+    color: green;
+}
+
+.offline {
+    color: red;
+}
+
+.wishy-friends-list img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 3px solid rgb(38, 39, 59);
+}
+
+.wishy-friends-list .list p {
+    margin-top: 1rem;
+}
+
+.wishy-btn.edit {
+    border-radius: 50%;
+    box-shadow: 0 0px 8px #F9B800 !important;
+    position: absolute;
+    top: -43px;
+    right: 20px;
+}
+
+.wishy-btn.edit:hover {
+    box-shadow: 0 0px 8px #ba8800 !important;
 }
