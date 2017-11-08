@@ -28,7 +28,7 @@
 <div class="container-fluid">
     <div class="row wishy-navbar">
         <div class="col-3 wishy-logo d-flex justify-content-around">
-            <h2 class="text-uppercase text-white mt-3">wishy</h2>
+            <h2 class="text-uppercase text-white mt-1">wishy</h2>
         </div>
         <div class="col-5 wishy-navbar-search">
             <form action="" method="get">
