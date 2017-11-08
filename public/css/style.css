@@ -1,3 +1,7 @@
+body {
+    font-family: 'Raleway';
+}
+
 .content {
     position: relative;
     width: 100vw;
@@ -232,4 +236,13 @@ label {
 
 .wishy-navbar h1 {
     font-size: 2em;
+}
+
+.wishy-shadow-box-blue {
+    box-shadow: 0 0px 8px rgb(38, 39, 59) !important;
+}
+
+.wishy-profile.col-3 {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
 }

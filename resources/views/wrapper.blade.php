@@ -12,7 +12,7 @@
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta name="description" content="Do you have a dream? Don't you want to acomplish something ? Or maybe your heart desires a nice new product ? Probably your wish is even to get somewhere, but you don't know how to acomplish it or how to approach the task. Just post it to Wishy, make it public there and see who can help you out or even someone will surprise you!">
+    <meta name="description" content="Your gift and goals sharing social network. Don't you know witch present you should buy to your friends? We have a solution for you, check Wishy!">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Raleway:200" rel="stylesheet">
@@ -25,6 +25,8 @@
         src="https://code.jquery.com/jquery-3.2.1.js"
         integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
         crossorigin="anonymous"></script>
+
+
 @if(auth()->check())
 <div class="container-fluid">
     <div class="row wishy-navbar">
