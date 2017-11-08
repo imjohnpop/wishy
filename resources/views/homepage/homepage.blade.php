@@ -6,7 +6,7 @@
 
 @section('content')
     <div class="content">
-        <div class="wishy-background-image-try">
+        <div class="wishy-background-image">
             <img src="/img/background-image.jpg" alt="Background image with wishes floating">
         </div>
         <div class="wishy-body-cover">

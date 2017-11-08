@@ -1,0 +1,329 @@
+$font : 'Raleway';
+$blue : rgb(38, 39, 59);
+$gold : #F9B800;
+$gold_hover : #ba8800;
+$grey_boxshadow : 0px 0px 10px #888888;
+
+//  *************************************** common styles ***************************************
+body {
+  font-family: $font;
+}
+
+label {
+  color: #777777;
+  text-align: right;
+}
+
+.wishy-btn {
+  color: #fff;
+  background-color: $gold;
+  border-color: $gold;
+  &:hover {
+    background-color: $gold_hover;
+    border-color: $gold_hover;
+  }
+  &.edit {
+    border-radius: 50%;
+    box-shadow: 0 0px 8px #F9B800 !important;
+    position: absolute;
+    top: -43px;
+    right: 20px;
+    &:hover {
+      box-shadow: 0 0px 8px #ba8800 !important;
+    }
+  }
+}
+
+.wishy-link {
+  font-weight: 400;
+  color: $gold;
+  background-color: transparent;
+  &:hover {
+    text-decoration: underline;
+    color: $gold_hover;
+  }
+}
+
+.wishy-ml {
+  margin-left: 4.5rem;
+}
+
+.wishy-mr {
+  margin-right: 4.5rem;
+}
+
+.hidden {
+  display: none;
+}
+
+.wishy-shadow-box-blue {
+  box-shadow: 0 0px 8px rgb(38, 39, 59) !important;
+}
+
+.wishy-rounded {
+  border-radius: 15px;
+}
+
+.wishy-rounded-top {
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.wishy-bold {
+  font-weight: 600;
+}
+
+.wishy-line-heigth {
+  line-height: 1em;
+}
+
+.online {
+  color: green;
+}
+
+.offline {
+  color: red;
+}
+//  *************************************** HOMEPAGE-LOGIN/REGISTER styles ***************************************
+
+.content {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  padding-bottom: 300px;
+  overflow: hidden;
+}
+
+.wishy-background-image {
+  width: 100vw;
+  height: auto;
+  animation: scroll-bg 70s infinite;
+  animation-fill-mode: forwards;
+  padding-bottom: 300px;
+  position: absolute;
+}
+
+.fa-unlock-alt {
+  margin-right: 4px;
+}
+
+.wishy-body-cover {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  top: 0%;
+  left: 0%;
+}
+.wishy-switcher {
+  height: 350px;
+  font-family: $font;
+  background-color: $blue;
+  color: #B5B5B7;
+  box-shadow: $grey_boxshadow;
+}
+
+.wishy-login {
+  height: 450px;
+  background-color: grey;
+  box-shadow: $grey_boxshadow;
+  position: absolute;
+  top: -50px;
+  left: 438px;
+  font-family: $font;
+  i {
+    position: absolute;
+    top: 30px;
+    right: 26px;
+    z-index: 10;
+  }
+}
+
+.wishy-flipper-container {
+  position: relative;
+}
+//  LOGIN + NAVBAR + FRIENDS
+.wishy-login,
+.wishy-navbar,
+.wishy-friends-search {
+  input {
+    border-width: 0px;
+    border-bottom: 1px solid black;
+    border-radius: 0px;
+    &:focus {
+      border-width: 0px;
+      border-bottom: 1px solid $gold;
+      outline: none !important;
+      box-shadow: 0 1px 0px $gold !important;
+    }
+  }
+}
+
+.wishy-form-headline {
+  color: $gold;
+  font-weight: bolder;
+}
+
+@keyframes scroll-bg {
+  0% {
+    -webkit-transform: translateY(0px);
+    -moz-transform: translateY(0px);
+    -ms-transform: translateY(0px);
+    -o-transform: translateY(0px);
+    transform: translateY(0px);
+  }
+  50% {
+    -webkit-transform: translateY(-300px);
+    -moz-transform: translateY(-300px);
+    -ms-transform: translateY(-300px);
+    -o-transform: translateY(-300px);
+    transform: translateY(-300px);
+  }
+  100% {
+    -webkit-transform: translateY(0px);
+    -moz-transform: translateY(0px);
+    -ms-transform: translateY(0px);
+    -o-transform: translateY(0px);
+    transform: translateY(0px);
+  }
+}
+
+.wishy-container-position {
+  position: absolute;
+  top: 25%;
+  left: 10%;
+}
+//  *************************************** NAVBAR styles ***************************************
+
+.wishy-navbar {
+  background-color: $blue;
+  font-family: $font;
+  input {
+    border-width: 0;
+    margin-top: 10px;
+    padding-left: 30px;
+    color: white !important;
+    &::placeholder {
+      color: white;
+    }
+  }
+  i {
+    color: white;
+  }
+  .options {
+    i {
+      font-size: 1em;
+      text-align: center;
+      &:hover {
+        color: $gold;
+      }
+    }
+    .row {
+      margin-top: 10px;
+      line-height: 0;
+      span {
+        margin-top: 15px;
+        line-height: 0;
+        font-size: 0.75em;
+      }
+      a {
+        color: white;
+        text-decoration: none;
+        &:hover {
+          color: $gold;
+          text-decoration: underline;
+        }
+      }
+      li {
+        a {
+          color: black;
+          text-decoration: none;
+          &:hover {
+            color: black;
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+    p {
+      margin-bottom: 0.5em;
+    }
+    h1 {
+      font-size: 2em;
+    }
+  }
+}
+
+.wishy-logo img {
+  width: 180px;
+  height: 120px;
+}
+
+.wishy-navbar-search {
+  border-right: 1px solid #a8a8a8;
+  border-left: 1px solid #a8a8a8;
+  input {
+    background-color: $blue !important;
+  }
+  i {
+    position: absolute;
+    top: 18px;
+    left: 22px;
+  }
+  .form-group {
+    margin-bottom: 0.25em;
+  }
+}
+
+//  *************************************** PROFILE styles ***************************************
+// USER CARD
+.wishy-profile {
+  &.col-3,
+  &.col-12 {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  .form-group {
+    i {
+      position: absolute;
+      top: 10px;
+    }
+  }
+  input {
+    padding-left: 20px;
+    background-color: transparent !important;
+  }
+
+}
+
+.wishy-profile-info {
+  position: relative;
+}
+
+.wishy-profile-bt {
+  border-top: 2px solid black;
+}
+
+.wishy-profile-bb {
+  border-bottom: 1px solid lightgrey;
+}
+
+.wishy-profile-bx {
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+}
+
+// FRIENDS CARD
+.wishy-friends-list {
+  img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 3px solid rgb(38, 39, 59);
+  }
+  .list {
+    p {
+      margin-top: 1rem;
+    }
+  }
+}

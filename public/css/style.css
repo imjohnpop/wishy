@@ -10,7 +10,7 @@ body {
     overflow: hidden;
 }
 
-.wishy-background-image-try {
+.wishy-background-image {
     width: 100vw;
     height: auto;
     animation: scroll-bg 70s infinite;
