@@ -1,5 +1,5 @@
 /// IMPORTS
-@import 'wishes.scss';
+@import 'profile';
 
 /// MAIN SCSS STYLES
 $font : 'Raleway', 'sans-serif';
@@ -87,6 +87,11 @@ label {
 .wishy-rounded-left {
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
+}
+
+.wishy-rounded-bottom {
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
 }
 
 .wishy-bold {

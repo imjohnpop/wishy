@@ -1,11 +1,13 @@
 <section id="wishgoal-nav">
 
-    <div class="wishgoal-nav col-12 wishy-rounded wishy-shadow-box-blue bg-light mr-0 row">
-        <div class="col-6">
-            <a href="#">Wishes</a>
+    <div class="wishgoal-nav col-12 wishy-rounded wishy-shadow-box-blue ml-0 row">
+        <div class="col-6 text-center">
+            <a href="#" class="show-wishes-btn">Wishes</a>
+            <a><i class="fa fa-plus-circle wish-plus" aria-hidden="true"></i></a>
         </div>
-        <div class="col-6">
-            <a href="#">Goals</a>
+        <div class="col-6 text-center">
+            <a href="#" class="show-goals-btn">Goals</a>
+            <a><i class="fa fa-plus-circle goal-plus" aria-hidden="true"></i></a>
         </div>
     </div>
 

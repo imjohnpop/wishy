@@ -23,9 +23,9 @@
                 <p>I would like to have this car</p>
             </div>
         </div>
-        <div class="wishy-wish-nav">
+        <div class="wishy-wish-nav wishy-rounded-bottom">
             <a href="#" title="Encourage"><i class="fa fa-hand-peace-o mr-1" aria-hidden="true"></i>Encourage</a>
-            <a href="#" title="Comment" class="ml-3"><i class="fa fa-commenting-o mr-1" aria-hidden="true"></i>Comment</a>
+            <a href="#" title="Status" class="ml-3"><i class="fa fa-certificate mr-1" aria-hidden="true"></i>Status</a>
         </div>
     </div>
 

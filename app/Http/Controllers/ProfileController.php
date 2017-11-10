@@ -19,6 +19,8 @@ class ProfileController extends Controller
         $view->user = $user;
         $view->head = view('profile/head');
         $view->wishes = view('profile/wishes');
+        $view->goals = view('profile/goals');
+        $view->posts = view('profile/posts');
         $view->wishgoalnav = view('profile/wishgoal');
 
         return $view;

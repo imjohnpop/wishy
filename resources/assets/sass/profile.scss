@@ -1,0 +1,134 @@
+$gold : #F9B800;
+$gold_hover : #ba8800;
+$blue : rgb(38, 39, 59);
+
+.wish-image img,
+.goal-image img,
+.post-image img{
+  height: auto;
+  width: 100%;
+}
+
+#wishes, #goals, #posts {
+  margin-left: 1em;
+  & .wish.col-12,
+  .goal.col-12,
+  .post.col-12{
+    padding-left: 0;
+    padding-right: 0;
+    margin-bottom: 2em;
+  }
+}
+
+#wishgoal-nav {
+  margin-left: 1em;
+  margin-bottom: 1em;
+}
+
+.wishy-post-info .profile-post-thumbnail {
+  width: 50px;
+  height: 50px;
+  margin-right: 0.5em;
+}
+
+.wishy-post-nav{
+  background-color: $blue;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding: 0.5em;
+  & a {
+    color: $gold;
+    font-size: 0.8em;
+  }
+}
+
+.wishy-wish-info,
+.wishy-goal-info,
+.wishy-post-info{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 1em;
+  border-bottom: 1px solid lightgrey;
+  & .wishy-user-info {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1em;
+    & .profile-wish-thumbnail,
+    .profile-goal-thumbnail,
+    .profile-post-thumbnail{
+      width: 50px;
+      height: 50px;
+      margin-right: 1em;
+      & .profile-thumbnail {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+      }
+    }
+    & .wishy-user-text h5,
+    .wishy-user-text p {
+      margin-bottom: 0;
+    }
+    & .wishy-user-text p,
+    .wish-category p,
+    .goal-category p {
+      font-weight: 100;
+      font-size: 0.8em;
+    }
+    & .wish-category,
+    .goal-category {
+      margin-left: auto;
+      & p {
+        margin-top: -2em;
+        margin-bottom: 0;
+      }
+    }
+  }
+  & .wishy-wish-text h4,
+  .wishy-goal-text h4{
+      font-size: 1.5em;
+  }
+  & .wishy-wish-text p,
+  .wishy-goal-text p {
+      margin-bottom: 0;
+  }
+}
+
+.wishy-wish-nav,
+.wishy-goal-nav{
+  background-color: $blue;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding: 1em;
+  & a {
+    color: $gold;
+  }
+}
+
+.wishgoal-nav {
+  background-color: $blue;
+  & div:last-child {
+    border-left: 1px solid lightgrey;
+  }
+  & a {
+    color: $gold;
+  }
+  & .wish-plus, .goal-plus {
+    position:relative;
+    color: $gold;
+    cursor: pointer;
+    &:hover {
+      color: $gold_hover;
+      border-color: $gold_hover;
+    }
+  }
+  & .wish-plus {
+    left: 60px;
+  }
+  & .goal-plus {
+    left: -110px;
+  }
+}

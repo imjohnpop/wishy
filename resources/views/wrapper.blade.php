@@ -31,7 +31,7 @@
 <div class="container-fluid">
     <div class="row wishy-navbar">
         <div class="col-3 wishy-logo d-flex justify-content-around">
-            <h1 class="text-uppercase text-white mt-1">wishy</h1>
+            <h1 class="text-uppercase mt-1"><a class="text-white" href="/">wishy</a></h1>
         </div>
         <div class="col-5 wishy-navbar-search">
             <form action="" method="get">
@@ -84,5 +84,6 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
     <!-- FONTAWESOME -->
 <script src="https://use.fontawesome.com/f1003c147a.js"></script>
+<script src="/js/profile.js"></script>
 </body>
 </html>

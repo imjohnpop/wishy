@@ -1,23 +1,64 @@
-.wish-image img {
+.wish-image img,
+.goal-image img,
+.post-image img {
   height: auto;
   width: 100%;
 }
 
-#wishes {
-  margin: 0 2em;
+#wishes,
+#goals,
+#posts {
+  margin-left: 1em;
 }
 
-#wishes .wish.col-12 {
+#wishes .wish.col-12,
+#wishes .goal.col-12,
+#wishes .post.col-12,
+#goals .wish.col-12,
+#goals .goal.col-12,
+#goals .post.col-12,
+#posts .wish.col-12,
+#posts .goal.col-12,
+#posts .post.col-12 {
   padding-left: 0;
   padding-right: 0;
   margin-bottom: 2em;
 }
 
 #wishgoal-nav {
-  margin: 0 2em 2em 2em;
+  margin-left: 1em;
+  margin-bottom: 1em;
 }
 
-.wishy-wish-info {
+.wishy-post-info .profile-post-thumbnail {
+  width: 50px;
+  height: 50px;
+  margin-right: 0.5em;
+}
+
+.wishy-post-nav {
+  background-color: #26273b;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  padding: 0.5em;
+}
+
+.wishy-post-nav a {
+  color: #F9B800;
+  font-size: 0.8em;
+}
+
+.wishy-wish-info,
+.wishy-goal-info,
+.wishy-post-info {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -32,7 +73,9 @@
   border-bottom: 1px solid lightgrey;
 }
 
-.wishy-wish-info .wishy-user-info {
+.wishy-wish-info .wishy-user-info,
+.wishy-goal-info .wishy-user-info,
+.wishy-post-info .wishy-user-info {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -43,47 +86,96 @@
   margin-bottom: 1em;
 }
 
-.wishy-wish-info .wishy-user-info .profile-wish-thumbnail {
+.wishy-wish-info .wishy-user-info .profile-wish-thumbnail,
+.wishy-wish-info .wishy-user-info .profile-goal-thumbnail,
+.wishy-wish-info .wishy-user-info .profile-post-thumbnail,
+.wishy-goal-info .wishy-user-info .profile-wish-thumbnail,
+.wishy-goal-info .wishy-user-info .profile-goal-thumbnail,
+.wishy-goal-info .wishy-user-info .profile-post-thumbnail,
+.wishy-post-info .wishy-user-info .profile-wish-thumbnail,
+.wishy-post-info .wishy-user-info .profile-goal-thumbnail,
+.wishy-post-info .wishy-user-info .profile-post-thumbnail {
   width: 50px;
   height: 50px;
   margin-right: 1em;
 }
 
-.wishy-wish-info .wishy-user-info .profile-wish-thumbnail .profile-thumbnail {
+.wishy-wish-info .wishy-user-info .profile-wish-thumbnail .profile-thumbnail,
+.wishy-wish-info .wishy-user-info .profile-goal-thumbnail .profile-thumbnail,
+.wishy-wish-info .wishy-user-info .profile-post-thumbnail .profile-thumbnail,
+.wishy-goal-info .wishy-user-info .profile-wish-thumbnail .profile-thumbnail,
+.wishy-goal-info .wishy-user-info .profile-goal-thumbnail .profile-thumbnail,
+.wishy-goal-info .wishy-user-info .profile-post-thumbnail .profile-thumbnail,
+.wishy-post-info .wishy-user-info .profile-wish-thumbnail .profile-thumbnail,
+.wishy-post-info .wishy-user-info .profile-goal-thumbnail .profile-thumbnail,
+.wishy-post-info .wishy-user-info .profile-post-thumbnail .profile-thumbnail {
   width: 100%;
   height: 100%;
   border-radius: 50%;
 }
 
 .wishy-wish-info .wishy-user-info .wishy-user-text h5,
-.wishy-wish-info .wishy-user-info .wishy-user-text p {
+.wishy-wish-info .wishy-user-info .wishy-user-text p,
+.wishy-goal-info .wishy-user-info .wishy-user-text h5,
+.wishy-goal-info .wishy-user-info .wishy-user-text p,
+.wishy-post-info .wishy-user-info .wishy-user-text h5,
+.wishy-post-info .wishy-user-info .wishy-user-text p {
   margin-bottom: 0;
 }
 
 .wishy-wish-info .wishy-user-info .wishy-user-text p,
-.wishy-wish-info .wishy-user-info .wish-category p {
+.wishy-wish-info .wishy-user-info .wish-category p,
+.wishy-wish-info .wishy-user-info .goal-category p,
+.wishy-goal-info .wishy-user-info .wishy-user-text p,
+.wishy-goal-info .wishy-user-info .wish-category p,
+.wishy-goal-info .wishy-user-info .goal-category p,
+.wishy-post-info .wishy-user-info .wishy-user-text p,
+.wishy-post-info .wishy-user-info .wish-category p,
+.wishy-post-info .wishy-user-info .goal-category p {
   font-weight: 100;
   font-size: 0.8em;
 }
 
-.wishy-wish-info .wishy-user-info .wish-category {
+.wishy-wish-info .wishy-user-info .wish-category,
+.wishy-wish-info .wishy-user-info .goal-category,
+.wishy-goal-info .wishy-user-info .wish-category,
+.wishy-goal-info .wishy-user-info .goal-category,
+.wishy-post-info .wishy-user-info .wish-category,
+.wishy-post-info .wishy-user-info .goal-category {
   margin-left: auto;
 }
 
-.wishy-wish-info .wishy-user-info .wish-category p {
+.wishy-wish-info .wishy-user-info .wish-category p,
+.wishy-wish-info .wishy-user-info .goal-category p,
+.wishy-goal-info .wishy-user-info .wish-category p,
+.wishy-goal-info .wishy-user-info .goal-category p,
+.wishy-post-info .wishy-user-info .wish-category p,
+.wishy-post-info .wishy-user-info .goal-category p {
   margin-top: -2em;
   margin-bottom: 0;
 }
 
-.wishy-wish-info .wishy-wish-text h4 {
+.wishy-wish-info .wishy-wish-text h4,
+.wishy-wish-info .wishy-goal-text h4,
+.wishy-goal-info .wishy-wish-text h4,
+.wishy-goal-info .wishy-goal-text h4,
+.wishy-post-info .wishy-wish-text h4,
+.wishy-post-info .wishy-goal-text h4 {
   font-size: 1.5em;
 }
 
-.wishy-wish-info .wishy-wish-text p {
+.wishy-wish-info .wishy-wish-text p,
+.wishy-wish-info .wishy-goal-text p,
+.wishy-goal-info .wishy-wish-text p,
+.wishy-goal-info .wishy-goal-text p,
+.wishy-post-info .wishy-wish-text p,
+.wishy-post-info .wishy-goal-text p {
   margin-bottom: 0;
 }
 
-.wishy-wish-nav {
+.wishy-wish-nav,
+.wishy-goal-nav {
+  background-color: #26273b;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -97,8 +189,42 @@
   padding: 1em;
 }
 
-.wishy-wish-nav a {
+.wishy-wish-nav a,
+.wishy-goal-nav a {
   color: #F9B800;
+}
+
+.wishgoal-nav {
+  background-color: #26273b;
+}
+
+.wishgoal-nav div:last-child {
+  border-left: 1px solid lightgrey;
+}
+
+.wishgoal-nav a {
+  color: #F9B800;
+}
+
+.wishgoal-nav .wish-plus,
+.wishgoal-nav .goal-plus {
+  position: relative;
+  color: #F9B800;
+  cursor: pointer;
+}
+
+.wishgoal-nav .wish-plus:hover,
+.wishgoal-nav .goal-plus:hover {
+  color: #ba8800;
+  border-color: #ba8800;
+}
+
+.wishgoal-nav .wish-plus {
+  left: 60px;
+}
+
+.wishgoal-nav .goal-plus {
+  left: -110px;
 }
 
 body {
@@ -190,6 +316,11 @@ label {
 .wishy-rounded-left {
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
+}
+
+.wishy-rounded-bottom {
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
 }
 
 .wishy-bold {

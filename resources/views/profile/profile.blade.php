@@ -11,6 +11,10 @@
             <div class="col-6">
                 <?=$wishgoalnav?>
                 <?=$wishes?>
+                <?=$goals?>
+            </div>
+            <div class="col-3">
+                <?=$posts?>
             </div>
         </div>
     </div>
