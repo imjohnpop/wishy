@@ -8,7 +8,7 @@
     <div class="container mt-3">
         <div class="row">
             <?=$head?>
-            <div class="col-5">
+            <div class="col-6">
                 <?=$wishgoalnav?>
                 <?=$wishes?>
             </div>
