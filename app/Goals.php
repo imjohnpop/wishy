@@ -14,4 +14,6 @@ class Goals extends Model
         'nr_encouragements',
         'status_id'
     ];
+
+    protected $table = 'goals';
 }

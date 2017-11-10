@@ -1,5 +1,6 @@
 <?php
 
+use App\Statuses;
 use Illuminate\Database\Seeder;
 use App\Comments;
 use App\Goals;
@@ -36,7 +37,7 @@ class DatabaseSeeder extends Seeder
 
         Goals::create([
             'name' =>'Win a wrestle with a bear',
-            'description' => 'The name is quite explanatory',
+            'description' => 'The name is quite explanatory, but anyways... I want to fight with huge wild bear, and kick his fat ass. I am little bit scared, but who is scared can\'t go to the forest. Am I right?',
             'is_public' => 1,
             'nr_encouragements' => 2,
             'status_id'=> 2
@@ -132,6 +133,18 @@ class DatabaseSeeder extends Seeder
             'user_id' => 1,
             'status_id'=> 3,
             'nr_encouragements'=> 0
+        ]);
+
+        Statuses::create([
+            'tag' => 'Unacomplished'
+        ]);
+
+        Statuses::create([
+            'tag' => 'In progress'
+        ]);
+
+        Statuses::create([
+            'tag' => 'Achieved'
         ]);
     }
 }

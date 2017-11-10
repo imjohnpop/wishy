@@ -84,6 +84,11 @@ label {
   border-top-right-radius: 15px;
 }
 
+.wishy-rounded-left {
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
+
 .wishy-bold {
   font-weight: 600;
 }
@@ -264,7 +269,7 @@ label {
       margin-bottom: 0.5em;
     }
   }
-  h1 {
+    h1 {
     font-size: 2em !important;
   }
 }
@@ -340,5 +345,13 @@ label {
     p {
       margin-top: 1rem;
     }
+  }
+}
+
+// *************************************** PROFILE styles ***************************************
+
+.wishy-planner {
+  &.col-9 {
+    padding-right: 0;
   }
 }
