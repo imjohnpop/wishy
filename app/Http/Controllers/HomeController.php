@@ -24,9 +24,9 @@ class HomeController extends Controller
     {
         if (Auth::user())
         {
-            $view = view('feed');
-            $goals = Goals::get()->toArray();
-            $wishes = Wishes::get()->toArray();
+            $view = view('feed/feed');
+            $goals = Goals::join('status', 'goals.status_id', '=', 'status.id')->select('goals.*', 'status.tag')->where('is_public', 1)->get()->toArray();
+            $wishes = Wishes::join('status', 'wishes.status_id', '=', 'status.id')->select('wishes.*', 'status.tag')->where('is_public', 1)->get()->toArray();
             $news = array_merge($goals, $wishes);
             $news = collect($news)->sortBy('updated_at')->reverse()->toArray();
             $view->news = $news;

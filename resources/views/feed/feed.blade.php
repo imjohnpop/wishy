@@ -4,5 +4,7 @@
     <div>
         <h3>{{$new['name']}}</h3>
         <p>{{$new['description']}}</p>
+        <p>{{$new['tag']}}</p>
+        <?php var_dump($new);?>
     </div>
 @endforeach
