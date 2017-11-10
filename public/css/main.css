@@ -187,6 +187,11 @@ label {
   border-top-right-radius: 15px;
 }
 
+.wishy-rounded-left {
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
+
 .wishy-bold {
   font-weight: 600;
 }
@@ -475,5 +480,9 @@ label {
 
 .wishy-friends-list .list p {
   margin-top: 1rem;
+}
+
+.wishy-planner.col-9 {
+  padding-right: 0;
 }
 

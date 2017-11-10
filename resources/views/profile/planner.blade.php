@@ -1,17 +1,14 @@
 @extends('wrapper')
 
 @section('title')
-    Profile
+    Goals planner
 @endsection
 
 @section('content')
     <div class="container mt-3">
         <div class="row">
             <?=$head?>
-            <div class="col-6">
-                <?=$wishgoalnav?>
-                <?=$wishes?>
-            </div>
+            <?=$planner?>
         </div>
     </div>
 
