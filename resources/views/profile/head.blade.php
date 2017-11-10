@@ -1,5 +1,5 @@
 
-<div class="wishy-profile col-3">
+<section class="wishy-profile col-3">
 
     {{--  PROFILE PART --}}
 
@@ -108,5 +108,5 @@
 
     {{--  END OF FRIENDS LIST PART --}}
 
-</div>
+</section>
 

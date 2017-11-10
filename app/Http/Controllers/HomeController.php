@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -19,8 +20,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $view = view('homepage/homepage');
-
+        if(Auth::check()) {
+            $view = view('feed/feed');
+        } else {
+            $view = view('homepage/homepage');
+        }
         return $view;
     }
 }
