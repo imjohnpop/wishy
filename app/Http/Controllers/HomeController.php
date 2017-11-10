@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Goals;
+use App\Wishes;
 
 class HomeController extends Controller
 {
@@ -20,11 +22,20 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if(Auth::check()) {
-            $view = view('feed/feed');
-        } else {
-            $view = view('homepage/homepage');
+        if (Auth::user())
+        {
+            $view = view('feed');
+            $goals = Goals::get()->toArray();
+            $wishes = Wishes::get()->toArray();
+            $news = array_merge($goals, $wishes);
+            $news = collect($news)->sortBy('updated_at')->reverse()->toArray();
+            $view->news = $news;
+            return $view;
         }
-        return $view;
+        else 
+        {
+            $view = view('homepage/homepage');
+            return $view;
+        }
     }
 }

@@ -44,7 +44,7 @@ class DatabaseSeeder extends Seeder
         
         Goals::create([
             'name' =>'Overcome misophonia',
-            'description' => 'I wish to stop getting pissed when people is eating apples',
+            'description' => 'I wish to stop getting pissed when people are eating apples',
             'is_public' => 0,
             'nr_encouragements' => 0,
             'status_id'=> 1
