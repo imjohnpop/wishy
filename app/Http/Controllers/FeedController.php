@@ -2,26 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class ProfileController extends Controller
+class FeedController extends Controller
 {
-
     /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
      */
-    public function index() {
-        $view = view('profile/profile');
-
-        $user = User::find(auth()->user()->id);
-
-        $view->user = $user;
-        $view->head = view('profile/head');
-        $view->wishes = view('profile/wishes');
-        $view->wishgoalnav = view('profile/wishgoal');
-
-        return $view;
+    public function store(Request $request)
+    {
+        //
     }
 
     /**
@@ -34,18 +28,7 @@ class ProfileController extends Controller
     {
         //
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
+    
     /**
      * Update the specified resource in storage.
      *
