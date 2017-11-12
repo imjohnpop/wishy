@@ -102,6 +102,7 @@
                     <p class="wishy-bold"><i class="fa fa-circle offline" aria-hidden="true"></i> Elena Porras</p>
                 </div>
             </div>
+            <hr>
         </div>
 
     </div>

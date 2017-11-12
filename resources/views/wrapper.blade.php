@@ -44,16 +44,16 @@
         </div>
         <div class="col-4 options">
             <div class="row d-flex justify-content-around text-center text-white">
-                <a href="" class="col-3 feed">
+                <a href="/" class="col-3 feed">
                     <p><i class="fa fa-rss" aria-hidden="true"></i></p>
                     <span>Feed</span>
                 </a>
-                <a href="" class="col-3 notification">
+                <a href="#" class="col-3 notification">
                     <p><i class="fa fa-bell" aria-hidden="true"></i></p>
                     <span>Notifications</span>
                 </a>
                 <div class="dropdown">
-                    <a href="" class="col-3 user dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                    <a href="#" class="col-3 user dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                         <p><i class="fa fa-user" aria-hidden="true"></i></p>
                         <span>Me</span>
                     </a>
@@ -68,6 +68,11 @@
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 {{ csrf_field() }}
                             </form>
+                        </li>
+                        <li>
+                            <a href="/profile">
+                                Profile
+                            </a>
                         </li>
                     </ul>
                 </div>
