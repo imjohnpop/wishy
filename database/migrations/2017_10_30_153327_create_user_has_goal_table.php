@@ -16,7 +16,8 @@ class CreateUserHasGoalTable extends Migration
         Schema::create('user_has_goal', function (Blueprint $table) {
             $table->integer('user_id');
             $table->integer('goal_id');
-            $table->boolean('has_encouraged');            
+            $table->boolean('want_participate')->nullable(); 
+            $table->boolean('has_encouraged')->nullable(); 
             $table->timestamps();
         });
     }

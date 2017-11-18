@@ -16,8 +16,7 @@ class UserHasWish extends Migration
         Schema::create('user_has_wish', function (Blueprint $table) {
             $table->integer('user_id');
             $table->integer('wish_id');
-            $table->boolean('has_encouraged');
-            $table->boolean('want_participate');            
+            $table->boolean('has_encouraged')->nullable();
             $table->timestamps();
         });
     }

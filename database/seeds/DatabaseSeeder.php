@@ -1,11 +1,13 @@
 <?php
 
-use App\Statuses;
 use Illuminate\Database\Seeder;
 use App\Comments;
 use App\Goals;
 use App\Milestones;
 use App\Wishes;
+use App\Statuses;
+use App\Events;
+use App\Post;
 
 class DatabaseSeeder extends Seeder
 {
@@ -19,19 +21,22 @@ class DatabaseSeeder extends Seeder
         // $this->call(UsersTableSeeder::class);
         Comments::create([
             'user_id' => 1,
-            'goal_id' => 1,
+            'type' => 'goal',
+            'target_id' => 1,
             'text' => 'This is so cool!'
         ]);
 
         Comments::create([
             'user_id' => 2,
-            'goal_id' => 1,
+            'type' => 'goal',            
+            'target_id' => 1,
             'text' => 'Go ahead man!'
         ]);
 
         Comments::create([
             'user_id' => 2,
-            'goal_id' => 2,
+            'type' => 'goal',            
+            'target_id' => 2,
             'text' => 'Just be careful!'
         ]);
 
@@ -145,6 +150,31 @@ class DatabaseSeeder extends Seeder
 
         Statuses::create([
             'tag' => 'Achieved'
+        ]);
+        
+        Events::create([
+            'name' => 'Christmas',
+            'date' => 2512
+        ]);
+        
+        Events::create([
+            'name' => 'New Year',
+            'date' => 0101
+        ]);
+
+        Post::create([
+            'user_id' => 1,
+            'type' => 'text',
+            'text' => 'Some stuff I wrote here',
+            'nr_encouragements' => 2 
+        ]);
+
+        Post::create([
+            'user_id' => 1,
+            'type' => 'image',
+            'path' => '/img/profile-photo-mat.jpg',
+            'text' => 'Look at this pic bruh',
+            'nr_encouragements' => 2 
         ]);
     }
 }
