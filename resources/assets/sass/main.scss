@@ -94,6 +94,19 @@ label {
   border-bottom-right-radius: 7px;
 }
 
+.bg-navy {
+  background-color: $blue;
+}
+
+.btn-gold {
+  background-color: $gold;
+  color:white;
+  cursor: pointer;
+  &:hover {
+    background-color: $gold_hover;
+  }
+}
+
 .wishy-bold {
   font-weight: 600;
 }

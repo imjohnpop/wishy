@@ -1,4 +1,5 @@
 $( function() {
+
     $('.show-wishes-btn').click( function() {
        if( $('#wishes').hasClass('d-none') ) {
            $('#wishes').removeClass('d-none');

@@ -58,6 +58,7 @@ return array(
     'CreateStatusTable' => $baseDir . '/database/migrations/2017_10_30_153949_create_status_table.php',
     'CreateUserHasFriendTable' => $baseDir . '/database/migrations/2017_10_30_153934_create_user_has_friend_table.php',
     'CreateUserHasGoalTable' => $baseDir . '/database/migrations/2017_10_30_153327_create_user_has_goal_table.php',
+    'CreateUsersDetailTable' => $baseDir . '/database/migrations/2017_11_12_193814_create_users_detail_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
     'CreateWishHasImageTable' => $baseDir . '/database/migrations/2017_10_30_153914_create_wish_has_image_table.php',
     'CreateWishesTable' => $baseDir . '/database/migrations/2017_10_23_121421_create_wishes_table.php',

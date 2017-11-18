@@ -11,6 +11,9 @@
 |
 */
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+
 Auth::routes();
 
 // --------------- Homepage ------------------------------------------
@@ -28,9 +31,9 @@ Route::get('/homepage', function () {
 // --------------- Feed Page ------------------------------------------
 
 
-Route::get('/feed/calendar', 'CalendarController@view');
+Route::get('/feed/calendar', 'CalendarController@view')->middleware('auth');
 
-Route::post('/feed/search', 'SearchController@search');
+Route::post('/feed/search', 'SearchController@search')->middleware('auth');
 
 Route::resource('feed', 'FeedController', [
     'except' => ['index','create', 'edit']
@@ -48,12 +51,12 @@ Route::resource('feed', 'FeedController', [
         Route::post('/post/{post_id}', 'EncourageController@post');
         Route::post('/wish/{wish_id}', 'EncourageController@wish');
         Route::post('/goal/{goal_id}', 'EncourageController@goal');
-    });    
+    });
     
     Route::prefix('status')->group(function () {
         Route::post('/wish/{wish_id}', 'StatusController@wish');
         Route::post('/goal/{goal_id}', 'StatusController@goal');
-    });    
+    });
     
     Route::prefix('comment')->group(function () {
         Route::post('/post/{post_id}', 'CommentController@newpost');
@@ -67,12 +70,13 @@ Route::resource('feed', 'FeedController', [
     // --------------- Profile Page ------------------------------------------
     
 Route::resource('profile', 'ProfileController', [
-    'except' => ['create','store']
+    'except' => ['create']
 ]);
 
 /*
 * Generated routes and their methods in the ProfileController:
 * [GET]     /profile           => index
+* [POST]     /profile          => store
 * [GET]     /profile/{id}/edit => edit (display the page that'll edit the profile)
 * [PUT]     /profile/{id}      => update
 * [GET]     /profile/{id}      => show
@@ -81,21 +85,21 @@ Route::resource('profile', 'ProfileController', [
 
 Route::prefix('profile')->group(function () {    
     Route::resource('wish', 'WishController', [
-        'only' => ['update', 'destroy']    
+        'only' => ['store' ,'update', 'destroy']
     ]);
     /*
     * Generated routes and their methods in the WishController:
     * [PUT]     /profile/wish/{id}      => update
     * [DELETE]  /profile/wish/{id}      => destroy
     */
-    Route::get('/{user_id}/achievements', 'AchievementsController@view');
+    Route::get('/{user_id}/achievements', 'AchievementsController@view')->middleware('auth');
 });
 
 
 // --------------- Friends Page ------------------------------------------
 
 Route::prefix('friends')->group(function(){
-    Route::get('/{user_id}', 'FriendController@view');
+    Route::get('/{user_id}', 'FriendController@view')->middleware('auth');
     Route::post('/{friend_id}/add', 'FriendController@add');
     Route::post('/{friend_id}/unfriend', 'FriendController@unfriend');
 });
@@ -103,8 +107,8 @@ Route::prefix('friends')->group(function(){
 // --------------- Goals Planner ------------------------------------------
 
 Route::prefix('goal')->group(function(){    
-    Route::get('/new', 'GoalsController@view');
-    Route::get('/edit/{id}', 'GoalsController@view');
+    Route::get('/new', 'GoalsController@view')->middleware('auth');
+    Route::get('/edit/{id}', 'GoalsController@view')->middleware('auth');
     Route::post('/edit/{id}', 'GoalsController@edit');
     Route::delete('/{id}', 'GoalController@destroy');
     Route::resource('milestone', 'MilestoneController', [

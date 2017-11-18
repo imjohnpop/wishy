@@ -17,9 +17,9 @@ class CreateWishesTable extends Migration
             $table->increments('id');
             $table->string('name',300);
             $table->string('description' ,2500)->nullable();
-            $table->integer('is_public');
+            $table->integer('is_public')->default(1);
             $table->integer('user_id');
-            $table->integer('status_id');
+            $table->integer('status_id')->default(1);
             $table->integer('nr_encouragements')->default(0);
             $table->timestamps();
         });

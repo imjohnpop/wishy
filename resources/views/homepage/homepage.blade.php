@@ -121,7 +121,7 @@
 
                                                     <div class="col">
                                                         <input id="name" type="text" class="form-control" name="name"
-                                                               value="{{ old('name') }}" required placeholder="NAME">
+                                                               value="{{ old('name') }}" required placeholder="FIRSTNAME">
 
                                                         @if ($errors->has('name'))
                                                             <span class="help-block">
@@ -130,6 +130,24 @@
                                                         @endif
                                                     </div>
                                                 </div>
+
+
+                                                <div class="form-group{{ $errors->has('surname') ? ' has-error' : '' }}">
+                                                    <label for="surname" class="col control-label"><i class="fa fa-user"
+                                                                                                   aria-hidden="true"></i></label>
+
+                                                    <div class="col">
+                                                        <input id="surname" type="text" class="form-control" name="surname"
+                                                               value="{{ old('surname') }}" required placeholder="SURNAME">
+
+                                                        @if ($errors->has('surname'))
+                                                            <span class="help-block">
+                                                <strong>{{ $errors->first('surname') }}</strong>
+                                            </span>
+                                                        @endif
+                                                    </div>
+                                                </div>
+
 
                                                 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                                                     <label for="email" class="col control-label"><i

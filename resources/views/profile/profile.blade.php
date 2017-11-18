@@ -7,16 +7,17 @@
 @section('content')
     <div class="container mt-3">
         <div class="row">
-            <?=$head?>
+            <?=$headView?>
             <div class="col-6">
-                <?=$wishgoalnav?>
-                <?=$wishes?>
-                <?=$goals?>
+                <?=$wishgoalnavView?>
+                <?=$wishesView?>
+                <?=$goalsView?>
             </div>
             <div class="col-3">
-                <?=$posts?>
+                <?=$postsView?>
             </div>
         </div>
     </div>
-
+    <?=$addmodalView?>
+    <?=$profiledetailView?>
 @endsection
