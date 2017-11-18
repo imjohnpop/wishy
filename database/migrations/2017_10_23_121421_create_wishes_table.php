@@ -21,6 +21,7 @@ class CreateWishesTable extends Migration
             $table->integer('user_id');
             $table->integer('status_id')->default(1);
             $table->integer('nr_encouragements')->default(0);
+            $table->integer('wish_picture')->nullable();
             $table->timestamps();
         });
     }

@@ -26,6 +26,12 @@
                         <label for="is_public">Make it public? </label>
                         <input name="is_public" type="checkbox" class="form-control" id="is_public" checked>
                     </div>
+                    <div class="form-group">
+                        <label for="wish_picture">Wish Picture</label>
+                        <div class="col">
+                            <input name="wish_picture" type="file" class="form-control" id="wish_picture">
+                        </div>
+                    </div>
                     <button type="submit" class="btn btn-gold">Submit</button>
                 </form>
             </div>

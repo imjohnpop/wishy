@@ -26,6 +26,7 @@ class WishController extends Controller
         ]);
         $wish->save();
 
+
         return redirect()->action('ProfileController@index');
     }
 
