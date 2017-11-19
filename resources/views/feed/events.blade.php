@@ -4,60 +4,21 @@
             <h4 class="wishy-bold text-uppercase text-center">upcoming events</h4>
         </div>
         <div class="list">
-            <div class="row mb-2">
-                <div class="col-4 d-flex justify-content-around">
-                    <img class="" src="/img/ludo.jpg" alt="Random profile picture">
+            @foreach ($events_list as $event)
+                <?php 
+                    $date = substr($event['date'], 5);
+                ?>
+                <div class="row mb-2">
+                    <div class="calendar col-4 d-flex justify-content-around">
+                        <img class="" src="/img/calendar.png" alt="calendar" style="border:none; border-radius:0px;">
+                        <span style="margin-left:-4em; margin-top: 1em;">{{$date}}</span>
+                    </div>
+                    <div class="col-8">
+                        <p class="wishy-bold"> {{$event['name']}}</p>
+                    </div>
                 </div>
-                <div class="col-8">
-                    <p class="wishy-bold"><i class="fa fa-circle online" aria-hidden="true"></i> Ludo Holbik</p>
-                </div>
-            </div>
-            <hr>
-            <div class="row mb-2">
-                <div class="col-4 d-flex justify-content-around">
-                    <img class="" src="/img/jan.jpg" alt="Random profile picture">
-                </div>
-                <div class="col-8">
-                    <p class="wishy-bold"><i class="fa fa-circle online" aria-hidden="true"></i> Jan Poprocsi</p>
-                </div>
-            </div>
-            <hr>
-            <div class="row mb-2">
-                <div class="col-4 d-flex justify-content-around">
-                    <img class="" src="/img/elena.jpg" alt="Random profile picture">
-                </div>
-                <div class="col-8">
-                    <p class="wishy-bold"><i class="fa fa-circle offline" aria-hidden="true"></i> Elena Porras</p>
-                </div>
-            </div>
-            <hr>
-            <div class="row mb-2">
-                <div class="col-4 d-flex justify-content-around">
-                    <img class="" src="/img/ludo.jpg" alt="Random profile picture">
-                </div>
-                <div class="col-8">
-                    <p class="wishy-bold"><i class="fa fa-circle online" aria-hidden="true"></i> Ludo Holbik</p>
-                </div>
-            </div>
-            <hr>
-            <div class="row mb-2">
-                <div class="col-4 d-flex justify-content-around">
-                    <img class="" src="/img/jan.jpg" alt="Random profile picture">
-                </div>
-                <div class="col-8">
-                    <p class="wishy-bold"><i class="fa fa-circle online" aria-hidden="true"></i> Jan Poprocsi</p>
-                </div>
-            </div>
-            <hr>
-            <div class="row mb-2">
-                <div class="col-4 d-flex justify-content-around">
-                    <img class="" src="/img/elena.jpg" alt="Random profile picture">
-                </div>
-                <div class="col-8">
-                    <p class="wishy-bold"><i class="fa fa-circle offline" aria-hidden="true"></i> Elena Porras</p>
-                </div>
-            </div>
-            <hr>
+                <hr>
+            @endforeach
         </div>
     </div>
 </section>

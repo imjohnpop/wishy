@@ -22,6 +22,7 @@ class CreateWishesTable extends Migration
             $table->integer('status_id')->default(1);
             $table->integer('nr_encouragements')->default(0);
             $table->integer('wish_picture')->nullable();
+            $table->string('cathegory',300)->default('wish');
             $table->timestamps();
         });
     }

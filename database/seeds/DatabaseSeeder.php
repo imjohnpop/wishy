@@ -154,12 +154,12 @@ class DatabaseSeeder extends Seeder
         
         Events::create([
             'name' => 'Christmas',
-            'date' => 2512
+            'date' => '2017-12-25'
         ]);
         
         Events::create([
             'name' => 'New Year',
-            'date' => 0101
+            'date' => '2018-01-01'
         ]);
 
         Post::create([

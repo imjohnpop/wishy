@@ -20,6 +20,7 @@ class CreatePostsTable extends Migration
             $table->string('path',300)->nullable();
             $table->string('text',2500)->nullable();
             $table->integer('nr_encouragements')->default(0);
+            $table->string('cathegory',300)->default('post');
             $table->timestamps();
         });
     }
