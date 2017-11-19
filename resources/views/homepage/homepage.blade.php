@@ -9,7 +9,24 @@
         <div class="wishy-background-image">
             <img src="/img/background-image.jpg" alt="Background image with wishes floating">
         </div>
-        <div class="wishy-body-cover">
+        <div class="wishy-body-welcome">
+            <div class="container wishy-container-position">
+                <div class="row">
+                    <div class="col-md-10 mx-auto">
+                        <div class="wishy-welcome-bg">
+                            <div class="wishy-welcome-fg py-4 px-5 d-flex flex-column justify-content-between">
+                                <h1 class="text-uppercase fw-200">Do you<br/>wish something?</h1>
+                                <h2 class="ml-5 fw-300">But you don't know how to achieve it? Probably you want something nice for your birthday, but you don't know how to tell it to your closest. Just post it to Wishy, make it public and see who can help you out or even someone will surprise you!</h2>
+                                <h3 class="text-right fw-200">...try out <span class="text-uppercase">wishy</span>!</h3>
+                                <a href="#user" class="btn btn-gold text-white fw-200">Login / Register</a>
+                                <a href="#user" class="arrow-down"><i class="fa fa-chevron-down" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="user" class="wishy-body-user">
             <div class="container wishy-container-position">
                 <div class="row">
                     <div class="col-md-10 mx-auto">
@@ -18,19 +35,19 @@
                                 <div class="row d-flex justify-content-between align-items-center">
                                     <div class="col-4 wishy-ml text-center">
                                         <div id="left">
-                                            <h4>Don't have an account?</h4>
+                                            <h4 class="fw-200">Don't have an account?</h4>
                                             <p>In case you want to became a part of gift and goals sharing society
                                                 create a free
                                                 account. Don't waste your time anymore</p>
-                                            <button id="signin" type="button" class="btn btn-outline-light">Sign in
+                                            <button id="signin" type="button" class="btn btn-outline-light">Sign up
                                             </button>
                                         </div>
                                     </div>
                                     <div class="col-4 wishy-mr text-center">
                                         <div id="right">
-                                            <h4>Already have an account?</h4>
+                                            <h4 class="fw-200">Already have an account?</h4>
                                             <p>Ok, let's login, and share your wishes with others!</p>
-                                            <button id="signup" type="button" class="btn btn-outline-light">Sign up
+                                            <button id="signup" type="button" class="btn btn-outline-light">Sign in
                                             </button>
                                         </div>
                                     </div>
@@ -43,7 +60,7 @@
                                         {{--  LOGIN FORM --}}
 
                                         <div id="login" class="panel-body mt-4 sign @if(isset($token)) hidden @endif">
-                                            <h4 class="text-uppercase wishy-form-headline ml-3">Sign Up</h4>
+                                            <h4 class="text-uppercase wishy-form-headline ml-3">Sign In</h4>
                                             <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                                                 {{ csrf_field() }}
 
@@ -110,7 +127,7 @@
 
                                         {{--  REGISTRATION FORM --}}
                                         <div id="register" class="panel-body mt-4 hidden">
-                                            <h4 class="text-uppercase wishy-form-headline ml-3">Sign In</h4>
+                                            <h4 class="text-uppercase wishy-form-headline ml-3">Sign Up</h4>
                                             <form class="form-horizontal" method="POST"
                                                   action="{{ route('register') }}">
                                                 {{ csrf_field() }}

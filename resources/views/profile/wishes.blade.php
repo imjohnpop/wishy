@@ -3,9 +3,11 @@
     @if(isset($wishes))
         @foreach($wishes as $wish)
             <div class="wish col-12 wishy-rounded wishy-shadow-box-blue bg-light">
-                <div class="wish-image">
-                    <img class="wishy-rounded-top" src="img/wish1.jpg" alt="wish image">
-                </div>
+                @if(isset($wish->wish_picture))
+                    <div class="wish-image">
+                        <img class="wishy-rounded-top" src="/uploads/{{$wish->wish_picture}}" alt="wish image">
+                    </div>
+                @endif
                 <div class="wishy-wish-info">
                     <div class="wishy-user-info">
                         <div class="profile-wish-thumbnail">

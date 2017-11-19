@@ -3,9 +3,11 @@
     @if(isset($posts))
         @foreach($posts as $post)
             <div class="post col-12 wishy-rounded wishy-shadow-box-blue bg-light">
-                <div class="post-image">
-                    <img class="wishy-rounded-top" src="img/wish1.jpg" alt="post image">
-                </div>
+                @if(isset($post->post_picture))
+                    <div class="post-image">
+                        <img class="wishy-rounded-top" src="/uploads/{{$post->post_picture}}" alt="post image">
+                    </div>
+                @endif
                 <div class="wishy-post-info">
                     <div class="wishy-user-info">
                         <div class="profile-post-thumbnail">

@@ -36,6 +36,9 @@ class ProfileController extends Controller
         $view->headView->wishes = count($wishes);
         $view->headView->goals = count($goals);
 
+        $view->friendView = view('profile/friend');
+        $view->friendView->user = $user;
+
         $view->wishesView = view('profile/wishes');
         $view->wishesView->user = $user;
         $view->wishesView->userDetail = $userDetail;

@@ -12,7 +12,7 @@
                 </button>
             </div>
             <div class="modal-body bg-navy text-white">
-                <form class="mb-2" method="post" action="{{action('WishController@store')}}">
+                <form class="mb-2" method="post" action="{{action('WishController@store')}}" enctype="multipart/form-data">
                     {{csrf_field()}}
                     <div class="form-group">
                         <label for="name">Wish Title</label>

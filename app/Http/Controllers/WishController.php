@@ -23,6 +23,7 @@ class WishController extends Controller
             'description' => $request->input('description'),
             'is_public' => $public,
             'user_id' => Auth::user()->id,
+            'wish_picture' => $request->file('wish_picture')->storeAs('wishPictures', $request->input('description').Auth::user()->id.'.jpg', 'uploads'),
         ]);
         $wish->save();
 

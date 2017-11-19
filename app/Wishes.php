@@ -13,6 +13,9 @@ class Wishes extends Model
         'is_public',
         'user_id',
         'status_id',
-        'nr_encouragements'
+        'nr_encouragements',
+        'wish_picture'
     ];
+
+    protected $table = 'wishes';
 }

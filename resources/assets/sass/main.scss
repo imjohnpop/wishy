@@ -2,7 +2,7 @@
 @import 'profile';
 
 /// MAIN SCSS STYLES
-$font : 'Raleway', 'sans-serif';
+$font : 'Montserrat', sans-serif;
 $blue : rgb(38, 39, 59);
 $gold : #F9B800;
 $gold_hover : #ba8800;
@@ -17,6 +17,35 @@ label {
   color: #777777;
   text-align: right;
 }
+
+.fw-100 {
+  font-weight: 100;
+}
+
+.fw-200 {
+  font-weight: 200;
+}
+
+.fw-300 {
+  font-weight: 300;
+}
+
+.fw-400 {
+  font-weight: 400;
+}
+
+.fw-500 {
+  font-weight: 500;
+}
+
+.fw-600 {
+  font-weight: 600;
+}
+
+.fw-700 {
+  font-weight: 700;
+}
+
 
 .wishy-btn {
   color: #fff;
@@ -129,7 +158,6 @@ label {
   width: 100vw;
   height: 100vh;
   padding-bottom: 300px;
-  overflow: hidden;
 }
 
 .wishy-background-image {
@@ -138,21 +166,70 @@ label {
   animation: scroll-bg 70s infinite;
   animation-fill-mode: forwards;
   padding-bottom: 300px;
-  position: absolute;
+  position: fixed;
 }
+
+// Welcome part
+
+.wishy-welcome-bg {
+  background-color: $blue;
+  height: 350px;
+  width: 90%;
+  left:5%;
+  position: relative;
+  box-shadow: 0 0 10px #888888;
+}
+
+.wishy-welcome-fg {
+  background-color: white;
+  height: 450px;
+  width: 70%;
+  left: 15%;
+  top: -15%;
+  position: relative;
+  box-shadow: 0 0 10px #888888;
+  & h1 {
+    color: $gold;
+    font-size: 3rem;
+  }
+  & h2 {
+    color: $blue;
+    font-size: 1.2rem;
+    font-weight: 300;
+  }
+  & h3 {
+    color: $blue;
+    font-size: 1.5rem;
+  }
+  & a.btn {
+    width: 30%;
+    margin: 0 auto;
+  }
+  & .arrow-down {
+    color: $gold;
+    margin: 0 auto;
+    font-size: 1.8rem;
+    &:hover {
+      color: $gold_hover;
+      font-size: 2rem;
+    }
+  }
+}
+
+// User login/register part
 
 .fa-unlock-alt {
   margin-right: 4px;
 }
 
-.wishy-body-cover {
+.wishy-body-welcome,
+.wishy-body-user {
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.4);
-  position: absolute;
-  top: 0%;
-  left: 0%;
 }
+
+
 .wishy-switcher {
   height: 350px;
   font-family: $font;
@@ -180,6 +257,7 @@ label {
 .wishy-flipper-container {
   position: relative;
 }
+
 //  LOGIN + NAVBAR + FRIENDS
 .wishy-login,
 .wishy-navbar,
@@ -200,6 +278,7 @@ label {
 .wishy-form-headline {
   color: $gold;
   font-weight: bolder;
+
 }
 
 @keyframes scroll-bg {
@@ -227,9 +306,17 @@ label {
 }
 
 .wishy-container-position {
-  position: absolute;
+  position: relative;
   top: 25%;
-  left: 10%;
+}
+
+#register{
+  & .form-group {
+    margin-bottom: 0;
+  }
+  & .form-group:last-child {
+    margin-top: 1rem;
+  }
 }
 //  *************************************** NAVBAR styles ***************************************
 
@@ -311,6 +398,10 @@ label {
   .form-group {
     margin-bottom: 0.25em;
   }
+}
+
+li.dropdown-item {
+  line-height: 1rem;
 }
 
 //  *************************************** PROFILE styles ***************************************

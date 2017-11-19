@@ -7,7 +7,10 @@
 @section('content')
     <div class="container mt-3">
         <div class="row">
-            <?=$headView?>
+            <section class="wishy-profile col-3">
+                <?=$headView?>
+                <?=$friendView?>
+            </section>
             <div class="col-6">
                 <?=$wishgoalnavView?>
                 <?=$wishesView?>
