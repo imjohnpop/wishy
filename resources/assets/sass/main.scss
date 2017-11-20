@@ -1,5 +1,6 @@
 /// IMPORTS
 @import 'profile';
+@import 'planner';
 
 /// MAIN SCSS STYLES
 $font : 'Montserrat', sans-serif;
@@ -359,6 +360,9 @@ label {
           text-decoration: underline;
         }
       }
+      ul {
+        line-height: 1em;
+      }
       li {
         a {
           color: black;
@@ -462,5 +466,16 @@ li.dropdown-item {
 .wishy-planner {
   &.col-9 {
     padding-right: 0;
+  }
+  .wishy-minimargin {
+    margin-top: 4px;
+  }
+  .wishy-publicity {
+    font-size: 1.5rem;
+    margin-top: 10px;
+  }
+  #calendar {
+    max-width: 900px;
+    margin: 0 auto;
   }
 }

@@ -17,11 +17,11 @@
                     <p class="wishy-bold text-uppercase text-secondary">friends</p>
                 </div>
                 <div class="col-4 text-center wishy-profile-bx wishy-line-heigth">
-                    <h2 class="wishy-bold">{{$wishes}}</h2>
+                    <h2 class="wishy-bold">{{count($wishes)}}</h2>
                     <p class="wishy-bold text-uppercase text-secondary">wishes</p>
                 </div>
                 <div class="col-4 text-center pl-0 wishy-line-heigth">
-                    <h2 class="wishy-bold">{{$goals}}</h2>
+                    <h2 class="wishy-bold">{{count($goals)}}</h2>
                     <p class="wishy-bold text-uppercase text-secondary">goals</p>
                 </div>
             </div>

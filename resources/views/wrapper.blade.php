@@ -7,7 +7,7 @@
  */
 ?>
 <!doctype html>
-<html lang="en">
+<html lang="en" prefix="og: http//oqp.me/ns#">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -16,8 +16,15 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:100,300,400,500,600,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="/fullcalendar/dist/fullcalendar.css">
     <link rel="stylesheet" href="/css/main.css">
+
     <title>@yield('title') | Wishy</title>
+    <meta property="og:title" content="Wishy your gifts and dreams social network" />
+    <meta property="og:type" content="social" />
+    <meta property="og:url" content="http://www.wishy.test/" />
+    <meta property="og:image" content="http://ia.media-imdb.com/images/rock.jpg" />
 </head>
 <body>
 <!-- jQuery -->
@@ -99,5 +106,8 @@
     <!-- FONTAWESOME -->
 <script src="https://use.fontawesome.com/f1003c147a.js"></script>
 <script src="/js/profile.js"></script>
+    <!-- FULLCALENDAR -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.1/moment.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.6.2/fullcalendar.min.js"></script>
 </body>
 </html>

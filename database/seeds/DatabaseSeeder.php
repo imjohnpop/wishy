@@ -68,49 +68,49 @@ class DatabaseSeeder extends Seeder
             'text' => 'Learn boxing',
             'due_date' => date('Y-m-d'),
             'is_done' => 0,
-            'goal_id' => 1
+            'checklist_id' => 1
         ]);
         
         Milestones::create([
             'text' => 'Start running',
             'due_date' => date('Y-m-d'),
             'is_done' => 1,
-            'goal_id' => 1
+            'checklist_id' => 1
         ]);
         
         Milestones::create([
             'text' => 'Find a bear',
             'due_date' => date('Y-m-d'),
             'is_done' => 0,
-            'goal_id' => 1
+            'checklist_id' => 1
         ]);
         
         Milestones::create([
             'text' => 'Listen to relaxing music',
             'due_date' => date('Y-m-d'),
             'is_done' => 1,
-            'goal_id' => 2
+            'checklist_id' => 2
         ]);
         
         Milestones::create([
             'text' => 'Smile when you get annoyed',
             'due_date' => date('Y-m-d'),
             'is_done' => 0,
-            'goal_id' => 2
+            'checklist_id' => 2
         ]);
         
         Milestones::create([
             'text' => 'Start running',
             'due_date' => date('Y-m-d'),
             'is_done' => 1,
-            'goal_id' => 3
+            'checklist_id' => 3
         ]);
         
         Milestones::create([
             'text' => 'Sign up for the race',
             'due_date' => date('Y-m-d'),
             'is_done' => 1,
-            'goal_id' => 3
+            'checklist_id' => 3
         ]);
 
         Wishes::create([
