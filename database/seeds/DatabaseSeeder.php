@@ -172,7 +172,6 @@ class DatabaseSeeder extends Seeder
         Post::create([
             'user_id' => 1,
             'type' => 'image',
-            'path' => '/img/profile-photo-mat.jpg',
             'text' => 'Look at this pic bruh',
             'nr_encouragements' => 2 
         ]);

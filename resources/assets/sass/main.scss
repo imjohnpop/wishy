@@ -63,8 +63,10 @@ label {
     position: absolute;
     top: -43px;
     right: 20px;
+    color: white;
     &:hover {
       box-shadow: 0 0px 8px #ba8800 !important;
+      color: white;
     }
   }
   &.menu {
@@ -379,7 +381,10 @@ label {
     }
   }
     h1 {
-    font-size: 2em !important;
+    font-size: 2em;
+    & a {
+      text-decoration: none;
+    }
   }
 }
 
