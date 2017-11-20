@@ -337,7 +337,7 @@
             </div>
         </div>
     </div>
-
+    <?=$newPassView?>
 
 
     <script>
@@ -345,6 +345,7 @@
 
             $('#register').hide();
             $('#reset').hide();
+            $('#finalreset').hide();
             $('#login').fadeIn('slow');
 
 
@@ -362,6 +363,7 @@
 
             $('#login').hide();
             $('#reset').hide();
+            $('#finalreset').hide();
             $('#register').fadeIn('slow');
 
 

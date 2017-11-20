@@ -30,6 +30,8 @@ class ProfileController extends Controller
 
         $view->user = $user;
 
+        $view->newPassView = view('/newpassword');
+
         $view->headView = view('profile/head');
         $view->headView->user = $user;
         $view->headView->userDetail = $userDetail;

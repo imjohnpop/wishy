@@ -21,7 +21,7 @@
                             @if (!isset($friend))
                             <button class="btn wishy-btn menu"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></button>
                             @endif
-                            <p>Category: <span>wish</span></p>
+                            <p>Category: <span>{{ $wish->cathegory }}</span></p>
                         </div>
                     </div>
                     <div class="wishy-wish-text">
