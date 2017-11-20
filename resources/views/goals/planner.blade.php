@@ -36,17 +36,7 @@
                         </div>
                     </div>
                     <div id="checklists" class="row mt-2">
-                        <div class="col-10 bg-dark mx-auto rounded">
-                            <div class="row">
-                                <div class="col-8">
-                                    <input type="text" data-goal="{{ $goal->id }}"class="form-control w-100 my-2" placeholder="Enter title">
-                                </div>
-                                <div class="col-4">
-                                    <button id="createChecklist" class="btn wishy-btn my-2">Create</button>
-                                </div>
-                            </div>
 
-                        </div>
                     </div>
                 </div>
                 <div class="col-6">
@@ -58,6 +48,8 @@
 </section>
 
 
+<script src="/js/vendor.bundle.js"></script>
+<script src="/js/checklist.bundle.js"></script>
 
 <script>
     // CHECKLISTS
