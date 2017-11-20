@@ -62,7 +62,7 @@ class ProfileController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified profile of a friend.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -70,6 +70,36 @@ class ProfileController extends Controller
     public function show($id)
     {
         //
+        $view = view('profile/profile');
+
+        $user = User::find($id);
+        $userDetail = UserDetail::where('user_id', '=', $id)->first();
+        $wishes = Wishes::where('user_id', '=', $id)->get();
+        $posts = Post::where('user_id', '=', $id)->get();
+        $goals = DB::table('user_has_goal')->where('user_id', '=', Auth::user()->id)
+                    ->rightJoin('goals', 'user_has_goal.goal_id', '=', 'goals.id')->get();
+        
+        $friend = 1;
+        
+        $view->user = $user;
+
+        $view->headView = view('profile/head', ['friend' => $friend, 'user' => $user, 'userDetail' => $userDetail]);
+        $view->headView->wishes = count($wishes);
+        $view->headView->goals = count($goals);
+
+        $view->friendView = view('profile/friend', ['friend' => $friend, 'user' => $user]);
+
+        $view->wishesView = view('profile/wishes', ['friend' => $friend, 'user' => $user, 'userDetail' => $userDetail, 'wishes' => $wishes]);
+
+        $view->goalsView = view('profile/goals', ['friend' => $friend, 'user' => $user, 'userDetail' => $userDetail, 'goals' => $goals]);
+
+        $view->postsView = view('profile/posts', ['friend' => $friend, 'user' => $user, 'userDetail' => $userDetail, 'posts' => $posts]);
+
+        $view->addmodalView = view('profile/addmodal');
+        $view->profiledetailView = view('profile/profiledetail');
+        $view->wishgoalnavView = view('profile/wishgoal', ['friend' => $friend]);
+
+        return $view;
     }
 
     /**

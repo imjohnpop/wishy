@@ -18,7 +18,9 @@
                             <p>Added at: <span>{{ $wish->created_at->format('d.m.Y') }}</span></p>
                         </div>
                         <div class="wish-category">
+                            @if (!isset($friend))
                             <button class="btn wishy-btn menu"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></button>
+                            @endif
                             <p>Category: <span>wish</span></p>
                         </div>
                     </div>

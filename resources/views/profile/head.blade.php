@@ -5,7 +5,7 @@
             <img class="w-100 image-fluid wishy-rounded-top" src="/uploads/{{ $userDetail != null ? $userDetail->profile_picture : 'dummy.png' }}" alt="Profile picture">
         </div>
         <div class="wishy-profile-info text-center my-4">
-            <a href="#" class="btn wishy-btn edit" data-toggle="modal" data-target="#addProfileInfoModal"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+            <a href="#" class="btn wishy-btn edit" data-toggle="modal" data-target="#addProfileInfoModal"><i class="fa fa-{{ isset($friend) ? 'user-plus' : 'pencil' }}" aria-hidden="true"></i></a>
             <h3 class="wishy-bold"><strong>{{ $user->name }} {{ $user->surname }}</strong></h3>
             <small><p class="text-secondary">{{ $userDetail != null ? $userDetail->quote : 'User\'s quote' }}</p></small>
             <h5><i class="fa fa-birthday-cake" aria-hidden="true"></i> {{ $userDetail != null ? date('d.m.', strtotime($userDetail->birthday)) : ' Fill your birthday' }}</h5>
