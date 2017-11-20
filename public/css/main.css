@@ -340,11 +340,13 @@ label {
   position: absolute;
   top: -43px;
   right: 20px;
+  color: white;
 }
 
 .wishy-btn.edit:hover {
   -webkit-box-shadow: 0 0px 8px #ba8800 !important;
           box-shadow: 0 0px 8px #ba8800 !important;
+  color: white;
 }
 
 .wishy-btn.menu {
@@ -698,7 +700,11 @@ label {
 }
 
 .wishy-navbar h1 {
-  font-size: 2em !important;
+  font-size: 2em;
+}
+
+.wishy-navbar h1 a {
+  text-decoration: none;
 }
 
 .wishy-logo img {

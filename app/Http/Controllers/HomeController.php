@@ -49,7 +49,7 @@ class HomeController extends Controller
                     ->where('is_public', 1)->get()->toArray();
                 $posts = Post::join('users', 'posts.user_id', '=', 'users.id')
                     ->leftjoin('users_detail', 'users.id', '=', 'users_detail.user_id')
-                    ->select('posts.text AS description', 'users.name AS user_name', 'users.surname', 'posts.path', 'posts.type', 'posts.created_at', 'posts.nr_encouragements', 'posts.cathegory', 'users_detail.profile_picture', 'posts.post_picture')
+                    ->select('posts.text AS description', 'users.name AS user_name', 'users.surname', 'posts.type', 'posts.created_at', 'posts.nr_encouragements', 'posts.cathegory', 'users_detail.profile_picture', 'posts.post_picture')
                     ->get()->toArray();
                 $news = array_merge($goals, $wishes);
                 $news = array_merge($news, $posts);

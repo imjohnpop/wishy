@@ -18,7 +18,7 @@
                                 <h1 class="text-uppercase fw-200">Do you<br/>wish something?</h1>
                                 <h2 class="ml-5 fw-300">But you don't know how to achieve it? Probably you want something nice for your birthday, but you don't know how to tell it to your closest. Just post it to Wishy, make it public and see who can help you out or even someone will surprise you!</h2>
                                 <h3 class="text-right fw-200">...try out <span class="text-uppercase">wishy</span>!</h3>
-                                <a href="#user" class="btn btn-gold text-white fw-200">Login / Register</a>
+                                <a href="#user" class="btn btn-gold text-white fw-200">Sign In</a>
                                 <a href="#user" class="arrow-down"><i class="fa fa-chevron-down" aria-hidden="true"></i></a>
                             </div>
                         </div>

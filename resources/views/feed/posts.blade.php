@@ -1,23 +1,26 @@
 <section id="posts" class="col-6">
-<?php //var_dump($news); ?>
 
 @foreach ($news as $new)
-    <?php 
+    <?php
+
         switch($new['cathegory'])
         {
             case 'goal':
                 $comments = $goal_comments;
+                $picture = $new['goal_picture'];
                 break;
             case 'post':
                 $comments = $post_comments;
+                $picture = $new['post_picture'];
                 break;
             case 'wish':
                 $comments = [];
+                $picture = $new['wish_picture'];
                 break;
         }
         
         $this_comments = [];
-        
+
         foreach($comments as $comment)
         {
             if($comment['target_id'] == $new['id'])
@@ -29,9 +32,11 @@
         $nr_comments = count($this_comments);
     ?>
     <div class="post col-12 wishy-rounded wishy-shadow-box-blue bg-light">
-        <div class="post-image">
-            <img class="wishy-rounded-top" src="img/wish1.jpg" alt="post image">
-        </div>
+        @if(isset($picture))
+            <div class="{{$new->cathegory}}-image">
+                <img class="wishy-rounded-top" src="/uploads/{{$picture}}" alt="{{$new->cathegory}} image">
+            </div>
+        @endif
         <div class="wishy-post-info">
             <div class="wishy-user-info">
                 <div class="profile-post-thumbnail">

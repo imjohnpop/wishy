@@ -17,7 +17,7 @@ class CreatePostsTable extends Migration
             $table->increments('id');
             $table->integer('user_id');
             $table->string('type',300);
-            $table->string('path',300)->nullable();
+            $table->string('post_picture',300)->nullable();
             $table->string('text',2500)->nullable();
             $table->integer('nr_encouragements')->default(0);
             $table->string('cathegory',300)->default('post');

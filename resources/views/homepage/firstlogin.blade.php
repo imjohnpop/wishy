@@ -14,7 +14,7 @@
                     </button>
                 </div>
                 <div class="modal-body bg-navy text-white">
-                    <form class="mb-2" method="post" action="" enctype="multipart/form-data">
+                    <form class="mb-2" method="post" action="{{action('ProfileController@store')}}" enctype="multipart/form-data">
                         {{csrf_field()}}
                         <div class="form-group">
                             <label for="profile_picture">Profile Picture</label>
