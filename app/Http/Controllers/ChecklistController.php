@@ -17,6 +17,11 @@ class ChecklistController extends Controller
             'goal_id' => $_POST['goal_id'],
         ]);
         $checklist->save();
+    }
 
+    public function list($id) {
+        $checklist = Checklist::where('goal_id', $id)->get();
+
+        return $checklist;
     }
 }

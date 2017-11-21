@@ -18,3 +18,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('/checklist/new', 'ChecklistController@new');
+
+Route::post('/checklists/{id}', 'ChecklistController@list');
+
+Route::post('/checks/{id}', 'ChecksController@list');
+
+Route::post('/check/{id}', 'ChecksController@change');

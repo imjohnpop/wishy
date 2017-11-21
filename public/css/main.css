@@ -317,6 +317,10 @@
           box-shadow: 0 0 0 black;
 }
 
+.planner-checks {
+  font-size: 12px;
+}
+
 body {
   font-family: "Montserrat", sans-serif;
 }

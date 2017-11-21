@@ -35,13 +35,13 @@
                             <button id="checkbox" class="btn btn-block wishy-btn"><i class="fa fa-check-square-o" aria-hidden="true"></i> Add checklist</button>
                         </div>
                     </div>
-                    <div id="checklists" class="row mt-2">
+                    <div id="checklists" data-goal="{{ $goal->id }}" class="row mt-2">
 
                     </div>
+                    <div class="row" id=""></div>
                 </div>
                 <div class="col-6">
-                    <div id="calendar">
-                    </div>
+                    <div id="calendar"></div>
                 </div>
             </div>
         </div>
@@ -54,25 +54,13 @@
 <script>
     // CHECKLISTS
     $('#checkbox').click(function() {
-        $('#checklists').slideToggle();
+        $('#togglingInput').slideToggle();
     });
 
-    $('#createChecklist').click(function() {
-        $.ajax({
-            "url" : "/api/checklist/new",
-            "type" : "post",
-            "data" : {
-                "goal_id" : $('#checklists input').data('goal'),
-                "title" : $('#checklists input').val()
-            }
-        }).done(function(data) {
-            // code to run when success
-        })
-    });
 
     // FULL CALENDAR
     $(document).ready(function() {
-        $('#checklists').hide();
+        $('#togglingInput').hide();
         var d = new Date();
         var n = d.getMonth();
         var month = n + 1;

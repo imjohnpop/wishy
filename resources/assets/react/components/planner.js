@@ -1,19 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom'
 
+import Checklists from './checklists';
+import Input from './input';
+
 export default class Planner extends React.Component {
+
+    refreshChecklists(goal_id) {
+        this.checklist.refreshChecklists(goal_id);
+    }
     
     render() {
         return (
-            <div className="col-10 bg-dark mx-auto rounded">
-                <div className="row">
-                    <div className="col-8">
-                        <input type="text" data-goal="{{ $goal->id }}"className="form-control w-100 my-2" placeholder="Enter title" />
-                    </div>
-                    <div className="col-4">
-                        <button id="createChecklist" className="btn wishy-btn my-2">Create</button>
-                    </div>
+            <div className="col-12">
+
+                <div id="togglingInput" className="col-10 mx-auto">
+                    <Input refreshChecklists={ this.refreshChecklists.bind(this) }/>
                 </div>
+
+                <Checklists ref={ (el) => {this.checklist = el;} }/>
+
             </div>
         )
     }
