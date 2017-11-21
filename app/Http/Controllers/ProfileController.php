@@ -7,6 +7,7 @@ use App\Post;
 use App\Goals;
 use App\UserDetail;
 use App\Wishes;
+use App\UserHasFriend;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -82,10 +83,16 @@ class ProfileController extends Controller
                     ->rightJoin('goals', 'user_has_goal.goal_id', '=', 'goals.id')->get();
         
         $friend = 1;
-        
+        $user_has_friend = UserHasFriend::select('friend_id')->where('user_id', Auth::user()->id)->get()->toArray();
+        $friendships = [];
+        foreach ($user_has_friend as $friendship)
+        {
+            $friendships[] = $friendship['friend_id'];
+        }
+
         $view->user = $user;
 
-        $view->headView = view('profile/head', ['friend' => $friend, 'user' => $user, 'userDetail' => $userDetail]);
+        $view->headView = view('profile/head', ['friend' => $friend, 'user' => $user, 'userDetail' => $userDetail, 'friendships'=>$friendships]);
         $view->headView->wishes = count($wishes);
         $view->headView->goals = count($goals);
 
