@@ -6,7 +6,7 @@
 
 @section('content')
     <div class="container mt-3">
-        <div class="row">
+        <div class="row d-flex flex-wrap">
             <section class="wishy-profile col-3">
                 <?=$headView?>
                 <?=$friendView?>
@@ -23,4 +23,5 @@
     </div>
     <?=$addmodalView?>
     <?=$profiledetailView?>
+    <?=$newPassView?>
 @endsection

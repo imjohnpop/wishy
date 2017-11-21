@@ -2,7 +2,7 @@
 
 <div class="wishy-profile wishy-friends-list col-12 mr-auto bg-light wishy-shadow-box-blue wishy-rounded mt-4">
     <div class="wishy-profile-friends pt-2">
-        <h4 class="wishy-bold text-uppercase text-center">my friends</h4>
+        <h4 class="wishy-bold text-uppercase text-center">{{ isset($friend) ? '' : 'my' }} friends</h4>
     </div>
     <div class="col-12 wishy-friends-search">
         <form action="" method="get">

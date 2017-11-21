@@ -49,22 +49,16 @@
             </form>
         </div>
         <div class="col-4 options">
-            <div class="row d-flex justify-content-around text-center text-white">
+            <div class="row d-flex justify-content-center text-center text-white">
                 <div>
                     <a href="/" class="col-3 feed">
-                        <p><i class="fa fa-rss" aria-hidden="true"></i></p>
+                        <p class="mb-2"><i class="fa fa-rss" aria-hidden="true"></i></p>
                         <span>Feed</span>
-                    </a>
-                </div>
-                <div>
-                    <a href="#" class="col-3 notification">
-                        <p><i class="fa fa-bell" aria-hidden="true"></i></p>
-                        <span>Notifications</span>
                     </a>
                 </div>
                 <div class="dropdown">
                     <a href="#" class="col-3 user dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                        <p><i class="fa fa-user" aria-hidden="true"></i></p>
+                        <p class="mb-1"><i class="fa fa-user" aria-hidden="true"></i></p>
                         <span>Me</span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-right text-black" role="menu">
@@ -74,8 +68,8 @@
                             </a>
                         </li>
                         <li class="dropdown-item">
-                            <a href="/">
-                                Reset Password
+                            <a href="#" data-toggle="modal" data-target="#newPassModal">
+                                Change Password
                             </a>
                         </li>
                         <div class="dropdown-divider"></div>

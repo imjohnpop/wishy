@@ -1,4 +1,4 @@
-<section id="posts" class="col-6">
+<section id="posts" class="col-6 mt-4">
 
 @foreach ($news as $new)
     <?php
@@ -18,7 +18,7 @@
                 $picture = $new['wish_picture'];
                 break;
         }
-        
+
         $this_comments = [];
 
         foreach($comments as $comment)
@@ -47,7 +47,7 @@
                     <p>Added at: <span>{{$new['created_at']}}</span></p>
                 </div>
                 <div class="post-category">
-                    <button class="btn wishy-btn menu"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></button>
+                    <button class="btn wishy-btn menu news"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></button>
                 </div>
             </div>
             <div class="wishy-post-text">
@@ -58,7 +58,7 @@
         </div>
         <div class="wishy-post-nav wishy-rounded-bottom">
             @isset($new['tag'])
-                <a href="#" title="Status" class="comment ml-3"><i class="fa fa-certificate mr-1" aria-hidden="true"></i>{{$new['tag']}}</a>
+                <a href="#" title="Status" class="comment mr-3"><i class="fa fa-certificate mr-1" aria-hidden="true"></i>{{$new['tag']}}</a>
             @endisset
             <a href="#" title="Encourage"><i class="fa fa-hand-peace-o mr-1" aria-hidden="true"></i>Encourage ({{$new['nr_encouragements']}})</a>
             @if($new['cathegory']=='goal' || $new['cathegory']=='post')
@@ -67,7 +67,7 @@
         </div>
         @foreach($this_comments as $this_comment)
             <div class="comments row">
-                <img  style="width:3em; height:3em; border-radius:50%;" class="col-2" src="/uploads/{{ $this_comment['profile_picture'] != null ? $this_comment['profile_picture'] : 'dummy.png' }}" alt="Profile picture">            
+                <img  style="width:3em; height:3em; border-radius:50%;" class="col-2" src="/uploads/{{ $this_comment['profile_picture'] != null ? $this_comment['profile_picture'] : 'dummy.png' }}" alt="Profile picture">
                 <div class="col-9">
                     <h5>{{$this_comment['name']}} {{$this_comment['surname']}}</h5>
                     <p>{{$this_comment['text']}}</p>

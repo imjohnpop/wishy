@@ -18,7 +18,9 @@
                             <p>Added at: <span>{{ $post->created_at->format('d.m.Y') }}</span></p>
                         </div>
                         <div class="post-category">
-                            <button class="btn wishy-btn menu"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></button>
+                            @if(!isset($friend))
+                                <button class="btn wishy-btn menu"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></button>
+                            @endif
                         </div>
                     </div>
                     <div class="wishy-post-text">

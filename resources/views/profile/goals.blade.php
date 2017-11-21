@@ -18,8 +18,10 @@
                             <p>Added at: <span>{{ date('d.m.Y', strtotime($goal->created_at)) }}</span></p>
                         </div>
                         <div class="goal-category">
+                        @if (!isset($friend))
                             <button class="btn wishy-btn menu"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></button>
-                            <p>Category: <span>goal</span></p>
+                        @endif
+                            <p>Category: <span>{{ $goal->cathegory }}</span></p>
                         </div>
                     </div>
                     <div class="wishy-goal-text">

@@ -63,6 +63,7 @@ class HomeController extends Controller
                     ->where('type', 'post')->get()->toArray();
 
                 $view = view('feed/feed');
+                $view->newPassView = view('/newpassword');
                 $view->friends = view('feed/friends');
                 $posts = view('feed/posts', ['goal_comments' => $goal_comments, 'news' => $news, 'post_comments' => $post_comments]);
                 $view->posts = $posts;
