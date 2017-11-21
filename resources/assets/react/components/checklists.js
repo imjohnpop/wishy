@@ -39,9 +39,8 @@ export default class Checklists extends React.Component {
 
     render() {
         let lists = [];
-        console.log(this.state.lists);
         for(let i in this.state.lists) {
-            lists[i] = <Checklist
+            lists[i] = <Checklist refreshChecklists={ this.refreshChecklists.bind(this) }
                              key={this.state.lists[i].id}
                              id={this.state.lists[i].id}
                              goal_id={this.state.lists[i].goal_id}

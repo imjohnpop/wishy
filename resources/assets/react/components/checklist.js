@@ -2,14 +2,18 @@ import React from 'react';
 import ReactDOM from 'react-dom'
 
 import Check from './check';
+import Newcheck from "./newcheck";
+import Progress from "./progress";
 
 export default class Checklist extends React.Component {
 
     constructor(props) {
         super(props);
-        console.log('constructor');
         this.state = {
             checks: [],
+            nr_of_checks: '',
+            nr_of_done: '',
+            percent: ''
         };
     }
 
@@ -31,7 +35,52 @@ export default class Checklist extends React.Component {
         }).done((data) => {
             self.setState({
                 checks: data
-            })
+            });
+            this.percent();
+        });
+    }
+
+    percent() {
+        let all = this.state.checks.length;
+
+        let done = 0;
+        for(let i in this.state.checks) {
+            if(this.state.checks[i].is_done == 0) {
+                continue
+            } else {
+                done = done +1;
+            }
+        }
+        let percentage = done / all;
+        console.log(percentage * 100 + '%');
+
+        this.setState({
+            percent: percentage * 100 + '%'
+        })
+    }
+    newCheck(text) {
+        let id = this.props.id;
+        $.ajax({
+            type: 'post',
+            url: '/api/check/new/' + id,
+            data: {
+                text: text
+            }
+        }).done((data) => {
+            this.refreshChecks(id)
+        });
+    }
+
+    deleteChecklist() {
+        let id = this.props.id;
+        let self = this;
+        $.ajax({
+            type: 'post',
+            url: '/api/check/delete/' + id,
+            data: {
+            }
+        }).done((data) => {
+            this.props.refreshChecklists($('#checklists').data('goal'));
         });
     }
 
@@ -47,6 +96,8 @@ export default class Checklist extends React.Component {
                 is_done={this.state.checks[i].is_done}
             />;
         }
+
+
         return (
             <div className="col-12">
                 <hr/>
@@ -55,19 +106,16 @@ export default class Checklist extends React.Component {
                         <span><i className="fa fa-check-square-o" aria-hidden="true"></i>{ this.props.title }</span>
                     </div>
                     <div className="col-4 d-flex justify-content-end">
-                        <button className="btn"><i className="fa fa-trash-o" aria-hidden="true"></i></button>
+                        <button onClick={ () => this.deleteChecklist() } className="btn"><i className="fa fa-trash-o" aria-hidden="true"></i></button>
                     </div>
                 </div>
-                <div className="row progress w-100 mx-auto my-3">
-                    <div className="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
+
+                <Progress percent={this.state.percent} />
 
                 { checks }
 
                 <div className="row">
-                    <div className="col-12 ml-5 text-secondary newMilestone">
-                        <small><i className="fa fa-plus" aria-hidden="true"></i> Add new milestone</small>
-                    </div>
+                    <Newcheck newCheck={ this.newCheck.bind(this) }/>
                 </div>
             </div>
         )

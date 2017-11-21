@@ -24,3 +24,9 @@ Route::post('/checklists/{id}', 'ChecklistController@list');
 Route::post('/checks/{id}', 'ChecksController@list');
 
 Route::post('/check/{id}', 'ChecksController@change');
+
+Route::post('/check/new/{id}', 'ChecksController@new');
+
+Route::post('/check/delete/{id}', 'ChecksController@destroy');
+
+Route::post('/check/date/{id}', 'ChecksController@date');

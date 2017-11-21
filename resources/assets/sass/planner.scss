@@ -15,7 +15,35 @@
     box-shadow: 0 0 0 black;
   }
 }
-
+#checklists small input {
+  color: black;
+  &::placeholder {
+    color: black;
+  }
+  &:focus {
+    color: black;
+  }
+}
 .planner-checks {
   font-size: 12px;
+}
+
+.progress-bar.wishy {
+  transition: width 0.5s ease;
+  background-color: $blue;
+}
+
+.progress {
+  height: 10px !important;
+}
+
+#checklists .datepicker input{
+  width: 120px;
+  color: black;
+  &::placeholder {
+    color: black;
+  }
+  &:focus {
+    color: black;
+  }
 }

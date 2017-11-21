@@ -2,12 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Checklist;
 use App\Checks;
 use App\Milestones;
 use Illuminate\Http\Request;
 
 class ChecksController extends Controller
 {
+    public function new($id) {
+        $milestone = new Milestones();
+
+        $milestone->fill([
+            'text' => request()->input('text'),
+            'checklist_id' => $id,
+            'is_done' => 0,
+        ]);
+
+        $milestone->save();
+    }
+
     public function list($id) {
         $checks = Milestones::where('checklist_id', $id)->get();
 
@@ -31,5 +44,23 @@ class ChecksController extends Controller
         ]);
 
         $milestone->save();
+    }
+
+    public function date($id) {
+        $milestone = Milestones::find($id);
+
+        $milestone->due_date = request()->input('date');
+
+        var_dump(request()->input('date'));
+        $milestone->save();
+    }
+
+    public function destroy($id) {
+        $checklist = Checklist::find($id);
+        $milestones = Milestones::where('checklist_id', $id)->get();
+        foreach($milestones as $milestone) {
+            $milestone->delete();
+        }
+        $checklist->delete();
     }
 }

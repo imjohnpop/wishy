@@ -317,8 +317,67 @@
           box-shadow: 0 0 0 black;
 }
 
+#checklists small input {
+  color: black;
+}
+
+#checklists small input::-webkit-input-placeholder {
+  color: black;
+}
+
+#checklists small input:-ms-input-placeholder {
+  color: black;
+}
+
+#checklists small input::-ms-input-placeholder {
+  color: black;
+}
+
+#checklists small input::placeholder {
+  color: black;
+}
+
+#checklists small input:focus {
+  color: black;
+}
+
 .planner-checks {
   font-size: 12px;
+}
+
+.progress-bar.wishy {
+  -webkit-transition: width 0.5s ease;
+  transition: width 0.5s ease;
+  background-color: #26273b;
+}
+
+.progress {
+  height: 10px !important;
+}
+
+#checklists .datepicker input {
+  width: 120px;
+  color: black;
+}
+
+#checklists .datepicker input::-webkit-input-placeholder {
+  color: black;
+}
+
+#checklists .datepicker input:-ms-input-placeholder {
+  color: black;
+}
+
+#checklists .datepicker input::-ms-input-placeholder {
+  color: black;
+}
+
+#checklists .datepicker input::placeholder {
+  color: black;
+}
+
+#checklists .datepicker input:focus {
+  color: black;
 }
 
 body {

@@ -54,13 +54,13 @@
 <script>
     // CHECKLISTS
     $('#checkbox').click(function() {
-        $('#togglingInput').slideToggle();
+        $('#checklistInput').slideToggle();
     });
 
 
     // FULL CALENDAR
     $(document).ready(function() {
-        $('#togglingInput').hide();
+        $('#checklistInput').hide();
         var d = new Date();
         var n = d.getMonth();
         var month = n + 1;
