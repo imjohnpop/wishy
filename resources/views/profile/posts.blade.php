@@ -1,5 +1,9 @@
 <section id="posts">
-
+@if (isset($friendships) && array_search($user->id, $friendships) === false)
+    <div class="goal col-12 wishy-rounded wishy-shadow-box-blue bg-light">
+        <p>Add {{ $user->name }} to view {{ $userDetail->gender == 'female' ? 'her' : 'his' }} posts.</p>
+    </div>    
+@else
     @if(isset($posts))
         @foreach($posts as $post)
             <div class="post col-12 wishy-rounded wishy-shadow-box-blue bg-light">
@@ -38,5 +42,5 @@
             <h3 class="text-center">You don't have any posts yet!</h3>
         </div>
     @endif
-
+@endif
 </section>

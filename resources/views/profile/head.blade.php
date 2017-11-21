@@ -19,7 +19,7 @@
         <div class="wishy-counter wishy-profile-bt">
             <div class="row">
                 <div class="col-4 text-center pr-0 wishy-line-heigth">
-                    <h2 class="wishy-bold">53</h2>
+                    <h2 class="wishy-bold">{{$nr_friends}}</h2>
                     <p class="wishy-bold text-uppercase text-secondary">friends</p>
                 </div>
                 <div class="col-4 text-center wishy-profile-bx wishy-line-heigth">

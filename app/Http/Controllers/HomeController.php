@@ -10,6 +10,7 @@ use App\Wishes;
 use App\Post;
 use App\Events;
 use App\Comments;
+use App\UserHasFriend;
 
 class HomeController extends Controller
 {
@@ -42,16 +43,19 @@ class HomeController extends Controller
                     ->leftjoin('users_detail', 'users.id', '=', 'users_detail.user_id')
                     ->select('goals.*', 'users.name AS user_name', 'users.surname', 'status.tag', 'users_detail.profile_picture')
                     ->where('is_public', 1)->get()->toArray();
+                
                 $wishes = Wishes::join('status', 'wishes.status_id', '=', 'status.id')
                     ->join('user_has_wish', 'wishes.id', '=', 'user_has_wish.wish_id')
                     ->join('users', 'user_has_wish.user_id', '=', 'users.id')
                     ->leftjoin('users_detail', 'users.id', '=', 'users_detail.user_id')
                     ->select('wishes.*', 'users.name AS user_name', 'users.surname', 'status.tag', 'users_detail.profile_picture')
                     ->where('is_public', 1)->get()->toArray();
+                
                 $posts = Post::join('users', 'posts.user_id', '=', 'users.id')
                     ->leftjoin('users_detail', 'users.id', '=', 'users_detail.user_id')
                     ->select('posts.id', 'posts.text AS description', 'users.name AS user_name', 'users.surname', 'posts.type', 'posts.created_at', 'posts.nr_encouragements', 'posts.cathegory', 'users_detail.profile_picture', 'posts.post_picture')
                     ->get()->toArray();
+                
                 $news = array_merge($goals, $wishes);
                 $news = array_merge($news, $posts);
                 $news = collect($news)->sortBy('updated_at')->toArray();
@@ -65,7 +69,16 @@ class HomeController extends Controller
 
                 $view = view('feed/feed');
                 $view->newPassView = view('/newpassword');
-                $view->friends = view('feed/friends');
+    
+                $user = User::findOrFail(Auth::user()->id);
+                $friends = UserHasFriend::join('users', 'users.id', '=', 'user_has_friend.friend_id')
+                ->leftjoin('users_detail', 'users.id', '=', 'users_detail.user_id')
+                ->select('users.id', 'users.name AS user_name', 'users.surname', 'users_detail.profile_picture')
+                ->where('user_has_friend.user_id', Auth::user()->id)->get()->toArray();
+                $friendships[] = Auth::user()->id;
+                
+                $view->friends = view('profile/friend', ['friendships'=>$friendships, 'user' => $user, 'friends'=>$friends]);
+                
                 $posts = view('feed/posts', ['goal_comments' => $goal_comments, 'news' => $news, 'post_comments' => $post_comments]);
                 $view->posts = $posts;
                 $events = view('feed/events');

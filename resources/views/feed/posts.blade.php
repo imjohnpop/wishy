@@ -1,5 +1,3 @@
-<section id="posts" class="col-6 mt-4">
-
 @foreach ($news as $new)
     <?php
 
@@ -43,7 +41,7 @@
                     <img class="profile-thumbnail img-fluid" src="/uploads/{{ $new['profile_picture'] != null ? $new['profile_picture'] : 'dummy.png' }}" alt="Profile Name">
                 </div>
                 <div class="wishy-user-text">
-                    <h5>{{$new['user_name']}} {{$new['surname']}}</h5>
+                    <a href="profile/"><h5>{{$new['user_name']}} {{$new['surname']}}</h5></a>
                     <p>Added at: <span>{{$new['created_at']}}</span></p>
                 </div>
                 <div class="post-category">
@@ -86,5 +84,3 @@
         @endforeach
     </div>
     @endforeach
-
-</section>

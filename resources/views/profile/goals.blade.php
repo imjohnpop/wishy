@@ -1,5 +1,9 @@
 <section id="goals" class="d-none">
-
+@if (isset($friendships) && array_search($user->id, $friendships) === false)
+    <div class="goal col-12 wishy-rounded wishy-shadow-box-blue bg-light">
+        <p>Add {{ $user->name }} to view {{ $userDetail->gender == 'female' ? 'her' : 'his' }} goals.</p>
+    </div>    
+@else
     @if(isset($goals))
         @foreach($goals as $goal)
             <div class="goal col-12 wishy-rounded wishy-shadow-box-blue bg-light">
@@ -40,5 +44,5 @@
             <h3 class="text-center">You don't have any goals yet!</h3>
         </div>
     @endif
-
+@endif
 </section>
