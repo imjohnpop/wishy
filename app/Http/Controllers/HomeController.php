@@ -40,21 +40,24 @@ class HomeController extends Controller
                 $goals = Goals::join('status', 'goals.status_id', '=', 'status.id')
                     ->join('user_has_goal', 'goals.id', '=', 'user_has_goal.goal_id')
                     ->join('users', 'user_has_goal.user_id', '=', 'users.id')
+                    ->join('user_has_friend', 'user_has_friend.friend_id', '=', 'users.id')
                     ->leftjoin('users_detail', 'users.id', '=', 'users_detail.user_id')
                     ->select('goals.*', 'users.name AS user_name', 'users.surname', 'status.tag', 'users_detail.profile_picture')
-                    ->where('is_public', 1)->get()->toArray();
+                    ->where([['is_public', 1], ['user_has_friend.user_id', Auth::user()->id]])->get()->toArray();
                 
                 $wishes = Wishes::join('status', 'wishes.status_id', '=', 'status.id')
                     ->join('user_has_wish', 'wishes.id', '=', 'user_has_wish.wish_id')
                     ->join('users', 'user_has_wish.user_id', '=', 'users.id')
+                    ->join('user_has_friend', 'user_has_friend.friend_id', '=', 'users.id')
                     ->leftjoin('users_detail', 'users.id', '=', 'users_detail.user_id')
                     ->select('wishes.*', 'users.name AS user_name', 'users.surname', 'status.tag', 'users_detail.profile_picture')
-                    ->where('is_public', 1)->get()->toArray();
+                    ->where([['is_public', 1], ['user_has_friend.user_id', Auth::user()->id]])->get()->toArray();
                 
                 $posts = Post::join('users', 'posts.user_id', '=', 'users.id')
                     ->leftjoin('users_detail', 'users.id', '=', 'users_detail.user_id')
+                    ->join('user_has_friend', 'user_has_friend.friend_id', '=', 'users.id')
                     ->select('posts.id', 'posts.text AS description', 'users.name AS user_name', 'users.surname', 'posts.type', 'posts.created_at', 'posts.nr_encouragements', 'posts.cathegory', 'users_detail.profile_picture', 'posts.post_picture')
-                    ->get()->toArray();
+                    ->where('user_has_friend.user_id', Auth::user()->id)->get()->toArray();
                 
                 $news = array_merge($goals, $wishes);
                 $news = array_merge($news, $posts);
