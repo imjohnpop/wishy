@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Goals;
 use App\User;
 use App\UserDetail;
+use App\UserHasFriend;
 use App\Wishes;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -29,6 +30,11 @@ class GoalsController extends Controller
         $wishes = Wishes::where('user_id', '=', Auth::user()->id)->get();
         $userDetail = UserDetail::where('user_id', '=', Auth::user()->id)->first();
 
+        $friends = UserHasFriend::join('users', 'users.id', '=', 'user_has_friend.friend_id')
+            ->leftjoin('users_detail', 'users.id', '=', 'users_detail.user_id')
+            ->select('users.id', 'users.name AS user_name', 'users.surname', 'users_detail.profile_picture')
+            ->where('user_has_friend.user_id', Auth::user()->id)->get()->toArray();
+
         // VIEWS
         $view = view('profile/planner');
         $planner = view('goals/planner');
@@ -37,8 +43,9 @@ class GoalsController extends Controller
         // head element
         $head->userDetail = $userDetail;
         $head->user = $user;
-        $head->wishes = $wishes;
-        $head->goals = $goals;
+        $head->wishes = count($wishes);
+        $head->goals = count($goals);
+        $head->nr_friends = count($friends);
 
         // planner element
         $planner->goal = $goal;
