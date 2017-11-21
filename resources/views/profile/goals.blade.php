@@ -1,5 +1,9 @@
 <section id="goals" class="d-none">
-
+@if (isset($friendships) && array_search($user->id, $friendships) === false)
+    <div class="goal col-12 wishy-rounded wishy-shadow-box-blue bg-light">
+        <p>Add {{ $user->name }} to view {{ $userDetail->gender == 'female' ? 'her' : 'his' }} goals.</p>
+    </div>    
+@else
     @if(isset($goals))
         @foreach($goals as $goal)
             <div class="goal col-12 wishy-rounded wishy-shadow-box-blue bg-light">
@@ -18,7 +22,7 @@
                             <p>Added at: <span>{{ date('d.m.Y', strtotime($goal->created_at)) }}</span></p>
                         </div>
                         <div class="goal-category">
-                        @if (!isset($friend))
+                        @if (!isset($friendships))
                             <button class="btn wishy-btn menu"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></button>
                         @endif
                             <p>Category: <span>{{ $goal->cathegory }}</span></p>
@@ -30,7 +34,7 @@
                     </div>
                 </div>
                 <div class="wishy-goal-nav goal wishy-rounded-bottom">
-                    <a href="#" class="encourage" title="Encourage"><i class="fa fa-hand-peace-o mr-1" aria-hidden="true"></i>Encourage <span>({{ $goal->nr_encouragements }})</span></a>
+                    <a href="#" class="encourage" title="Encourage"  data-id="{{ $goal->id }}" data-category="{{ $goal->cathegory }}"><i class="fa fa-hand-peace-o mr-1" aria-hidden="true"></i><span class="encourage_text">Encourage</span> <span class="encourage_number">({{ $goal->nr_encouragements }})</span></a>
                     <a href="#" title="Comment" class="comment ml-3"><i class="fa fa-commenting-o mr-1" aria-hidden="true"></i>Comment</a>
                 </div>
             </div>
@@ -40,5 +44,5 @@
             <h3 class="text-center">You don't have any goals yet!</h3>
         </div>
     @endif
-
+@endif
 </section>

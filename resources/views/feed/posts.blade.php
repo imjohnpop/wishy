@@ -1,5 +1,3 @@
-<section id="posts" class="col-6 mt-4">
-
 @foreach ($news as $new)
     <?php
 
@@ -43,7 +41,7 @@
                     <img class="profile-thumbnail img-fluid" src="/uploads/{{ $new['profile_picture'] != null ? $new['profile_picture'] : 'dummy.png' }}" alt="Profile Name">
                 </div>
                 <div class="wishy-user-text">
-                    <h5>{{$new['user_name']}} {{$new['surname']}}</h5>
+                    <a href="profile/"><h5>{{$new['user_name']}} {{$new['surname']}}</h5></a>
                     <p>Added at: <span>{{$new['created_at']}}</span></p>
                 </div>
                 <div class="post-category">
@@ -51,16 +49,25 @@
                 </div>
             </div>
             <div class="wishy-post-text">
-                <h4>@isset($new['name']) {{$new['name']}}@endisset
+                <h4>
+                    @isset($new['name'])
+                        {{$new['name']}}
+                    @endisset
                 </h4>
-                <p>@if( isset($new['description'])) {{$new['description']}} @else {{ 'Some description' }} @endif</p>
+                <p>
+                    @if( isset($new['description']))
+                        {{$new['description']}}
+                    @else
+                        {{ 'Some description' }}
+                    @endif
+                </p>
             </div>
         </div>
         <div class="wishy-post-nav wishy-rounded-bottom">
             @isset($new['tag'])
                 <a href="#" title="Status" class="comment mr-3"><i class="fa fa-certificate mr-1" aria-hidden="true"></i>{{$new['tag']}}</a>
             @endisset
-            <a href="#" title="Encourage"><i class="fa fa-hand-peace-o mr-1" aria-hidden="true"></i>Encourage ({{$new['nr_encouragements']}})</a>
+            <a href="#" class="encourage" title="Encourage" data-id="{{ $new['id'] }}" data-category="{{ $new['cathegory'] }}"><i class="fa fa-hand-peace-o mr-1" aria-hidden="true"></i><span class="encourage_text">Encourage</span> <span class="encourage_number">({{$new['nr_encouragements']}})</span></a>
             @if($new['cathegory']=='goal' || $new['cathegory']=='post')
                 <a href="#" title="Comment" class="ml-3"><i class="fa fa-commenting-o mr-1" aria-hidden="true"></i>Comment ({{$nr_comments}})</a>
             @endif
@@ -77,5 +84,3 @@
         @endforeach
     </div>
     @endforeach
-
-</section>

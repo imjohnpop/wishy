@@ -46,7 +46,7 @@ Route::resource('feed', 'FeedController', [
     * [PUT]     /feed/{id}  => update
     * [DELETE]  /feed/{id}  => destroy
     */
-    
+
     Route::prefix('encourage')->group(function () {
         Route::post('/post/{post_id}', 'EncourageController@post');
         Route::post('/wish/{wish_id}', 'EncourageController@wish');
@@ -76,7 +76,7 @@ Route::resource('profile', 'ProfileController', [
 /*
 * Generated routes and their methods in the ProfileController:
 * [GET]     /profile           => index
-* [POST]     /profile          => store
+* [POST]    /profile          => store
 * [GET]     /profile/{id}/edit => edit (display the page that'll edit the profile)
 * [PUT]     /profile/{id}      => update
 * [GET]     /profile/{id}      => show
@@ -93,15 +93,7 @@ Route::prefix('profile')->group(function () {
     * [DELETE]  /profile/wish/{id}      => destroy
     */
     Route::get('/{user_id}/achievements', 'AchievementsController@view')->middleware('auth');
-});
-
-
-// --------------- Friends Page ------------------------------------------
-
-Route::prefix('friends')->group(function(){
-    Route::get('/{user_id}', 'FriendController@view')->middleware('auth');
-    Route::post('/{friend_id}/add', 'FriendController@add');
-    Route::post('/{friend_id}/unfriend', 'FriendController@unfriend');
+    Route::post('/{friend_id}/friend', 'FriendController@friend');
 });
 
 // --------------- Goals Planner ------------------------------------------

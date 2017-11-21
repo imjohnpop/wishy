@@ -99,7 +99,9 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
     <!-- FONTAWESOME -->
 <script src="https://use.fontawesome.com/f1003c147a.js"></script>
+    <!-- OWN SCRIPTS -->
 <script src="/js/profile.js"></script>
+<script src="/js/encourage.js"></script>
     <!-- FULLCALENDAR -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.1/moment.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.6.2/fullcalendar.min.js"></script>
