@@ -82,7 +82,6 @@ class ProfileController extends Controller
         $goals = DB::table('user_has_goal')->where('user_id', '=', Auth::user()->id)
                     ->rightJoin('goals', 'user_has_goal.goal_id', '=', 'goals.id')->get();
         
-        $friend = 1;
         $user_has_friend = UserHasFriend::select('friend_id')->where('user_id', Auth::user()->id)->get()->toArray();
         $friendships = [];
         foreach ($user_has_friend as $friendship)
@@ -91,22 +90,23 @@ class ProfileController extends Controller
         }
 
         $view->user = $user;
-
-        $view->headView = view('profile/head', ['friend' => $friend, 'user' => $user, 'userDetail' => $userDetail, 'friendships'=>$friendships]);
+        $view->newPassView = view('/newpassword');
+        
+        $view->headView = view('profile/head', ['user' => $user, 'userDetail' => $userDetail, 'friendships'=>$friendships]);
         $view->headView->wishes = count($wishes);
         $view->headView->goals = count($goals);
 
-        $view->friendView = view('profile/friend', ['friend' => $friend, 'user' => $user]);
+        $view->friendView = view('profile/friend', ['friendships'=>$friendships, 'user' => $user]);
 
-        $view->wishesView = view('profile/wishes', ['friend' => $friend, 'user' => $user, 'userDetail' => $userDetail, 'wishes' => $wishes]);
+        $view->wishesView = view('profile/wishes', ['friendships'=>$friendships, 'user' => $user, 'userDetail' => $userDetail, 'wishes' => $wishes]);
 
-        $view->goalsView = view('profile/goals', ['friend' => $friend, 'user' => $user, 'userDetail' => $userDetail, 'goals' => $goals]);
+        $view->goalsView = view('profile/goals', ['friendships'=>$friendships, 'user' => $user, 'userDetail' => $userDetail, 'goals' => $goals]);
 
-        $view->postsView = view('profile/posts', ['friend' => $friend, 'user' => $user, 'userDetail' => $userDetail, 'posts' => $posts]);
+        $view->postsView = view('profile/posts', ['friendships'=>$friendships, 'user' => $user, 'userDetail' => $userDetail, 'posts' => $posts]);
 
         $view->addmodalView = view('profile/addmodal');
         $view->profiledetailView = view('profile/profiledetail');
-        $view->wishgoalnavView = view('profile/wishgoal', ['friend' => $friend]);
+        $view->wishgoalnavView = view('profile/wishgoal', ['friendships'=>$friendships]);
 
         return $view;
     }

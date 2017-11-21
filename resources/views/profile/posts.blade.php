@@ -18,7 +18,7 @@
                             <p>Added at: <span>{{ $post->created_at->format('d.m.Y') }}</span></p>
                         </div>
                         <div class="post-category">
-                            @if(!isset($friend))
+                            @if(!isset($friendships))
                                 <button class="btn wishy-btn menu"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></button>
                             @endif
                         </div>

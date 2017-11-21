@@ -18,7 +18,7 @@
                             <p>Added at: <span>{{ date('d.m.Y', strtotime($goal->created_at)) }}</span></p>
                         </div>
                         <div class="goal-category">
-                        @if (!isset($friend))
+                        @if (!isset($friendships))
                             <button class="btn wishy-btn menu"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></button>
                         @endif
                             <p>Category: <span>{{ $goal->cathegory }}</span></p>

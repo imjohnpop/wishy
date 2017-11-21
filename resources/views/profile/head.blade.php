@@ -5,7 +5,7 @@
         </div>
         <div class="wishy-profile-info text-center my-4">
             <?php 
-                if(array_search($user->id, $friendships) === false) {$icon = 'fa fa-user-plus';} else {$icon = 'fa fa-minus';}
+                if(isset($friendships) && array_search($user->id, $friendships) === false) {$icon = 'fa fa-user-plus';} else {$icon = 'fa fa-minus';}
             ?>
             @if(isset($friendships))
                 <a id="add_friend" href="{{ action('FriendController@friend', ['friend_id' => $user->id])}}" class="btn wishy-btn edit"><i class="{{$icon}}" aria-hidden="true"></i></a>
