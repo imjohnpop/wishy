@@ -28,7 +28,7 @@
                     </div>
                 </div>
                 <div class="wishy-post-nav post wishy-rounded-bottom">
-                    <a href="#" class="encourage" title="Encourage"><i class="fa fa-hand-peace-o mr-1" aria-hidden="true"></i>Encourage <span>({{ $post->nr_encouragements }})</span></a>
+                    <a href="#" class="encourage" title="Encourage"  data-id="{{ $post->id }}" data-category="{{ $post->cathegory }}"><i class="fa fa-hand-peace-o mr-1" aria-hidden="true"></i><span class="encourage_text">Encourage</span> <span class="encourage_number">({{ $post->nr_encouragements }})</span></a>
                     <a href="#" title="Comment" class="comment ml-3"><i class="fa fa-commenting-o mr-1" aria-hidden="true"></i>Comment</a>
                 </div>
             </div>

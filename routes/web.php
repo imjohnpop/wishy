@@ -46,7 +46,7 @@ Route::resource('feed', 'FeedController', [
     * [PUT]     /feed/{id}  => update
     * [DELETE]  /feed/{id}  => destroy
     */
-    
+
     Route::prefix('encourage')->group(function () {
         Route::post('/post/{post_id}', 'EncourageController@post');
         Route::post('/wish/{wish_id}', 'EncourageController@wish');

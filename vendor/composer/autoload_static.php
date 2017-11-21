@@ -296,6 +296,7 @@ class ComposerStaticInit7e558dfa7d5fe2f71596963679771c7e
     );
 
     public static $classMap = array (
+        'App\\Checklist' => __DIR__ . '/../..' . '/app/Checklist.php',
         'App\\Comments' => __DIR__ . '/../..' . '/app/Comments.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Events' => __DIR__ . '/../..' . '/app/Events.php',
@@ -326,6 +327,7 @@ class ComposerStaticInit7e558dfa7d5fe2f71596963679771c7e
         'App\\Http\\Middleware\\TrimStrings' => __DIR__ . '/../..' . '/app/Http/Middleware/TrimStrings.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Milestones' => __DIR__ . '/../..' . '/app/Milestones.php',
+        'App\\MyResetPassword' => __DIR__ . '/../..' . '/app/MyResetPassword.php',
         'App\\Post' => __DIR__ . '/../..' . '/app/Post.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
@@ -465,6 +467,7 @@ class ComposerStaticInit7e558dfa7d5fe2f71596963679771c7e
         'Egulias\\EmailValidator\\Warning\\QuotedString' => __DIR__ . '/..' . '/egulias/email-validator/EmailValidator/Warning/QuotedString.php',
         'Egulias\\EmailValidator\\Warning\\TLD' => __DIR__ . '/..' . '/egulias/email-validator/EmailValidator/Warning/TLD.php',
         'Egulias\\EmailValidator\\Warning\\Warning' => __DIR__ . '/..' . '/egulias/email-validator/EmailValidator/Warning/Warning.php',
+        'EncourageUpload' => __DIR__ . '/../..' . '/database/migrations/2017_11_21_134520_encourage_upload.php',
         'Faker\\Calculator\\Iban' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Calculator/Iban.php',
         'Faker\\Calculator\\Inn' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Calculator/Inn.php',
         'Faker\\Calculator\\Luhn' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Calculator/Luhn.php',

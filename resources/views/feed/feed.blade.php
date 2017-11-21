@@ -12,5 +12,5 @@
             <?=$events?>
         </div>
     </div>
-
+    <?=$newPassView?>
 @endsection

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUserHasGoalTable extends Migration
+class EncourageUpload extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateUserHasGoalTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_has_goal', function (Blueprint $table) {
+        Schema::create('encourage_upload', function (Blueprint $table) {
             $table->integer('user_id');
-            $table->integer('goal_id');
-            $table->boolean('want_participate')->nullable();
+            $table->integer('upload_id');
+            $table->string('category');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateUserHasGoalTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_has_goal');
+        Schema::dropIfExists('encourage_upload');
     }
 }

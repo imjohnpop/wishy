@@ -30,7 +30,7 @@
                     </div>
                 </div>
                 <div class="wishy-wish-nav wish wishy-rounded-bottom">
-                    <a href="#" class="encourage" title="Encourage"><i class="fa fa-hand-peace-o mr-1" aria-hidden="true"></i>Encourage <span>({{ $wish->nr_encouragements }})</span></a>
+                    <a href="#" class="encourage" title="Encourage" data-id="{{ $wish->id }}" data-category="{{ $wish->cathegory }}"><i class="fa fa-hand-peace-o mr-1" aria-hidden="true"></i><span class="encourage_text">Encourage</span> <span class="encourage_number">({{ $wish->nr_encouragements }})</span></a>
                     <a href="#" title="Status" class="comment ml-3"><i class="fa fa-certificate mr-1" aria-hidden="true"></i>Status</a>
                 </div>
             </div>

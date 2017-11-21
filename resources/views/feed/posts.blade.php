@@ -51,16 +51,25 @@
                 </div>
             </div>
             <div class="wishy-post-text">
-                <h4>@isset($new['name']) {{$new['name']}}@endisset
+                <h4>
+                    @isset($new['name'])
+                        {{$new['name']}}
+                    @endisset
                 </h4>
-                <p>@if( isset($new['description'])) {{$new['description']}} @else {{ 'Some description' }} @endif</p>
+                <p>
+                    @if( isset($new['description']))
+                        {{$new['description']}}
+                    @else
+                        {{ 'Some description' }}
+                    @endif
+                </p>
             </div>
         </div>
         <div class="wishy-post-nav wishy-rounded-bottom">
             @isset($new['tag'])
                 <a href="#" title="Status" class="comment mr-3"><i class="fa fa-certificate mr-1" aria-hidden="true"></i>{{$new['tag']}}</a>
             @endisset
-            <a href="#" title="Encourage"><i class="fa fa-hand-peace-o mr-1" aria-hidden="true"></i>Encourage ({{$new['nr_encouragements']}})</a>
+            <a href="#" class="encourage" title="Encourage" data-id="{{ $new['id'] }}" data-category="{{ $new['cathegory'] }}"><i class="fa fa-hand-peace-o mr-1" aria-hidden="true"></i><span class="encourage_text">Encourage</span> <span class="encourage_number">({{$new['nr_encouragements']}})</span></a>
             @if($new['cathegory']=='goal' || $new['cathegory']=='post')
                 <a href="#" title="Comment" class="ml-3"><i class="fa fa-commenting-o mr-1" aria-hidden="true"></i>Comment ({{$nr_comments}})</a>
             @endif
