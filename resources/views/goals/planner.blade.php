@@ -5,45 +5,63 @@
             <div class="row">
                 <div class="col-4 mt-3">
                     <img class="w-100" src="http://images.buddytv.com/btv_2_505514777_0_1200_10000_-1_/749729-got-307-01-53.jpg" alt="Me fighting with a bear">
-                </div>
-                <div class="col-8 mt-3">
-                    <h2>{{ $goal->name }}</h2>
-                    <p>{{ $goal->description }}</p>
-                    <hr>
-                    <div class="row">
-                        <div class="col-5 text-center">
-                            <h2 class="wishy-bold">{{ $goal->nr_encouragements }}</h2>
-                            <p class="wishy-bold text-uppercase text-secondary">encouragements</p>
+                    <div id="options" class="row mt-5">
+                        <div class="col-4">
+                            <button id="finishButton" class="btn wishy-btn" data-id="{{ $goal->id }}"><i class="fa fa-flag-checkered" aria-hidden="true"></i></button>
                         </div>
-                        <div class="col-2 text-center wishy-profile-bx">
-                            <h2 class="wishy-publicity"><?= ($goal->is_public == 1) ? '<i class="fa fa-check" aria-hidden="true"></i>' : '<i class="fa fa-times" aria-hidden="true"></i>' ?></h2>
-                            <p class="wishy-bold text-uppercase text-secondary">public</p>
+                        <div class="col-4">
+                            <button id="editButton" class="btn wishy-btn green" data-id="{{ $goal->id }}"><i class="fa fa-pencil" aria-hidden="true"></i></button>
                         </div>
-                        <div class="col-5 text-center">
-                            <h3 class="wishy-bold wishy-minimargin">@foreach($status as $state) {{ $state['tag'] }} @endforeach</h3>
-                            <p class="wishy-bold text-uppercase text-secondary">Status</p>
+                        <div class="col-4">
+                            <div class="dropdown">
+                                <form action="{{ action('GoalsController@destroy', ['id' => $goal->id]) }}" method="post">
+                                    {{ csrf_field() }}
+                                    <button id="deleteButton" class="btn wishy-btn red" data-id="{{ $goal->id }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                                    <div class="dropdown-menu">
+                                        <h4 class="text-center">Are you sure?</h4>
+                                        <button type="submit" class="dropdown-item btn btn-block bg-danger text-center text-uppercase">Delete</button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
+
+                </div>
+                <div class="col-8 mt-3">
+                    <form action="{{ action('GoalsController@update', ['id' => $goal->id]) }}" method="post">
+                        {{ csrf_field() }}
+                        <h2 class="editing">{{ $goal->name }}</h2>
+                        <h2 class="editing hidden"><input class="form-control" type="text" name="name" value="{{ $goal->name }}"></h2>
+                        <p class="editing">{{ $goal->description }}</p>
+                        <textarea class="form-control editing hidden" name="description" rows="4" type="text">{{ $goal->description }}</textarea>
+                        <hr>
+                        <div class="row">
+                            <div class="col-5 text-center">
+                                <h2 class="wishy-bold">{{ $goal->nr_encouragements }}</h2>
+                                <p class="wishy-bold text-uppercase text-secondary">encouragements</p>
+                            </div>
+                            <div class="col-2 text-center wishy-profile-bx">
+                                <h2 class="wishy-publicity editing"><?= ($goal->is_public == 1) ? '<i class="fa fa-check" aria-hidden="true"></i>' : '<i class="fa fa-times" aria-hidden="true"></i>' ?></h2>
+                                <h2 class="editing hidden"><input class="form-control" type="checkbox" name="is_public" <?= ($goal->is_public == 1) ? 'checked' : '' ?>></h2>
+                                <p class="wishy-bold text-uppercase text-secondary">public</p>
+                            </div>
+                            <div class="col-5 text-center">
+                                <h3 id="statusString" class="wishy-bold wishy-minimargin">@foreach($status as $state) {{ $state['tag'] }} @endforeach</h3>
+                                <p class="wishy-bold text-uppercase text-secondary">Status</p>
+                            </div>
+                        </div>
+                        <div class="row d-flex justify-content-around mt-2">
+                            <button class="editing hidden btn wishy-btn" role="submit">Save changes</button>
+                        </div>
+                    </form>
                     <hr>
                 </div>
             </div>
             <hr>
-            <div class="row">
-                <div class="col-6">
-                    <div class="row d-flex justify-content-around">
-                        <div class="col-10 mx-auto">
-                            <button id="checkbox" class="btn btn-block wishy-btn"><i class="fa fa-check-square-o" aria-hidden="true"></i> Add checklist</button>
-                        </div>
-                    </div>
-                    <div id="checklists" data-goal="{{ $goal->id }}" class="row mt-2">
+            <div id="checklists" data-goal="{{ $goal->id }}">
 
-                    </div>
-                    <div class="row" id=""></div>
-                </div>
-                <div class="col-6">
-                    <div id="calendar"></div>
-                </div>
             </div>
+
         </div>
 </section>
 
@@ -57,44 +75,26 @@
         $('#checklistInput').slideToggle();
     });
 
-
-    // FULL CALENDAR
     $(document).ready(function() {
         $('#checklistInput').hide();
-        var d = new Date();
-        var n = d.getMonth();
-        var month = n + 1;
-
-        $('#calendar').fullCalendar({
-            header: {
-                left: '',
-                center: 'title prev,next',
-                right: ''
-            },
-            defaultDate: '2017-' + month + '-01',
-            navLinks: false, // can click day/week names to navigate views
-            editable: true,
-            eventLimit: true, // allow "more" link when too many events
-            events: [
-                {
-                    title: 'Event nr-1',
-                    start: '2017-11-01'
-                },
-                {
-                    title: 'TEsting event asdasfasfasfasfas',
-                    start: '2017-11-10'
-                },
-                {
-                    title: 'asfasfasfasfa at asfasfasfa sf',
-                    start: '2017-11-25'
-                },
-                {
-                    title: 'sfa at fas fasfasfasfasf',
-                    start: '2017-12-01'
-                }
-            ]
-        });
-
     });
+
+    $('#editButton').click(function() {
+        $('.editing').toggleClass('hidden');
+    });
+
+    $('#finishButton').click(function() {
+        var id = $('#checklists').data('goal');
+        $.ajax({
+            type: 'post',
+            url: '/api/goal/complete/' + id,
+            data: {
+            }
+        }).done((data) => {
+            $('#statusString').text('Achieved');
+        });
+    })
+
+
 
 </script>

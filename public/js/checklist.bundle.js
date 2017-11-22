@@ -1,6 +1,20 @@
-webpackJsonp([0],{
-
-/***/ 15:
+webpackJsonp([0],[
+/* 0 */,
+/* 1 */,
+/* 2 */,
+/* 3 */,
+/* 4 */,
+/* 5 */,
+/* 6 */,
+/* 7 */,
+/* 8 */,
+/* 9 */,
+/* 10 */,
+/* 11 */,
+/* 12 */,
+/* 13 */,
+/* 14 */,
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10,7 +24,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(2);
+var _reactDom = __webpack_require__(1);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -23,8 +37,18 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 _reactDom2.default.render(_react2.default.createElement(_planner2.default, null), document.getElementById('checklists'));
 
 /***/ }),
-
-/***/ 27:
+/* 16 */,
+/* 17 */,
+/* 18 */,
+/* 19 */,
+/* 20 */,
+/* 21 */,
+/* 22 */,
+/* 23 */,
+/* 24 */,
+/* 25 */,
+/* 26 */,
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40,7 +64,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(2);
+var _reactDom = __webpack_require__(1);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -51,6 +75,10 @@ var _checklists2 = _interopRequireDefault(_checklists);
 var _input = __webpack_require__(33);
 
 var _input2 = _interopRequireDefault(_input);
+
+var _calendar = __webpack_require__(34);
+
+var _calendar2 = _interopRequireDefault(_calendar);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -75,20 +103,55 @@ var Planner = function (_React$Component) {
             this.checklist.refreshChecklists(goal_id);
         }
     }, {
+        key: 'refreshCalendar',
+        value: function refreshCalendar() {
+            this.calendar.getData();
+        }
+    }, {
         key: 'render',
         value: function render() {
             var _this2 = this;
 
             return _react2.default.createElement(
                 'div',
-                { className: 'col-12' },
+                { className: 'row' },
                 _react2.default.createElement(
                     'div',
-                    { id: 'togglingInput', className: 'col-10 mx-auto' },
-                    _react2.default.createElement(_input2.default, { refreshChecklists: this.refreshChecklists.bind(this) })
+                    { className: 'col-6' },
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'row d-flex justify-content-around' },
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'col-10 mx-auto' },
+                            _react2.default.createElement(
+                                'button',
+                                { id: 'checkbox', className: 'btn btn-block wishy-btn' },
+                                _react2.default.createElement('i', { className: 'fa fa-check-square-o', 'aria-hidden': 'true' }),
+                                ' Add checklist'
+                            )
+                        )
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'row mt-2' },
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'col-12' },
+                            _react2.default.createElement(
+                                'div',
+                                { id: 'togglingInput', className: 'col-10 mx-auto' },
+                                _react2.default.createElement(_input2.default, { refreshChecklists: this.refreshChecklists.bind(this) })
+                            ),
+                            _react2.default.createElement(_checklists2.default, { refreshCalendar: this.refreshCalendar.bind(this), ref: function ref(el) {
+                                    _this2.checklist = el;
+                                } })
+                        )
+                    ),
+                    _react2.default.createElement('div', { className: 'row', id: '' })
                 ),
-                _react2.default.createElement(_checklists2.default, { ref: function ref(el) {
-                        _this2.checklist = el;
+                _react2.default.createElement(_calendar2.default, { ref: function ref(el) {
+                        _this2.calendar = el;
                     } })
             );
         }
@@ -100,8 +163,7 @@ var Planner = function (_React$Component) {
 exports.default = Planner;
 
 /***/ }),
-
-/***/ 28:
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -117,7 +179,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(2);
+var _reactDom = __webpack_require__(1);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -171,11 +233,16 @@ var Checklists = function (_React$Component) {
             });
         }
     }, {
+        key: 'refreshCalendar',
+        value: function refreshCalendar() {
+            this.props.refreshCalendar();
+        }
+    }, {
         key: 'render',
         value: function render() {
             var lists = [];
             for (var i in this.state.lists) {
-                lists[i] = _react2.default.createElement(_checklist2.default, { refreshChecklists: this.refreshChecklists.bind(this),
+                lists[i] = _react2.default.createElement(_checklist2.default, { refreshCalendar: this.refreshCalendar.bind(this), refreshChecklists: this.refreshChecklists.bind(this),
                     key: this.state.lists[i].id,
                     id: this.state.lists[i].id,
                     goal_id: this.state.lists[i].goal_id,
@@ -196,8 +263,7 @@ var Checklists = function (_React$Component) {
 exports.default = Checklists;
 
 /***/ }),
-
-/***/ 29:
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -213,7 +279,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(2);
+var _reactDom = __webpack_require__(1);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -331,13 +397,18 @@ var Checklist = function (_React$Component) {
             });
         }
     }, {
+        key: 'refreshCalendar',
+        value: function refreshCalendar() {
+            this.props.refreshCalendar();
+        }
+    }, {
         key: 'render',
         value: function render() {
             var _this5 = this;
 
             var checks = [];
             for (var i in this.state.checks) {
-                checks[i] = _react2.default.createElement(_check2.default, { refreshChecks: this.refreshChecks.bind(this),
+                checks[i] = _react2.default.createElement(_check2.default, { refreshCalendar: this.refreshCalendar.bind(this), refreshChecks: this.refreshChecks.bind(this),
                     key: this.state.checks[i].id,
                     id: this.state.checks[i].id,
                     checklist_id: this.state.checks[i].checklist_id,
@@ -393,8 +464,7 @@ var Checklist = function (_React$Component) {
 exports.default = Checklist;
 
 /***/ }),
-
-/***/ 30:
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -410,7 +480,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(2);
+var _reactDom = __webpack_require__(1);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -468,6 +538,8 @@ var Check = function (_React$Component) {
     }, {
         key: 'submitDate',
         value: function submitDate(id) {
+            var _this2 = this;
+
             if (this.state.date !== '') {
                 var self = this;
                 $.ajax({
@@ -476,13 +548,15 @@ var Check = function (_React$Component) {
                     data: {
                         date: self.state.date
                     }
-                }).done(function (data) {});
+                }).done(function (data) {
+                    _this2.props.refreshCalendar();
+                });
             }
         }
     }, {
         key: 'render',
         value: function render() {
-            var _this2 = this;
+            var _this3 = this;
 
             return _react2.default.createElement(
                 'div',
@@ -491,7 +565,7 @@ var Check = function (_React$Component) {
                     'div',
                     null,
                     _react2.default.createElement('input', { onChange: function onChange(event) {
-                            return _this2.checking(event, _this2.props.id);
+                            return _this3.checking(event, _this3.props.id);
                         }, type: 'checkbox', checked: this.props.is_done }),
                     ' ',
                     this.props.text
@@ -500,13 +574,13 @@ var Check = function (_React$Component) {
                     'div',
                     { className: 'datepicker' },
                     _react2.default.createElement('input', { onChange: function onChange(event) {
-                            return _this2.selecting(event);
+                            return _this3.selecting(event);
                         }, type: 'date', value: this.state.date, name: 'dateselector' }),
                     _react2.default.createElement(
                         'span',
                         null,
                         _react2.default.createElement('i', { onClick: function onClick() {
-                                return _this2.submitDate(_this2.props.id);
+                                return _this3.submitDate(_this3.props.id);
                             }, className: 'fa fa-check-square fa-lg', 'aria-hidden': 'true' })
                     )
                 )
@@ -520,8 +594,7 @@ var Check = function (_React$Component) {
 exports.default = Check;
 
 /***/ }),
-
-/***/ 31:
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -537,7 +610,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(2);
+var _reactDom = __webpack_require__(1);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -599,8 +672,7 @@ var Newcheck = function (_React$Component) {
 exports.default = Newcheck;
 
 /***/ }),
-
-/***/ 32:
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -616,7 +688,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(2);
+var _reactDom = __webpack_require__(1);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -656,8 +728,7 @@ var Progress = function (_React$Component) {
 exports.default = Progress;
 
 /***/ }),
-
-/***/ 33:
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -673,7 +744,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(2);
+var _reactDom = __webpack_require__(1);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -744,6 +815,121 @@ var Input = function (_React$Component) {
 
 exports.default = Input;
 
-/***/ })
+/***/ }),
+/* 34 */
+/***/ (function(module, exports, __webpack_require__) {
 
-},[15]);
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = __webpack_require__(1);
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Calendar = function (_React$Component) {
+    _inherits(Calendar, _React$Component);
+
+    function Calendar(props) {
+        _classCallCheck(this, Calendar);
+
+        var _this = _possibleConstructorReturn(this, (Calendar.__proto__ || Object.getPrototypeOf(Calendar)).call(this, props));
+
+        _this.state = {
+            goal_id: $('#checklists').data('goal'),
+            dates: []
+        };
+        return _this;
+    }
+
+    _createClass(Calendar, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            var self = this;
+            $(document).ready(function () {
+                self.getData(self.state.goal_id);
+            });
+        }
+    }, {
+        key: 'getData',
+        value: function getData() {
+            var _this2 = this;
+
+            var goal_id = this.state.goal_id;
+            var self = this;
+
+            $.ajax({
+                type: 'post',
+                url: '/api/calendar/' + goal_id,
+                data: {}
+            }).done(function (data) {
+                console.log(data);
+                for (var i = 0; i < data.length; i++) {
+                    _this2.state.dates[i] = {
+                        title: data[i].text,
+                        start: data[i].due_date
+                        // start: data[i].created_at
+                    };
+                }
+                _this2.renderCalendar();
+                $('#calendar').fullCalendar('removeEvents');
+                $('#calendar').fullCalendar('renderEvents', _this2.state.dates);
+            });
+        }
+    }, {
+        key: 'renderCalendar',
+        value: function renderCalendar() {
+            console.log('updating');
+            var d = new Date();
+            var n = d.getMonth();
+            var month = n + 1;
+
+            $('#calendar').fullCalendar({
+                header: {
+                    left: '',
+                    center: 'title prev,next',
+                    right: ''
+                },
+                height: 380,
+                defaultDate: '2017-' + month + '-01',
+                navLinks: false, // can click day/week names to navigate views
+                editable: true,
+                eventLimit: true, // allow "more" link when too many events
+                events: this.state.dates
+            });
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'div',
+                { className: 'col-6' },
+                _react2.default.createElement('div', { id: 'calendar' })
+            );
+        }
+    }]);
+
+    return Calendar;
+}(_react2.default.Component);
+
+exports.default = Calendar;
+
+/***/ })
+],[15]);

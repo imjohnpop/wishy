@@ -8,8 +8,14 @@ use App\Http\Controllers\Controller;
 class CommentController extends Controller
 {
     //
-    public function newpost()
+    public function insert($id)
     {
+        $favourite = new Favourite();
+
+        $favourite->user_id = Auth()->user()->id;
+        $favourite->place_id = $id;
+
+        $favourite->save();
 
     }
 

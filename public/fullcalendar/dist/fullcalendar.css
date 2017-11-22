@@ -1504,6 +1504,3 @@ be a descendant of the grid when it is being dragged.
 	color: white !important;
 }
 
-.fc-scroller.fc-day-grid-container {
-	height: 300px !important;
-}

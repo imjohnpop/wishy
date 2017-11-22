@@ -10,7 +10,7 @@
         <div class="col-6 text-center">
             <a href="#" class="show-goals-btn">Goals</a>
             @if (!isset($friendships))
-            <a href="#" class="wish-plus" data-toggle="modal" data-target="#addwishModal"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+            <a href="#" class="wish-plus" data-toggle="modal" data-target="#addGoalModal"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
             @endif
         </div>
     </div>

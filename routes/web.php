@@ -99,10 +99,10 @@ Route::prefix('profile')->group(function () {
 // --------------- Goals Planner ------------------------------------------
 
 Route::prefix('goal')->group(function(){    
-    Route::get('/new', 'GoalsController@view')->middleware('auth');
+    Route::post('/new', 'GoalsController@new')->middleware('auth');
     Route::get('/edit/{id}', 'GoalsController@view')->middleware('auth');
-    Route::post('/edit/{id}', 'GoalsController@edit');
-    Route::delete('/{id}', 'GoalController@destroy');
+    Route::post('/edit/{id}', 'GoalsController@update')->middleware('auth');
+    Route::post('/delete/{id}', 'GoalsController@destroy');
     Route::resource('milestone', 'MilestoneController', [
         'only' => ['store', 'update', 'destroy']
     ]);

@@ -33,3 +33,7 @@ Route::post('/check/delete/{id}', 'ChecksController@destroy');
 Route::post('/check/date/{id}', 'ChecksController@date');
 
 Route::post('/check/{id}', 'ChecksController@change');
+
+Route::post('/calendar/{id}', 'CalendarController@get');
+
+Route::post('/goal/complete/{id}', 'GoalsController@complete');

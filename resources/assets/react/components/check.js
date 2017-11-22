@@ -47,7 +47,7 @@ export default class Check extends React.Component {
                     date: self.state.date
                 }
             }).done((data) => {
-
+                this.props.refreshCalendar();
             });
         }
     }

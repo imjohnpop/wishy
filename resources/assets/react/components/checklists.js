@@ -37,10 +37,14 @@ export default class Checklists extends React.Component {
         });
     }
 
+    refreshCalendar() {
+        this.props.refreshCalendar();
+    }
+
     render() {
         let lists = [];
         for(let i in this.state.lists) {
-            lists[i] = <Checklist refreshChecklists={ this.refreshChecklists.bind(this) }
+            lists[i] = <Checklist refreshCalendar={ this.refreshCalendar.bind(this) } refreshChecklists={ this.refreshChecklists.bind(this) }
                              key={this.state.lists[i].id}
                              id={this.state.lists[i].id}
                              goal_id={this.state.lists[i].goal_id}

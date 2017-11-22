@@ -18,8 +18,9 @@ class CreateGoalsTable extends Migration
             $table->string('name',300);
             $table->string('description',2500)->nullable();
             $table->integer('is_public');
+            $table->integer('user_id');
             $table->integer('nr_encouragements')->default(0);
-            $table->integer('status_id');
+            $table->integer('status_id')->default(1);
             $table->string('goal_picture')->nullable();
             $table->string('cathegory',300)->default('goal');
             $table->timestamps();

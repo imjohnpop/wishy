@@ -45,7 +45,8 @@ class DatabaseSeeder extends Seeder
             'description' => 'The name is quite explanatory, but anyways... I want to fight with huge wild bear, and kick his fat ass. I am little bit scared, but who is scared can\'t go to the forest. Am I right?',
             'is_public' => 1,
             'nr_encouragements' => 2,
-            'status_id'=> 2
+            'status_id'=> 2,
+            'user_id' => 1
         ]);
         
         Goals::create([
@@ -53,7 +54,8 @@ class DatabaseSeeder extends Seeder
             'description' => 'I wish to stop getting pissed when people are eating apples',
             'is_public' => 0,
             'nr_encouragements' => 0,
-            'status_id'=> 1
+            'status_id'=> 1,
+            'user_id' => 1
         ]);
 
         Goals::create([
@@ -61,7 +63,8 @@ class DatabaseSeeder extends Seeder
             'description' => 'Even though it will be hard, I believe I can accomplish this',
             'is_public' => 1,
             'nr_encouragements' => 10,
-            'status_id'=> 3
+            'status_id'=> 3,
+            'user_id' => 2
         ]);
 
         Milestones::create([

@@ -12,7 +12,9 @@ class Goals extends Model
         'description',
         'is_public',
         'nr_encouragements',
-        'status_id'
+        'status_id',
+        'user_id',
+        'goal_picture'
     ];
 
     protected $table = 'goals';

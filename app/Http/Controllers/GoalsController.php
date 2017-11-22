@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Checklist;
 use App\Goals;
+use App\Milestones;
 use App\User;
 use App\UserDetail;
 use App\UserHasFriend;
@@ -15,8 +17,8 @@ use Illuminate\Support\Facades\DB;
 class GoalsController extends Controller
 {
     //
-    public function view($id = 'new')
-    {
+    public function view($id = 'new') {
+
         if($id !== 'new') {
             $goal = Goals::find($id);
         } else {
@@ -59,13 +61,82 @@ class GoalsController extends Controller
         return $view;
     }
 
-    public function edit()
-    {
+    public function new(Request $request) {
+        $goal = new Goals();
 
+        if($_POST['is_public'] == 'on') {
+            $public = 1;
+        } else {
+            $public = 0;
+        }
+
+        $goal->fill([
+            'name' => $request->input('name'),
+            'description' => $request->input('description'),
+            'is_public' => $public,
+            'user_id' => Auth::user()->id,
+            'goal_picture' => $request->file('goal_picture')->storeAs('goalPictures', $request->input('name').Auth::user()->id.'.jpg', 'uploads'),
+        ]);
+        $goal->name = $_POST['name'];
+
+
+
+        $goal->description = $_POST['description'];
+
+
+        $goal->save();
+
+        return redirect()->action('ProfileController@index');
     }
 
-    public function destroy()
-    {
+    public function update($id, Request $request) {
+        $goal = Goals::find($id);
 
+        if($_POST['is_public'] == 'on') {
+            $public = 1;
+        } else {
+            $public = 0;
+        }
+
+        $goal->fill([
+            'name' => $request->input('name'),
+            'description' => $request->input('description'),
+            'is_public' => $public,
+            // 'goal_picture' => $request->file('goal_picture')->storeAs('goalPictures', $request->input('name').Auth::user()->id.'.jpg', 'uploads'),
+        ]);
+
+        $goal->save();
+
+        return redirect()->action('GoalsController@view', ['id' => $id]);
+    }
+
+    public function complete($id) {
+        $goal = Goals::find($id);
+
+        $goal->status_id = 3;
+
+        $goal->save();
+    }
+    public function destroy($id) {
+        $goals = Goals::find($id);
+        $checklists = Checklist::where('goal_id', $id)->get();
+        $milestones_id = [];
+        $milestones = [];
+
+        $goals->delete();
+        foreach($checklists as $key => $checklist) {
+            $milestones_id[$key] = $checklist['id'];
+            $checklist->delete();
+        }
+
+        foreach($milestones_id as $key => $milestones_id) {
+            $milestones[$key] = Milestones::where('checklist_id', $milestones_id);
+        }
+
+        foreach($milestones as $milestone) {
+            $milestone->delete();
+        }
+
+        return redirect()->action('ProfileController@index');
     }
 }

@@ -380,6 +380,49 @@
   color: black;
 }
 
+#options button.btn.wishy-btn {
+  border-radius: 50%;
+  -webkit-box-shadow: 0 0px 8px #F9B800 !important;
+          box-shadow: 0 0px 8px #F9B800 !important;
+}
+
+#options button.btn.wishy-btn.green {
+  background-color: #777777;
+  -webkit-box-shadow: 0 0px 8px #777777 !important;
+          box-shadow: 0 0px 8px #777777 !important;
+  border-color: #777777;
+}
+
+#options button.btn.wishy-btn.green:hover {
+  background-color: #5e5d5d;
+  -webkit-box-shadow: 0 0px 8px #5e5d5d !important;
+          box-shadow: 0 0px 8px #5e5d5d !important;
+  border-color: #5e5d5d;
+}
+
+#options button.btn.wishy-btn.red {
+  background-color: #26273b;
+  -webkit-box-shadow: 0 0px 8px #26273b !important;
+          box-shadow: 0 0px 8px #26273b !important;
+  border-color: #26273b;
+}
+
+#options button.btn.wishy-btn.red:hover {
+  background-color: #12121c;
+  -webkit-box-shadow: 0 0px 8px #12121c !important;
+          box-shadow: 0 0px 8px #12121c !important;
+  border-color: #12121c;
+}
+
+.hidden {
+  display: none;
+}
+
+.dropdown-menu {
+  left: -77px !important;
+  min-width: 13rem;
+}
+
 body {
   font-family: "Montserrat", sans-serif;
 }
