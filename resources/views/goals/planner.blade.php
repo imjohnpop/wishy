@@ -95,6 +95,14 @@
         });
     })
 
+    $('.optionsBtn').click(function() {
+        var id = $(this).data('id');
+
+        if($('.optionsBtn').data('id') == id) {
+            $(this).toggleClass('hidden');
+        }
+    })
+
 
 
 </script>

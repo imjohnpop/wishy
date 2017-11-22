@@ -40,7 +40,27 @@ class WishController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $wish = Wishes::find($id);
+
+        if(request()->input('is_public') == 'on'){
+            $public = 1;
+        } else {
+            $public = 0;
+        }
+
+        $wish->fill([
+            'name' => $request->input('name'),
+            'description' => $request->input('description'),
+            'is_public' => $public,
+        ]);
+
+        if($request->file('wish_picture')) {
+            $wish->wish_picture =$request->file('wish_picture')->storeAs('wishPictures', $request->input('description').Auth::user()->id.'.jpg', 'uploads');
+        };
+
+        $wish->save();
+
+        return redirect()->action('ProfileController@index');
     }
 
     /**
@@ -49,8 +69,11 @@ class WishController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
+    public function destroy($id) {
+        $wish = Wishes::findOrfail($id);
+
+        $wish->delete();
+
+        return redirect()->action('ProfileController@index');
     }
 }

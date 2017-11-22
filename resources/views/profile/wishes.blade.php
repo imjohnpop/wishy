@@ -23,14 +23,42 @@
                             </div>
                             <div class="wish-category">
                                 @if (!isset($friendships))
-                                <button class="btn wishy-btn menu"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></button>
+                                    <div class="row">
+                                        <button class="btn wishy-btn menu editBtn" data-id="{{ $wish->id }}"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                                        <form action="{{ action('WishController@destroy', ['id'=> $wish->id]) }}" method="post">
+                                            {{ csrf_field() }}
+                                            <button type="submit" class="btn wishy-btn menu"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                                        </form>
+                                    </div>
                                 @endif
                                 <p>Category: <span>{{ $wish->cathegory }}</span></p>
                             </div>
                         </div>
                         <div class="wishy-wish-text">
-                            <h4>{{ $wish->name }}</h4>
-                            <p>{{ $wish->description }}</p>
+                            <form action="{{ action('WishController@update', ['id'=> $wish->id]) }}" method="post" enctype="multipart/form-data">
+                                {{ csrf_field() }}
+                                <h4 class="infoToChange" data-id="{{ $wish->id }}">{{ $wish->name }}</h4>
+                                <input class="infoToChange hidden form-control" data-id="{{ $wish->id }}" type="text" name="name" value="{{ $wish->name }}">
+                                <p class="infoToChange" data-id="{{ $wish->id }}">{{ $wish->description }}</p>
+                                <input class="infoToChange hidden form-control" data-id="{{ $wish->id }}" type="text" name="description" value="{{ $wish->description }}">
+                                <div class="infoToChange hidden form-group" data-id="{{ $wish->id }}">
+                                    <div class="row mt-1">
+                                        <div class="col-4">
+                                            <label for="is_public">Make it public? </label>
+                                        </div>
+                                        <div class="col-6 mt-1">
+                                            <input name="is_public" type="checkbox" class="form-control" id="is_public" <?= ($wish->is_public == 1) ? 'checked' : '' ?>>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group infoToChange hidden" data-id="{{ $wish->id }}">
+                                    <label for="wish_picture">Wish Picture</label>
+                                    <div class="col">
+                                        <input name="wish_picture" type="file" class="form-control" id="wish_picture" value="{{ $wish->wish_picture }}">
+                                    </div>
+                                </div>
+                                <button type="submit" class="infoToChange hidden form-group btn wishy-btn" data-id="{{ $wish->id }}">Save Changes</button>
+                            </form>
                         </div>
                     </div>
                     <div class="wishy-wish-nav wish wishy-rounded-bottom">
@@ -45,4 +73,11 @@
             </div>
         @endif
     @endif
+
+    <script>
+        $('.editBtn').click(function() {
+            var id = $(this).data('id');
+            $('.infoToChange[data-id='+ id +']').toggleClass('hidden');
+        })
+    </script>
 </section>

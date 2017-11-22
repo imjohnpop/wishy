@@ -284,6 +284,20 @@
   border-color: #F9B800;
 }
 
+.dropdown .dropdown-menu button.btn.wishy-btn.menu {
+  top: 0;
+  position: static;
+}
+
+.dropdown .dropdown-menu.show {
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  -webkit-box-pack: space-evenly !important;
+      -ms-flex-pack: space-evenly !important;
+          justify-content: space-evenly !important;
+}
+
 #checklists input {
   background-color: transparent;
   border-width: 0;
