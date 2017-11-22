@@ -14,7 +14,9 @@
             @endif
             <h3 class="wishy-bold"><strong>{{ $user->name }} {{ $user->surname }}</strong></h3>
             <small><p class="text-secondary">{{ $userDetail != null ? $userDetail->quote : 'User\'s quote' }}</p></small>
-            <h5><i class="fa fa-birthday-cake" aria-hidden="true"></i> {{ $userDetail != null ? date('d.m.', strtotime($userDetail->birthday)) : ' Fill your birthday' }}</h5>
+            @if(isset($friendships) && array_search($user->id, $friendships) !== false)
+                <h5><i class="fa fa-birthday-cake" aria-hidden="true"></i> {{ $userDetail != null ? date('d.m.', strtotime($userDetail->birthday)) : ' Fill your birthday' }}</h5>
+            @endif
         </div>
         <div class="wishy-counter wishy-profile-bt">
             <div class="row">

@@ -1,7 +1,7 @@
 <section id="wishes">
     @if (isset($friendships) && array_search($user->id, $friendships) === false)
         <div class="wish col-12 wishy-rounded wishy-shadow-box-blue bg-light">
-            <p>Add {{ $user->name }} to view {{ $userDetail->gender == 'female' ? 'her' : 'his' }} wishes.</p>
+            <p>Add {{ $user->name }} to view {{ !isset($userDetail->gender) ? 'his/her' : ($userDetail->gender == 'female' ? 'her' : 'his') }} wishes.</p>
         </div>
     @else
         @if(isset($wishes))
