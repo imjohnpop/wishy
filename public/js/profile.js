@@ -15,8 +15,8 @@ $( function() {
 });
 
 $('a#add_friend').click(function(e){
+    
     e.preventDefault();
-   
     var self = $(this);
     var icon = self.find('i');
 
@@ -30,6 +30,7 @@ $('a#add_friend').click(function(e){
     $.ajax({
         url: self.attr('href'),
         method: 'post'
+    }).fail(function(){
+        location.reload();
     });
-
 });
