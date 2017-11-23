@@ -1,9 +1,13 @@
 $('div#comment-section').hide();
 $('button.comment_update').parent().hide();
+$('div.c-form').hide();
 
 $('a[title="Comment"]').click(function(e){
     e.preventDefault();
-    var comments = $(this).parent().parent().find('#comment-section');
+    
+    $('div.c-form').show();
+    $('.nav-links').hide();    
+    var comments = $(this).parent().parent().parent().find('#comment-section');
     
     if(comments.css('display')=='none')
     {
@@ -11,6 +15,16 @@ $('a[title="Comment"]').click(function(e){
     } else {
         comments.hide();        
     }
+})
+
+$('a[title="Close"]').click(function(e){
+    e.preventDefault();
+    
+    $('div.c-form').hide();
+    $('.nav-links').show();    
+    var comments = $(this).parent().parent().parent().find('#comment-section');
+    
+    comments.hide();
 })
 
 $('button.comment').click(function(e){
