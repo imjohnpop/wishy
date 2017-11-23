@@ -117,4 +117,6 @@ Route::post('/wish/update/{id}', 'WishController@update');
 
 Route::post('/post/update/{id}', 'FeedController@update');
 
+Route::post('/post/{id}', 'FeedController@destroy');
+
 

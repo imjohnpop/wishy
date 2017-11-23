@@ -65,8 +65,11 @@ class FeedController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
+    public function destroy($id) {
+        $post = Post::find($id);
+
+        $post->delete();
+
+        return redirect('/');
     }
 }

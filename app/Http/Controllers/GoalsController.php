@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Checklist;
 use App\Goals;
 use App\Milestones;
+use App\Post;
 use App\User;
 use App\UserDetail;
 use App\UserHasFriend;
@@ -125,9 +126,21 @@ class GoalsController extends Controller
     public function complete($id) {
         $goal = Goals::find($id);
 
-        $goal->status_id = 3;
+        if($goal->status_id !== 3) {
+            $post = new Post();
+            $post->fill([
+                'user_id' => $goal->user_id,
+                'post_picture' => $goal->goal_picture,
+                'text' => 'Just achieved goal: "' . $goal->name . '"" CONGRATULATION!!',
+                'type' => 'text'
+            ]);
+            $post->save();
+        }
 
+        $goal->status_id = 3;
         $goal->save();
+
+
     }
     public function destroy($id) {
         $goals = Goals::find($id);

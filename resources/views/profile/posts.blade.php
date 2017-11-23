@@ -26,7 +26,7 @@
                             @if(!isset($friendships))
                                 <div class="row" style="width: 90px;">
                                     <button class="btn wishy-btn menu postEditBtn" data-id="{{ $post->id }}"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-                                    <form action="{{ action('WishController@destroy', ['id'=> $post->id]) }}" method="post">
+                                    <form action="{{ action('FeedController@destroy', ['id'=> $post->id]) }}" method="post">
                                         {{ csrf_field() }}
                                         <button type="submit" class="btn wishy-btn menu"><i class="fa fa-trash" aria-hidden="true"></i></button>
                                     </form>

@@ -101,7 +101,7 @@
         }).done((data) => {
             $('#statusString').text('Achieved');
         });
-    })
+    });
 
     $('.optionsBtn').click(function() {
         var id = $(this).data('id');
