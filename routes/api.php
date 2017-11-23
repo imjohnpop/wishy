@@ -37,3 +37,7 @@ Route::post('/check/{id}', 'ChecksController@change');
 Route::post('/calendar/{id}', 'CalendarController@get');
 
 Route::post('/goal/complete/{id}', 'GoalsController@complete');
+
+Route::get('/search/friends' , 'SearchController@search');
+
+Route::get('/friends/{id}' , 'SearchController@select');

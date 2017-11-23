@@ -416,6 +416,27 @@ li.dropdown-item {
   line-height: 1rem;
 }
 
+.select2-result-repository__avatar img {
+  height: 150px;
+  width: auto;
+}
+.select2-container--default .select2-results>.select2-results__options {
+  max-height: 325px !important;
+}
+
+.select2-container--default .select2-selection--single {
+  background-color: transparent !important;
+  border: 0px solid #aaa !important;
+  border-radius: 4px !important;
+  margin-top: 13px !important;
+  margin-left: 21px !important;
+  color: white !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+  top: 12px !important;
+}
+
 //  *************************************** PROFILE styles ***************************************
 // USER CARD
 .wishy-profile {
