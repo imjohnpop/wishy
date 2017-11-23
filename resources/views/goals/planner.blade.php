@@ -4,8 +4,8 @@
         <div class="wishy-planner col-12 mr-auto bg-light wishy-shadow-box-blue wishy-rounded">
             <div class="row">
                 <div class="col-4 mt-3">
-                    <img class="w-100" src="http://images.buddytv.com/btv_2_505514777_0_1200_10000_-1_/749729-got-307-01-53.jpg" alt="Me fighting with a bear">
-                    <div id="options" class="row mt-5">
+                    <img class="w-100" src="/uploads/{{$goal->goal_picture}}" alt="Me fighting with a bear">
+                    <div id="options" class="row mt-5 ml-2">
                         <div class="col-4">
                             <button id="finishButton" class="btn wishy-btn" data-id="{{ $goal->id }}"><i class="fa fa-flag-checkered" aria-hidden="true"></i></button>
                         </div>

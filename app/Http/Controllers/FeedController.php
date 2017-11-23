@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Post;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class FeedController extends Controller
 {
@@ -38,7 +40,19 @@ class FeedController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $post = Post::find($id);
+
+        $post->fill([
+            'text' => $request->input('text'),
+        ]);
+
+        if($request->file('post_picture')) {
+            $post->post_picture =$request->file('post_picture')->storeAs('postPictures', $request->input('text').Auth::user()->id.'.jpg', 'uploads');
+        };
+
+        $post->save();
+
+        return redirect()->action('ProfileController@index');
     }
 
     /**

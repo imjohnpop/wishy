@@ -116,4 +116,6 @@ Route::prefix('goal')->group(function(){
 Route::post('/wish/delete/{id}', 'WishController@destroy');
 Route::post('/wish/update/{id}', 'WishController@update');
 
+Route::post('/post/update/{id}', 'FeedController@update');
+
 

@@ -175,13 +175,3 @@ $blue : rgb(38, 39, 59);
     border-color: $gold;
   }
 }
-
-.dropdown .dropdown-menu button.btn.wishy-btn.menu {
-  top: 0;
-  position: static;
-}
-
-.dropdown .dropdown-menu.show {
-  display: flex !important;
-  justify-content: space-evenly !important;
-}

@@ -23,13 +23,30 @@
                         </div>
                         <div class="post-category">
                             @if(!isset($friendships))
-                                <button class="btn wishy-btn menu"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></button>
+                                <div class="row" style="width: 90px;">
+                                    <button class="btn wishy-btn menu postEditBtn" data-id="{{ $post->id }}"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                                    <form action="{{ action('WishController@destroy', ['id'=> $post->id]) }}" method="post">
+                                        {{ csrf_field() }}
+                                        <button type="submit" class="btn wishy-btn menu"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                                    </form>
+                                </div>
                             @endif
                         </div>
                     </div>
-                    <div class="wishy-post-text">
-                        <p>{{ $post->text }}</p>
-                    </div>
+                    <form action="{{ action('FeedController@update', ['id'=> $post->id]) }}" method="post" enctype="multipart/form-data">
+                        {{ csrf_field() }}
+                        <div class="wishy-post-text">
+                            <p class="infoToChange" data-id="{{ $post->id }}">{{ $post->text }}</p>
+                            <input class="infoToChange hidden form-control" type="text" name="text" value="{{ $post->text }}" data-id="{{ $post->id }}">
+                            <div class="form-group infoToChange hidden" data-id="{{ $post->id }}">
+                                <label for="post_picture">Post Picture</label>
+                                <div class="col">
+                                    <input name="post_picture" type="file" class="form-control" id="post_picture" value="{{ $post->post_picture }}">
+                                </div>
+                            </div>
+                            <button type="submit" class="infoToChange hidden form-group btn wishy-btn" data-id="{{ $post->id }}">Save Changes</button>
+                        </div>
+                    </form>
                 </div>
                 <div class="wishy-post-nav post wishy-rounded-bottom">
                     <a href="#" class="encourage" title="Encourage"  data-id="{{ $post->id }}" data-category="{{ $post->cathegory }}"><i class="fa fa-hand-peace-o mr-1" aria-hidden="true"></i><span class="encourage_text">Encourage</span> <span class="encourage_number">({{ $post->nr_encouragements }})</span></a>
@@ -43,4 +60,11 @@
         </div>
     @endif
 @endif
+
+    <script>
+        $('.postEditBtn').click(function() {
+            var id = $(this).data('id');
+            $('.infoToChange[data-id='+ id +']').toggleClass('hidden');
+        })
+    </script>
 </section>

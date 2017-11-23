@@ -23,7 +23,7 @@
                         </div>
                         <div class="goal-category">
                         @if (!isset($friendships))
-                            <a type="button" href="{{ action('GoalsController@view' , ['id' => $goal->id]) }}" class="btn wishy-btn menu" data-id="{{ $goal->id }}"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
+                            <a role="button" href="{{ action('GoalsController@view' , ['id' => $goal->id]) }}" class="btn wishy-btn menu" data-id="{{ $goal->id }}"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
                         @endif
                             <p>Category: <span>{{ $goal->cathegory }}</span></p>
                         </div>
