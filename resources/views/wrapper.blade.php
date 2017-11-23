@@ -101,8 +101,8 @@
 <script src="https://use.fontawesome.com/f1003c147a.js"></script>
     <!-- OWN SCRIPTS -->
 <script src="/js/profile.js"></script>
-<script src="/js/feed.js"></script>
 <script src="/js/actions.js"></script>
+<script src="/js/comment.js"></script>
     <!-- FULLCALENDAR -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.1/moment.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.6.2/fullcalendar.min.js"></script>

@@ -73,23 +73,36 @@
                 <a href="#" title="Comment" class="comment ml-3"><i class="fa fa-commenting-o mr-1" aria-hidden="true"></i>Comment ({{$nr_comments}})</a>
             @endif
         </div>
-        @if($new['cathegory']=='goal' || $new['cathegory']=='post')
-            <div class="comments row">
-                <form action="{{ action('CommentController@newpost', ['post_id' => $new['id']])}}" method="post">
-                    <input type="text" name="text">
-                    <button id="{{$new['cathegory']}}" class="comment" type="submit">Comment</button>
-                </form>
-            </div>            
-        @endif
-        @foreach($this_comments as $this_comment)
-            <div class="comments row">
-                <img  style="width:3em; height:3em; border-radius:50%;" class="col-2" src="/uploads/{{ $this_comment['profile_picture'] != null ? $this_comment['profile_picture'] : 'default.jpg' }}" alt="Profile picture">
-                <div class="col-9">
-                    <h5>{{$this_comment['name']}} {{$this_comment['surname']}}</h5>
-                    <p>{{$this_comment['text']}}</p>
+        <div class="comments" id="comment-section">
+            @if($new['cathegory']=='goal' || $new['cathegory']=='post')
+                <div class="comments row">
+                    <form action="{{ action('CommentController@new', ['post_id' => $new['id']])}}" method="post">
+                        <input type="text" name="text">
+                        <button id="{{$new['cathegory']}}" class="comment" type="submit">Comment</button>
+                    </form>
+                </div>            
+            @endif
+            @foreach($this_comments as $this_comment)
+                <div class="comments row">
+                    <img  style="width:3em; height:3em; border-radius:50%;" class="col-2" src="/uploads/{{ $this_comment['profile_picture'] != null ? $this_comment['profile_picture'] : 'dummy.png' }}" alt="Profile picture">
+                    <div class="col-9">
+                        <h5>{{$this_comment['name']}} {{$this_comment['surname']}}</h5>
+                        <sub>Added at: <span>{{$this_comment['created_at']}}</span></sub>
+                        <p>{{$this_comment['text']}}</p>
+                        <form action="{{action('CommentController@update', ['id' => $this_comment['id']])}}">
+                            <input type="text" name="text" value="{{$this_comment['text']}}">
+                            <button class="comment_update" type="submit">Comment</button>
+                        </form>
+                        @if($this_comment['user_id'] == $current_user_id)
+                            <div class="links">
+                                <a class="comment_edit" href="#"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                <a class="comment_delete" href="{{action('CommentController@destroy', ['id' => $this_comment['id']])}}"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                            </div>
+                        @endif
+                    </div>
                 </div>
-            </div>
-            <hr>
-        @endforeach
+                <hr>
+            @endforeach
+        </div>
     </div>
     @endforeach

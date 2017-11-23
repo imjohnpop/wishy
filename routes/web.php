@@ -60,10 +60,8 @@ Route::post('/encourage/{id}', 'EncourageController@upload');
     });
     
     Route::prefix('comment')->group(function () {
-        Route::post('/post/{post_id}', 'CommentController@newpost');
-        Route::put('/post/{post_id}/{comment_id}', 'CommentController@updatepost');
-        Route::post('/goal/{goal_id}', 'CommentController@newgoal');    
-        Route::put('/goal/{post_id}/{comment_id}', 'CommentController@updategoal');    
+        Route::post('/post/{post_id}', 'CommentController@new');
+        Route::put('/post/{comment_id}', 'CommentController@update');
         Route::delete('/{comment_id}', 'CommentController@destroy');
     });
     

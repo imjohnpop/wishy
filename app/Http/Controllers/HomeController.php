@@ -67,11 +67,14 @@ class HomeController extends Controller
 
                 $goal_comments = Comments::join('users', 'comments.user_id', '=', 'users.id')
                     ->leftjoin('users_detail', 'users.id', '=', 'users_detail.user_id')
+                    ->select('comments.*', 'users.name', 'users.surname', 'users_detail.profile_picture')
                     ->where('type', 'goal')->get()->toArray();
                 $post_comments = Comments::join('users', 'comments.user_id', '=', 'users.id')
                     ->leftjoin('users_detail', 'users.id', '=', 'users_detail.user_id')
+                    ->select('comments.*', 'users.name', 'users.surname', 'users_detail.profile_picture')
                     ->where('type', 'post')->get()->toArray();
-
+                $current_user_id = Auth::user()->id;
+                
                 $view = view('feed/feed');
                 $view->newPassView = view('/newpassword');
 
@@ -80,11 +83,11 @@ class HomeController extends Controller
                     ->leftjoin('users_detail', 'users.id', '=', 'users_detail.user_id')
                     ->select('users.id', 'users.name AS user_name', 'users.surname', 'users_detail.profile_picture')
                     ->where('user_has_friend.user_id', Auth::user()->id)->get()->toArray();
-                $friendships[] = Auth::user()->id;
+                $friendships[] = $current_user_id;
 
                 $view->friends = view('profile/friend', ['friendships'=>$friendships, 'user' => $user, 'friends'=>$friends]);
 
-                $posts = view('feed/posts', ['goal_comments' => $goal_comments, 'news' => $news, 'post_comments' => $post_comments]);
+                $posts = view('feed/posts', ['goal_comments' => $goal_comments, 'news' => $news, 'post_comments' => $post_comments, 'current_user_id'=>$current_user_id]);
                 $view->posts = $posts;
                 $events = view('feed/events');
                 $events_list = Events::get()->sortBy('updated_at')->toArray();

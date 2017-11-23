@@ -14,6 +14,7 @@ class VerifyCsrfToken extends BaseVerifier
     protected $except = [
         'profile/*/friend',
         "/encourage/*",
-        'comment/*/*'
+        'comment/*/*',
+        'comment/*'
     ];
 }

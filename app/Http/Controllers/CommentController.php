@@ -14,23 +14,13 @@ class CommentController extends Controller
         $this->middleware('auth');
     }
     //
-    public function insert($id)
-    {
-        $favourite = new Favourite();
-
-        $favourite->user_id = Auth()->user()->id;
-        $favourite->place_id = $id;
-
-        $favourite->save();
-    }
-
-    public function newpost($post_id, Request $request)
+    public function new($id, Request $request)
     {
         $comment = new Comments();
         $comment->fill([
             'user_id' => Auth::user()->id,
             'type' => $request->input('category'),
-            'target_id' => $post_id,
+            'target_id' => $id,
             'text' => $request->input('text')
         ]);
         $comment->save();
@@ -38,23 +28,23 @@ class CommentController extends Controller
         return redirect()->action('ProfileController@index');
     }
 
-    public function updatepost()
+    public function update($id, Request $request)
     {
-        
+        $comment = Comments::findOrFail($id);
+        $comment->update([
+            'text' => $request->input('text')
+        ]);
+        $comment->save();
+
+        return redirect()->action('ProfileController@index');
     }
 
-    public function newgoal()
+    public function destroy($id)
     {
-        
-    }
+        $comment = Comments::findOrfail($id);
 
-    public function updategoal()
-    {
+        $comment->delete();
 
-    }
-
-    public function destroy()
-    {
-        
+        return redirect()->action('ProfileController@index');        
     }
 }
