@@ -32,14 +32,14 @@
     ?>
     <div class="post col-12 wishy-rounded wishy-shadow-box-blue bg-light">
         @if(isset($picture))
-            <div class="{{$new->cathegory}}-image">
-                <img class="wishy-rounded-top" src="/uploads/{{$picture}}" alt="{{$new->cathegory}} image">
+            <div class="{{$new['cathegory']}}-image">
+                <img class="wishy-rounded-top" src="/uploads/{{$picture}}" alt="{{$new['cathegory']}} image">
             </div>
         @endif
         <div class="wishy-post-info">
             <div class="wishy-user-info">
                 <div class="profile-post-thumbnail">
-                    <img class="profile-thumbnail img-fluid" src="/uploads/{{ $new['profile_picture'] != null ? $new['profile_picture'] : 'default.jpg' }}" alt="Profile Name">
+                    <img class="profile-thumbnail img-fluid" src="/uploads/{{ $new['profile_picture'] != null ? $new['profile_picture'] : 'profilePictures/default.jpg' }}" alt="Profile Name">
                 </div>
                 <div class="wishy-user-text">
                     <a href="profile/"><h5>{{$new['user_name']}} {{$new['surname']}}</h5></a>

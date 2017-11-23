@@ -8,7 +8,7 @@
         @if(isset($friendships))
             <a id="add_friend" href="{{ action('FriendController@friend', ['friend_id' => $user->id])}}" class="btn wishy-btn edit"><i class="{{$icon}}" aria-hidden="true"></i></a>
         @else
-            <a href="" class="btn wishy-btn edit" data-toggle="modal" data-target="#editModal"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+            <a href="#" class="btn wishy-btn edit" id="superEdit" data-toggle="modal" data-target="#editModal"><i class="fa fa-pencil" aria-hidden="true"></i></a>
         @endif
         <h3 class="wishy-bold"><strong>{{ $user->name }} {{ $user->surname }}</strong></h3>
         <small><p class="text-secondary">{{ $userDetail != null ? $userDetail->quote : 'User has no quote yet' }}</p></small>

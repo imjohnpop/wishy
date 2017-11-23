@@ -50,6 +50,7 @@ class GoalsController extends Controller
         $head->wishes = count($wishes);
         $head->goals = count($goals);
         $head->nr_friends = count($friends);
+        $head->planner = true;
 
         // planner element
         $planner->goal = $goal;

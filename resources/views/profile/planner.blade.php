@@ -15,5 +15,9 @@
             </div>
         </div>
     </div>
-
+    <script>
+        $( function() {
+            $('#superEdit').hide();
+        });
+    </script>
 @endsection

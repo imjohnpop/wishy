@@ -274,7 +274,7 @@
                     </div>
                     <div class="form-group">
                         <label for="birthday" class="control-label">Your birthday:</label>
-                        <input id="birthday" type="date" class="form-control" name="birthday" value={{ isset($userDetail->birthday) ? "$userDetail->birthday" : '' }}  min="1900-01-01" max="">
+                        <input id="birthday"  lang="en" type="date" class="form-control" name="birthday" value={{ isset($userDetail->birthday) ? "$userDetail->birthday" : '' }}  min="1900-01-01" max="">
                     </div>
 
                     <div class="form-group d-flex justify-content-between">
