@@ -84,7 +84,7 @@ class ProfileController extends Controller
         $userDetail = UserDetail::where('user_id', '=', $id)->first();
         $wishes = Wishes::where('user_id', '=', $id)->get();
         $posts = Post::where('user_id', '=', $id)->get();
-        $goals = DB::table('user_has_goal')->where('user_id', '=', $id)
+        $goals = DB::table('user_has_goal')->where('user_has_goal.user_id', '=', $id)
                     ->rightJoin('goals', 'user_has_goal.goal_id', '=', 'goals.id')->get();
         
         $user_has_friend = UserHasFriend::select('friend_id')->where('user_id', Auth::user()->id)->get()->toArray();
