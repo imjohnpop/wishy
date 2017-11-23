@@ -1,6 +1,5 @@
 @foreach ($news as $new)
     <?php
-
         switch($new['cathegory'])
         {
             case 'goal':
@@ -72,6 +71,14 @@
                 <a href="#" title="Comment" class="ml-3"><i class="fa fa-commenting-o mr-1" aria-hidden="true"></i>Comment ({{$nr_comments}})</a>
             @endif
         </div>
+        @if($new['cathegory']=='goal' || $new['cathegory']=='post')
+            <div class="comments row">
+                <form action="{{ action('CommentController@newpost', ['post_id' => $new['id']])}}" method="post">
+                    <input type="text" name="text">
+                    <button id="{{$new['cathegory']}}" class="comment" type="submit">Comment</button>
+                </form>
+            </div>            
+        @endif
         @foreach($this_comments as $this_comment)
             <div class="comments row">
                 <img  style="width:3em; height:3em; border-radius:50%;" class="col-2" src="/uploads/{{ $this_comment['profile_picture'] != null ? $this_comment['profile_picture'] : 'dummy.png' }}" alt="Profile picture">
