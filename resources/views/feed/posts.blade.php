@@ -39,7 +39,7 @@
         <div class="wishy-post-info">
             <div class="wishy-user-info">
                 <div class="profile-post-thumbnail">
-                    <img class="profile-thumbnail img-fluid" src="/uploads/{{ $new['profile_picture'] != null ? $new['profile_picture'] : 'default.jpg' }}" alt="Profile Name">
+                    <img class="profile-thumbnail img-fluid" src="/uploads/{{ $new['profile_picture'] != null ? $new['profile_picture'] : 'profilePictures/default.jpg' }}" alt="Profile Name">
                 </div>
                 <div class="wishy-user-text">
                     <a href="profile/"><h5>{{$new['user_name']}} {{$new['surname']}}</h5></a>

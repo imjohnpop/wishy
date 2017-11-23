@@ -4,7 +4,9 @@
         <div class="wishy-planner col-12 mr-auto bg-light wishy-shadow-box-blue wishy-rounded">
             <div class="row">
                 <div class="col-4 mt-3">
-                    <img class="w-100" src="/uploads/{{$goal->goal_picture}}" alt="Me fighting with a bear">
+                    @if(isset($goal->goal_picture))
+                        <img class="w-100" src="/uploads/{{ $goal->goal_picture}}" alt="Goal Thumbnail">
+                    @endif
                     <div id="options" class="row mt-5 ml-2">
                         <div class="col-4">
                             <button id="finishButton" class="btn wishy-btn" data-id="{{ $goal->id }}"><i class="fa fa-flag-checkered" aria-hidden="true"></i></button>
@@ -51,8 +53,8 @@
                                 <h2 class="editing hidden"><input class="form-control" type="checkbox" name="is_public" <?= ($goal->is_public == 1) ? 'checked' : '' ?>></h2>
                                 <p class="wishy-bold text-uppercase text-secondary">public</p>
                             </div>
-                            <div class="col-5 text-center">
-                                <h3 id="statusString" class="wishy-bold wishy-minimargin">@foreach($status as $state) {{ $state['tag'] }} @endforeach</h3>
+                            <div class="col-5 text-center mt-1">
+                                <h4 id="statusString" class="wishy-bold wishy-minimargin mt-2">@foreach($status as $state) {{ $state['tag'] }} @endforeach</h4>
                                 <p class="wishy-bold text-uppercase text-secondary">Status</p>
                             </div>
                         </div>

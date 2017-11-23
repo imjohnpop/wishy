@@ -575,7 +575,7 @@ var Check = function (_React$Component) {
                     { className: 'datepicker' },
                     _react2.default.createElement('input', { onChange: function onChange(event) {
                             return _this3.selecting(event);
-                        }, type: 'date', value: this.state.date, name: 'dateselector' }),
+                        }, lang: 'en', type: 'date', value: this.state.date, name: 'dateselector' }),
                     _react2.default.createElement(
                         'span',
                         null,

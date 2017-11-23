@@ -59,7 +59,7 @@ export default class Check extends React.Component {
                     <input onChange={ (event) => this.checking(event, this.props.id) } type="checkbox" checked={this.props.is_done}/> {this.props.text}
                 </div>
                 <div className="datepicker">
-                    <input onChange={ (event) => this.selecting(event) } type="date" value={this.state.date} name="dateselector"/>
+                    <input onChange={ (event) => this.selecting(event) }  lang="en" type="date" value={this.state.date} name="dateselector"/>
                     <span><i onClick={ () => this.submitDate(this.props.id) } className="fa fa-check-square fa-lg" aria-hidden="true"></i></span>
                 </div>
             </div>
