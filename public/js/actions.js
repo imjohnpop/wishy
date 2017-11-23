@@ -53,4 +53,9 @@ $( function() {
         $('#birthday').attr('max', maxDate);
     }
     setMaxDate();
+
+    let $dateinput = $('[type="date"]') ;
+    if ( $dateinput.prop('type') !== 'date' ) {
+        $dateinput.datepicker();
+    }
 });

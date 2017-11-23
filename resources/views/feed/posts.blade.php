@@ -32,8 +32,8 @@
     ?>
     <div class="post col-12 wishy-rounded wishy-shadow-box-blue bg-light">
         @if(isset($picture))
-            <div class="{{$new->cathegory}}-image">
-                <img class="wishy-rounded-top" src="/uploads/{{$picture}}" alt="{{$new->cathegory}} image">
+            <div class="{{$new['cathegory']}}-image">
+                <img class="wishy-rounded-top" src="/uploads/{{$picture}}" alt="{{$new['cathegory']}} image">
             </div>
         @endif
         <div class="wishy-post-info">
