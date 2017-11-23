@@ -3,6 +3,7 @@ var webpack = require("webpack");
 module.exports = {
     entry: {
         checklist: './resources/assets/react/planner.js',
+        comments: './resources/assets/react/comments.js',
         vendor: ['react', 'react-dom'] // vendor bundle consisting of various modules
     },
     output: {
