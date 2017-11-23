@@ -8,11 +8,13 @@ use App\Milestones;
 use App\User;
 use App\UserDetail;
 use App\UserHasFriend;
+use App\UserPicture;
 use App\Wishes;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class GoalsController extends Controller
 {
@@ -75,8 +77,10 @@ class GoalsController extends Controller
             'description' => $request->input('description'),
             'is_public' => $public,
             'user_id' => Auth::user()->id,
-            'goal_picture' => $request->file('goal_picture')->storeAs('goalPictures', $request->input('name').Auth::user()->id.'.jpg', 'uploads'),
         ]);
+        if($request->file('goal_picture')) {
+            $goal->goal_picture =$request->file('goal_picture')->storeAs('goalPictures', $request->input('name').Auth::user()->id.'.jpg', 'uploads');
+        };
         $goal->name = $_POST['name'];
 
 
@@ -98,15 +102,18 @@ class GoalsController extends Controller
             $public = 0;
         }
 
-        $goal->fill([
+        $oldFile = '/uploads/goalPictures/'. $goal->name . Auth::user()->id .'.jpg';
+        if(file_exists("$oldFile")) {
+            Storage::delete($oldFile);
+        }
+
+        $goal->update([
             'name' => $request->input('name'),
             'description' => $request->input('description'),
             'is_public' => $public,
-            // 'goal_picture' => $request->file('goal_picture')->storeAs('goalPictures', $request->input('name').Auth::user()->id.'.jpg', 'uploads'),
         ]);
-
         if($request->file('goal_picture')) {
-            $goal->goal_picture =$request->file('goal_picture')->storeAs('goalPictures', $request->input('text').Auth::user()->id.'.jpg', 'uploads');
+            $goal->goal_picture =$request->file('goal_picture')->storeAs('goalPictures', $request->input('name').Auth::user()->id.'.jpg', 'uploads');
         };
 
         $goal->save();

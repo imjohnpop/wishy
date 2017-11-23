@@ -22,6 +22,9 @@
         </div>
     </div>
     <?=$addmodalView?>
+    <?=$editModalView?>
+    <?=$changepictureView?>
+    <?=$usernameView?>
     <?=$profiledetailView?>
     <?=$newPassView?>
 @endsection

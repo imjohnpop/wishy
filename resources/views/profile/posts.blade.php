@@ -6,6 +6,7 @@
 @else
     @if(isset($posts))
         @foreach($posts as $post)
+            <?php $has_encouraged = Illuminate\Support\Facades\DB::table('encourage_upload')->where([['user_id', Illuminate\Support\Facades\Auth::user()->id], ['upload_id', $post->id], ['category', $post->cathegory]])->first(); ?>
             <div class="post col-12 wishy-rounded wishy-shadow-box-blue bg-light">
                 @if(isset($post->post_picture))
                     <div class="post-image">
@@ -15,7 +16,7 @@
                 <div class="wishy-post-info">
                     <div class="wishy-user-info">
                         <div class="profile-post-thumbnail">
-                            <img class="profile-thumbnail img-fluid" src="/uploads/{{ $userDetail != null ? $userDetail->profile_picture : 'dummy.png' }}" alt="Profile Name">
+                            <img class="profile-thumbnail img-fluid" src="/uploads/{{ $userDetail != null ? $userDetail->profile_picture : 'profilePictures/default.jpg' }}" alt="Profile Name">
                         </div>
                         <div class="wishy-user-text">
                             <h5>{{ $user->name }} {{ $user->surname }}</h5>
@@ -49,7 +50,7 @@
                     </form>
                 </div>
                 <div class="wishy-post-nav post wishy-rounded-bottom">
-                    <a href="#" class="encourage" title="Encourage"  data-id="{{ $post->id }}" data-category="{{ $post->cathegory }}"><i class="fa fa-hand-peace-o mr-1" aria-hidden="true"></i><span class="encourage_text">Encourage</span> <span class="encourage_number">({{ $post->nr_encouragements }})</span></a>
+                    <a href="#" class="encourage" title="Encourage"  data-id="{{ $post->id }}" data-category="{{ $post->cathegory }}"><i class="fa fa-hand-peace-o mr-1" aria-hidden="true"></i><span class="encourage_text">{{ empty($has_encouraged) ? 'Encourage ' : 'Encouraged ' }}</span><span class="encourage_number">({{ $post->nr_encouragements }})</span></a>
                     <a href="#" title="Comment" class="comment ml-3"><i class="fa fa-commenting-o mr-1" aria-hidden="true"></i>Comment</a>
                 </div>
             </div>

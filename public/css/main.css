@@ -460,6 +460,10 @@ label {
   font-weight: 700;
 }
 
+.bg-gold {
+  background-color: #F9B800;
+}
+
 .wishy-btn {
   color: #fff;
   background-color: #F9B800;
@@ -601,6 +605,14 @@ label {
   position: fixed;
 }
 
+.first-login > div {
+  z-index: -1;
+}
+
+.first-login .window {
+  width: 40%;
+}
+
 .wishy-welcome-bg {
   background-color: #26273b;
   height: 350px;
@@ -685,7 +697,7 @@ label {
   font-family: "Montserrat", sans-serif;
 }
 
-.wishy-login i {
+label i {
   position: absolute;
   top: 30px;
   right: 26px;
@@ -964,5 +976,15 @@ li.dropdown-item {
 .wishy-planner #calendar {
   max-width: 900px;
   margin: 0 auto;
+}
+
+.btn-group span.bg-gold {
+  border-left: 1px solid #ba8800;
+  border-right: 1px solid #ba8800;
+  z-index: 1;
+}
+
+.btn-group button {
+  border-radius: 0 .25rem .25rem 0;
 }
 

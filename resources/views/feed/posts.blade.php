@@ -1,6 +1,5 @@
 @foreach ($news as $new)
     <?php
-
         switch($new['cathegory'])
         {
             case 'goal':
@@ -28,6 +27,8 @@
         }
 
         $nr_comments = count($this_comments);
+
+        $has_encouraged = Illuminate\Support\Facades\DB::table('encourage_upload')->where([['user_id', Illuminate\Support\Facades\Auth::user()->id], ['upload_id', $new['id']], ['category', $new['cathegory']]])->first();
     ?>
     <div class="post col-12 wishy-rounded wishy-shadow-box-blue bg-light">
         @if(isset($picture))
@@ -38,7 +39,7 @@
         <div class="wishy-post-info">
             <div class="wishy-user-info">
                 <div class="profile-post-thumbnail">
-                    <img class="profile-thumbnail img-fluid" src="/uploads/{{ $new['profile_picture'] != null ? $new['profile_picture'] : 'dummy.png' }}" alt="Profile Name">
+                    <img class="profile-thumbnail img-fluid" src="/uploads/{{ $new['profile_picture'] != null ? $new['profile_picture'] : 'default.jpg' }}" alt="Profile Name">
                 </div>
                 <div class="wishy-user-text">
                     <a href="profile/"><h5>{{$new['user_name']}} {{$new['surname']}}</h5></a>
@@ -65,16 +66,24 @@
         </div>
         <div class="wishy-post-nav wishy-rounded-bottom">
             @isset($new['tag'])
-                <a href="#" title="Status" class="comment mr-3"><i class="fa fa-certificate mr-1" aria-hidden="true"></i>{{$new['tag']}}</a>
+                <a href="#" title="Status" class="status mr-3"><i class="fa fa-certificate mr-1" aria-hidden="true"></i>{{$new['tag']}}</a>
             @endisset
-            <a href="#" class="encourage" title="Encourage" data-id="{{ $new['id'] }}" data-category="{{ $new['cathegory'] }}"><i class="fa fa-hand-peace-o mr-1" aria-hidden="true"></i><span class="encourage_text">Encourage</span> <span class="encourage_number">({{$new['nr_encouragements']}})</span></a>
+            <a href="#" class="encourage" title="Encourage" data-id="{{ $new['id'] }}" data-category="{{ $new['cathegory'] }}"><i class="fa fa-hand-peace-o mr-1" aria-hidden="true"></i><span class="encourage_text">{{ empty($has_encouraged) ? 'Encourage ' : 'Encouraged ' }}</span><span class="encourage_number">({{$new['nr_encouragements']}})</span></a>
             @if($new['cathegory']=='goal' || $new['cathegory']=='post')
-                <a href="#" title="Comment" class="ml-3"><i class="fa fa-commenting-o mr-1" aria-hidden="true"></i>Comment ({{$nr_comments}})</a>
+                <a href="#" title="Comment" class="comment ml-3"><i class="fa fa-commenting-o mr-1" aria-hidden="true"></i>Comment ({{$nr_comments}})</a>
             @endif
         </div>
+        @if($new['cathegory']=='goal' || $new['cathegory']=='post')
+            <div class="comments row">
+                <form action="{{ action('CommentController@newpost', ['post_id' => $new['id']])}}" method="post">
+                    <input type="text" name="text">
+                    <button id="{{$new['cathegory']}}" class="comment" type="submit">Comment</button>
+                </form>
+            </div>            
+        @endif
         @foreach($this_comments as $this_comment)
             <div class="comments row">
-                <img  style="width:3em; height:3em; border-radius:50%;" class="col-2" src="/uploads/{{ $this_comment['profile_picture'] != null ? $this_comment['profile_picture'] : 'dummy.png' }}" alt="Profile picture">
+                <img  style="width:3em; height:3em; border-radius:50%;" class="col-2" src="/uploads/{{ $this_comment['profile_picture'] != null ? $this_comment['profile_picture'] : 'default.jpg' }}" alt="Profile picture">
                 <div class="col-9">
                     <h5>{{$this_comment['name']}} {{$this_comment['surname']}}</h5>
                     <p>{{$this_comment['text']}}</p>

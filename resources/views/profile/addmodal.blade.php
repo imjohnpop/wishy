@@ -16,7 +16,7 @@
                     {{csrf_field()}}
                     <div class="form-group">
                         <label for="name">Wish Title</label>
-                        <input name="name" type="text" class="form-control" id="name" placeholder="Enter title">
+                        <input name="name" type="text" class="form-control" id="name" placeholder="Enter title" required>
                     </div>
                     <div class="form-group">
                         <label for="description">Description</label>

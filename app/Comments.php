@@ -9,7 +9,8 @@ class Comments extends Model
     //
     protected $fillable = [
         'user_id',
-        'goal_id',
+        'type',
+        'target_id',
         'text'
     ];
 }

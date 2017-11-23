@@ -9,6 +9,10 @@ use App\UserHasFriend;
 
 class FriendController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     //    
     public function friend($friend_id)
     {

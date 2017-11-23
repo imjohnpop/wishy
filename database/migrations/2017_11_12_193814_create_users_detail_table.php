@@ -16,11 +16,11 @@ class CreateUsersDetailTable extends Migration
         Schema::create('users_detail', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->default(0);
-            $table->string('country');
-            $table->string('profile_picture');
-            $table->text('quote');
-            $table->date('birthday');
-            $table->string('gender');
+            $table->string('country')->nullable();
+            $table->text('quote')->nullable();
+            $table->date('birthday')->nullable();
+            $table->string('gender')->nullable();
+            $table->string('profile_picture')->default('profilePictures/default.jpg')->nullable();
             $table->timestamps();
         });
     }

@@ -6,6 +6,7 @@
     @else
         @if(isset($wishes))
             @foreach($wishes as $wish)
+                <?php $has_encouraged = Illuminate\Support\Facades\DB::table('encourage_upload')->where([['user_id', Illuminate\Support\Facades\Auth::user()->id], ['upload_id', $wish->id], ['category', $wish->cathegory]])->first(); ?>
                 <div class="wish col-12 wishy-rounded wishy-shadow-box-blue bg-light">
                     @if(isset($wish->wish_picture))
                         <div class="wish-image">
@@ -15,7 +16,7 @@
                     <div class="wishy-wish-info">
                         <div class="wishy-user-info">
                             <div class="profile-wish-thumbnail">
-                                <img class="profile-thumbnail img-fluid" src="/uploads/{{ $userDetail != null ? $userDetail->profile_picture : 'dummy.png' }}" alt="Profile Name">
+                                <img class="profile-thumbnail img-fluid" src="/uploads/{{ $userDetail != null ? $userDetail->profile_picture : 'profilePictures/default.jpg' }}" alt="Profile Name">
                             </div>
                             <div class="wishy-user-text">
                                 <h5>{{ $user->name }} {{ $user->surname }}</h5>
@@ -63,7 +64,7 @@
                     </div>
                     <div class="wishy-wish-nav wish wishy-rounded-bottom">
                         <a href="#" class="encourage" title="Encourage" data-id="{{ $wish->id }}" data-category="{{ $wish->cathegory }}"><i class="fa fa-hand-peace-o mr-1" aria-hidden="true"></i><span class="encourage_text">Encourage</span> <span class="encourage_number">({{ $wish->nr_encouragements }})</span></a>
-                        <a href="#" title="Status" class="comment ml-3"><i class="fa fa-certificate mr-1" aria-hidden="true"></i>Status</a>
+                        <a href="#" title="Status" class="status ml-3"><i class="fa fa-certificate mr-1" aria-hidden="true"></i>Status</a>
                     </div>
                 </div>
             @endforeach

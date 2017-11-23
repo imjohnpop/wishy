@@ -9,8 +9,19 @@ use Illuminate\Support\Facades\Auth;
 
 class WishController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'name' => 'required|string|max:40',
+            'description' => 'string|max:255',
+        ]);
+
         if(request()->input('is_public') == 'on'){
             $public = 1;
         } else {
@@ -23,8 +34,12 @@ class WishController extends Controller
             'description' => $request->input('description'),
             'is_public' => $public,
             'user_id' => Auth::user()->id,
-            'wish_picture' => $request->file('wish_picture')->storeAs('wishPictures', $request->input('description').Auth::user()->id.'.jpg', 'uploads'),
         ]);
+        if($request->file('wish_picture')!=null) {
+            $wish->fill([
+                'wish_picture' => $request->file('wish_picture')->storeAs('wishPictures', $request->input('description').Auth::user()->id.'.jpg', 'uploads'),
+            ]);
+        }
         $wish->save();
 
 

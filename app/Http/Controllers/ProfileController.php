@@ -6,19 +6,29 @@ use App\User;
 use App\Post;
 use App\Goals;
 use App\UserDetail;
+use App\UserPicture;
 use App\Wishes;
 use App\UserHasFriend;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
+
 class ProfileController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index() {
+
+
 
         $view = view('profile/profile');
 
@@ -62,8 +72,16 @@ class ProfileController extends Controller
         $view->postsView->userDetail = $userDetail;
         $view->postsView->posts = $posts;
 
+        $view->editModalView = view('profile/editModal');
+        $view->editModalView->user = $user;
+        $view->usernameView = view('profile/username');
+        $view->usernameView->user = $user;
+
         $view->addmodalView = view('profile/addmodal');
+        $view->changepictureView = view('profile/changepicture');
         $view->profiledetailView = view('profile/profiledetail');
+        $view->profiledetailView->userDetail = $userDetail;
+        $view->changepictureView->userDetail = $userDetail;
         $view->wishgoalnavView = view('profile/wishgoal');
 
         return $view;
@@ -102,20 +120,25 @@ class ProfileController extends Controller
         ->select('users.id', 'users.name AS user_name', 'users.surname', 'users_detail.profile_picture')
         ->where('user_has_friend.user_id', $id)->get()->toArray();
         
-        $view->headView = view('profile/head', ['user' => $user, 'userDetail' => $userDetail, 'friendships'=>$friendships]);
+        $view->headView = view('profile/head', ['user' => $user, 'userDetail' => $userDetail, 'userPicture' => $userPicture, 'friendships'=>$friendships]);
         $view->headView->wishes = count($wishes);
         $view->headView->goals = count($goals);
         $view->headView->nr_friends = count($friends);
         
         $view->friendView = view('profile/friend', ['friendships'=>$friendships, 'user' => $user, 'friends'=>$friends]);
 
-        $view->wishesView = view('profile/wishes', ['friendships'=>$friendships, 'user' => $user, 'userDetail' => $userDetail, 'wishes' => $wishes]);
+        $view->wishesView = view('profile/wishes', ['friendships'=>$friendships, 'user' => $user, 'userDetail' => $userDetail, 'userPicture' => $userPicture, 'wishes' => $wishes]);
 
-        $view->goalsView = view('profile/goals', ['friendships'=>$friendships, 'user' => $user, 'userDetail' => $userDetail, 'goals' => $goals]);
+        $view->goalsView = view('profile/goals', ['friendships'=>$friendships, 'user' => $user, 'userDetail' => $userDetail, 'userPicture' => $userPicture, 'goals' => $goals]);
 
-        $view->postsView = view('profile/posts', ['friendships'=>$friendships, 'user' => $user, 'userDetail' => $userDetail, 'posts' => $posts]);
+        $view->postsView = view('profile/posts', ['friendships'=>$friendships, 'user' => $user, 'userDetail' => $userDetail, 'userPicture' => $userPicture, 'posts' => $posts]);
 
         $view->addmodalView = view('profile/addmodal');
+        $view->changepictureView = view('profile/changepicture');
+        $view->usernameView = view('profile/username');
+        $view->editModalView = view('profile/editModal');
+        $view->usernameView->user = $user;
+        $view->editModalView->user = $user;
         $view->profiledetailView = view('profile/profiledetail');
         $view->wishgoalnavView = view('profile/wishgoal', ['friendships'=>$friendships]);
 
@@ -136,25 +159,91 @@ class ProfileController extends Controller
 
     public function store(Request $request) {
 
-        if (empty($user_detail)) {
-            $user_detail = new UserDetail();
-            $user_detail->fill([
-                'country' => $request->input('country'),
-                'profile_picture' => $request->file('profile_picture')->storeAs('profilePictures', Auth::user()->id.'.jpg', 'uploads'),
-                'quote' => $request->input('quote'),
-                'birthday' => $request->input('birthday'),
-                'gender' => $request->input('gender'),
-                'user_id' => Auth::user()->id,
+        $self = $this;
+        if($request->input('category')=='detail') {
+
+            $self->validate($request, [
+                'country' => 'string|max:40',
+                'quote' => 'string|max:100',
+                'birthday' => 'date|date_format:Y-m-d|before:tomorrow',
+                'gender' => 'string|max:6',
             ]);
-        } else {
-            $user_detail = UserDetail::findOrFail(Auth::user()->id);
-            $user_detail->update([
-                'country' => $request->input('country'),
-                'profile_picture' => $request->file('profile_picture')->storeAs('profilePictures', Auth::user()->id.'.jpg', 'uploads'),
-                'quote' => $request->input('quote'),
+
+            $user_detail = UserDetail::where('user_id', Auth::user()->id)->first();
+            if ($user_detail==null) {
+                $user_detail = new UserDetail();
+                $user_detail->fill([
+                    'country' => $request->input('country'),
+                    'quote' => $request->input('quote'),
+                    'birthday' => $request->input('birthday'),
+                    'gender' => $request->input('gender'),
+                    'user_id' => Auth::user()->id,
+                ]);
+            } else {
+                $user_detail->update([
+                    'country' => $request->input('country'),
+                    'quote' => $request->input('quote'),
+                    'birthday' => $request->input('birthday'),
+                    'gender' => $request->input('gender'),
+                ]);
+            }
+            $user_detail->save();
+
+        } elseif($request->input('category')=='picture') {
+
+            $profilePicture = UserDetail::where('user_id', Auth::user()->id)->first();
+            if($request->file('profile_picture')!=null) {
+                $file = $request->file('profile_picture')->storeAs('profilePictures', Auth::user()->id . '.jpg', 'uploads');
+            } else {
+                $file = 'profilePictures/default.jpg';
+            }
+            if ($profilePicture==null) {
+                $profilePicture = new UserDetail();
+                $profilePicture->fill([
+                    'user_id' => Auth::user()->id,
+                    'profile_picture' => "$file",
+                ]);
+            } else {
+                $oldFile = '/uploads/profilePictures/'. Auth::user()->id .'.jpg';
+                if(file_exists("$oldFile")) {
+                    Storage::delete($oldFile);
+                }
+                $profilePicture->update([
+                    'profile_picture' => "$file",
+                ]);
+            }
+            $profilePicture->save();
+
+        } elseif($request->input('category')=='delete') {
+
+            $profilePicture = UserDetail::where('user_id', Auth::user()->id)->first();
+            if ($profilePicture!=null) {
+                $file = 'profilePictures/default.jpg';
+                $oldFile = '/uploads/profilePictures/'. Auth::user()->id .'.jpg';
+                if(file_exists("$oldFile")) {
+                    Storage::delete($oldFile);
+                }
+                $profilePicture->update([
+                    'profile_picture' => "$file",
+                ]);
+            }
+            $profilePicture->save();
+
+        } elseif($request->input('category')=='username') {
+
+            $self->validate($request, [
+                'name' => 'required|string|max:255',
+                'surname' => 'required|string|max:255',
             ]);
+
+            $user = User::where('id', Auth::user()->id)->first();
+            $user->update([
+                'name' => $request->input('name'),
+                'surname' => $request->input('surname'),
+            ]);
+            $user->save();
+
         }
-        $user_detail->save();
 
         return redirect()->action('ProfileController@index');
     }
