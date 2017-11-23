@@ -47,6 +47,10 @@ label {
   font-weight: 700;
 }
 
+.bg-gold {
+  background-color: $gold;
+}
+
 
 .wishy-btn {
   color: #fff;
@@ -175,6 +179,15 @@ label {
   position: fixed;
 }
 
+.first-login {
+  & > div {
+    z-index: -1;
+  }
+  & .window {
+    width: 40%;
+  }
+}
+
 // Welcome part
 
 .wishy-welcome-bg {
@@ -252,12 +265,13 @@ label {
   top: -50px;
   left: 438px;
   font-family: $font;
-  i {
-    position: absolute;
-    top: 30px;
-    right: 26px;
-    z-index: 10;
-  }
+}
+
+label i {
+  position: absolute;
+  top: 30px;
+  right: 26px;
+  z-index: 10;
 }
 
 .wishy-flipper-container {
@@ -485,5 +499,16 @@ li.dropdown-item {
   #calendar {
     max-width: 900px;
     margin: 0 auto;
+  }
+}
+
+.btn-group {
+  & span.bg-gold {
+    border-left: 1px solid $gold_hover;
+    border-right: 1px solid $gold_hover;
+    z-index: 1;
+  }
+  & button {
+    border-radius: 0 .25rem .25rem 0;
   }
 }

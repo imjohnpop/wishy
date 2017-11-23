@@ -18,7 +18,7 @@ Auth::routes();
 
 // --------------- Homepage ------------------------------------------
 
-Route::get('/', 'HomeController@index');
+Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/home', function () {
     return redirect('/');
@@ -47,11 +47,12 @@ Route::resource('feed', 'FeedController', [
     * [DELETE]  /feed/{id}  => destroy
     */
 
-    Route::prefix('encourage')->group(function () {
-        Route::post('/post/{post_id}', 'EncourageController@post');
-        Route::post('/wish/{wish_id}', 'EncourageController@wish');
-        Route::post('/goal/{goal_id}', 'EncourageController@goal');
-    });
+Route::post('/encourage/{id}', 'EncourageController@upload');
+//    Route::prefix('encourage')->group(function () {
+//        Route::post('/post/{post_id}', 'EncourageController@post');
+//        Route::post('/wish/{wish_id}', 'EncourageController@wish');
+//        Route::post('/goal/{goal_id}', 'EncourageController@goal');
+//    });
     
     Route::prefix('status')->group(function () {
         Route::post('/wish/{wish_id}', 'StatusController@wish');
