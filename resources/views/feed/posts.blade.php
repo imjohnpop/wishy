@@ -65,29 +65,25 @@
             </div>
         </div>
         <div class="wishy-post-nav wishy-rounded-bottom">
-            <div class="nav-links">
-                @isset($new['tag'])
-                    <a href="#" title="Status" class="status mr-3"><i class="fa fa-certificate mr-1" aria-hidden="true"></i>{{$new['tag']}}</a>
-                @endisset
-                <a href="#" class="encourage" title="Encourage" data-id="{{ $new['id'] }}" data-category="{{ $new['cathegory'] }}"><i class="fa fa-hand-peace-o mr-1" aria-hidden="true"></i><span class="encourage_text">{{ empty($has_encouraged) ? 'Encourage ' : 'Encouraged ' }}</span><span class="encourage_number">({{$new['nr_encouragements']}})</span></a>
-                @if($new['cathegory']=='goal' || $new['cathegory']=='post')
-                    <a href="#" title="Comment" class="comment ml-3"><i class="fa fa-commenting-o mr-1" aria-hidden="true"></i>Comment ({{$nr_comments}})</a>
-                @endif
-            </div>
+            @isset($new['tag'])
+                <a href="#" title="Status" class="status mr-3"><i class="fa fa-certificate mr-1" aria-hidden="true"></i>{{$new['tag']}}</a>
+            @endisset
+            <a href="#" class="encourage" title="Encourage" data-id="{{ $new['id'] }}" data-category="{{ $new['cathegory'] }}"><i class="fa fa-hand-peace-o mr-1" aria-hidden="true"></i><span class="encourage_text">{{ empty($has_encouraged) ? 'Encourage ' : 'Encouraged ' }}</span><span class="encourage_number">({{$new['nr_encouragements']}})</span></a>
             @if($new['cathegory']=='goal' || $new['cathegory']=='post')
-                <div class="comments row c-form">
-                    <form action="{{ action('CommentController@new', ['post_id' => $new['id']])}}" method="post">
-                        <input type="text" name="text">
-                        <button id="{{$new['cathegory']}}" class="comment" type="submit">Comment</button>
-                    </form>
-                    <a href="#" title="Close"><i class="fa fa-times-circle-o" aria-hidden="true"></i></a>
-                </div>            
+                <a href="#" title="Comment" class="comment ml-3"><i class="fa fa-commenting-o mr-1" aria-hidden="true"></i>Comment ({{$nr_comments}})</a>
+            @endif
+            @if($new['cathegory']=='goal' || $new['cathegory']=='post')
+                <form action="{{ action('CommentController@new', ['post_id' => $new['id']])}}" method="post">
+                    <input type="text" name="text">
+                    <button data-category="{{$new['cathegory']}}" class="comment" type="submit">Comment</button>
+                </form>
+                <a href="#" title="Close"><i class="fa fa-times-circle-o" aria-hidden="true"></i></a>
             @endif
         </div>
         <div class="comments" id="comment-section">
             @foreach($this_comments as $this_comment)
                 <div class="comments row">
-                    <img  style="width:3em; height:3em; border-radius:50%;" class="col-2" src="/uploads/{{ $this_comment['profile_picture'] != null ? $this_comment['profile_picture'] : 'dummy.png' }}" alt="Profile picture">
+                    <img style="width:3em; height:3em; border-radius:50%;" class="col-2" src="/uploads/{{ $this_comment['profile_picture'] != null ? $this_comment['profile_picture'] : 'dummy.png' }}" alt="Profile picture">
                     <div class="col-9">
                         <h5>{{$this_comment['name']}} {{$this_comment['surname']}}</h5>
                         <sub>Added at: <span>{{$this_comment['created_at']}}</span></sub>

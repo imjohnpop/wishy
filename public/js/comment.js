@@ -1,30 +1,28 @@
 $('div#comment-section').hide();
 $('button.comment_update').parent().hide();
-$('div.c-form').hide();
+$('.wishy-post-nav').find('form').hide();
+$('a[title="Close"]').hide();
 
 $('a[title="Comment"]').click(function(e){
     e.preventDefault();
     
-    $('div.c-form').show();
-    $('.nav-links').hide();    
-    var comments = $(this).parent().parent().parent().find('#comment-section');
-    
-    if(comments.css('display')=='none')
-    {
-        comments.show();
-    } else {
-        comments.hide();        
-    }
+    var parent = $(this).parent();
+    parent.find('form').show();
+    parent.find('a').hide();
+    parent.find('a[title="Close"]').show();
+
+    $(this).parent().parent().find('#comment-section').show();
 })
 
 $('a[title="Close"]').click(function(e){
     e.preventDefault();
     
-    $('div.c-form').hide();
-    $('.nav-links').show();    
-    var comments = $(this).parent().parent().parent().find('#comment-section');
+    var parent = $(this).parent();
+    parent.find('form').hide();
+    parent.find('a').show();
+    parent.find('a[title="Close"]').hide();
     
-    comments.hide();
+    $(this).parent().parent().find('#comment-section').hide();
 })
 
 $('button.comment').click(function(e){
@@ -32,7 +30,7 @@ $('button.comment').click(function(e){
 
     var form = $(this).parent();
     var text = form.find('input').val();
-    var category = form.find('button').attr('id');
+    var category = form.find('button').attr('data-category');
         
     $.ajax({
         url: form.attr('action'),
