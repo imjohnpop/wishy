@@ -2,6 +2,7 @@ $('div#comment-section').hide();
 $('button.comment_update').parent().hide();
 $('.wishy-post-nav').find('form').hide();
 $('a[title="Close"]').hide();
+$('a[title="Close_edit"]').hide();
 
 $('a[title="Comment"]').click(function(e){
     e.preventDefault();
@@ -10,7 +11,7 @@ $('a[title="Comment"]').click(function(e){
     parent.find('form').show();
     parent.find('a').hide();
     parent.find('a[title="Close"]').show();
-
+    
     $(this).parent().parent().find('#comment-section').show();
 })
 
@@ -41,6 +42,7 @@ $('button.comment').click(function(e){
         }
     }).done(function(){
         location.reload();
+        // $('#comment-section').load(document.URL +  ' #comment-section div');
     });
 });
 
@@ -59,8 +61,19 @@ $('a.comment_edit').click(function(e){
     e.preventDefault();
     var parent = $(this).parent().parent();
     parent.find('form').show();
+    parent.find('a[title="Close_edit"]').show();
     parent.find('p').hide();    
 });
+
+$('a[title="Close_edit"]').click(function(e){
+    e.preventDefault();
+    
+    var parent = $(this).parent();
+    parent.find('form').hide();
+    parent.find('p').show();
+    parent.find('a[title="Close_edit"]').hide();
+})
+
 
 $('button.comment_update').click(function(e){
     e.preventDefault();

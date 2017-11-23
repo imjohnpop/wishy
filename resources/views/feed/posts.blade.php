@@ -17,7 +17,7 @@
         }
 
         $this_comments = [];
-
+        
         foreach($comments as $comment)
         {
             if($comment['target_id'] == $new['id'])
@@ -25,7 +25,7 @@
                 $this_comments[] = $comment;
             }
         }
-
+        // dd($this_comments);
         $nr_comments = count($this_comments);
 
         $has_encouraged = Illuminate\Support\Facades\DB::table('encourage_upload')->where([['user_id', Illuminate\Support\Facades\Auth::user()->id], ['upload_id', $new['id']], ['category', $new['cathegory']]])->first();
@@ -92,6 +92,7 @@
                             <input type="text" name="text" value="{{$this_comment['text']}}">
                             <button class="comment_update" type="submit">Comment</button>
                         </form>
+                        <a href="#" title="Close_edit"><i class="fa fa-times-circle-o" aria-hidden="true"></i></a>            
                         @if($this_comment['user_id'] == $current_user_id)
                             <div class="links">
                                 <a class="comment_edit" href="#"><i class="fa fa-pencil" aria-hidden="true"></i></a>
