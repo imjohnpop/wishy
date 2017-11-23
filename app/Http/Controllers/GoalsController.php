@@ -105,6 +105,10 @@ class GoalsController extends Controller
             // 'goal_picture' => $request->file('goal_picture')->storeAs('goalPictures', $request->input('name').Auth::user()->id.'.jpg', 'uploads'),
         ]);
 
+        if($request->file('goal_picture')) {
+            $goal->goal_picture =$request->file('goal_picture')->storeAs('goalPictures', $request->input('text').Auth::user()->id.'.jpg', 'uploads');
+        };
+
         $goal->save();
 
         return redirect()->action('GoalsController@view', ['id' => $id]);

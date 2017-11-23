@@ -28,12 +28,18 @@
 
                 </div>
                 <div class="col-8 mt-3">
-                    <form action="{{ action('GoalsController@update', ['id' => $goal->id]) }}" method="post">
+                    <form action="{{ action('GoalsController@update', ['id' => $goal->id]) }}" method="post" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <h2 class="editing">{{ $goal->name }}</h2>
                         <h2 class="editing hidden"><input class="form-control" type="text" name="name" value="{{ $goal->name }}"></h2>
                         <p class="editing">{{ $goal->description }}</p>
                         <textarea class="form-control editing hidden" name="description" rows="4" type="text">{{ $goal->description }}</textarea>
+                        <div class="form-group editing hidden">
+                            <label for="goal_picture">Goal Picture</label>
+                            <div class="col">
+                                <input name="goal_picture" type="file" class="form-control" id="goal_picture">
+                            </div>
+                        </div>
                         <hr>
                         <div class="row">
                             <div class="col-5 text-center">
