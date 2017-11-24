@@ -114,6 +114,11 @@ class ProfileController extends Controller
     public function show($id)
     {
         $user = User::find($id);
+
+        if($user == null) {
+            return redirect('/profile');
+        } else {
+        $user = User::find($id);
         if(isset($user)) {
             $view = view('profile/profile');
             $userDetail = UserDetail::where('user_id', '=', $id)->first();
@@ -170,6 +175,7 @@ class ProfileController extends Controller
             $view->postsView->post_comments = $post_comments;
 
             return $view;
+        }
         }
 
         return redirect('/profile');
