@@ -10,3 +10,6 @@ npm-debug.log
 yarn-error.log
 .env
 /public/uploads
+.revision
+phploy.ini
+phploy.phar

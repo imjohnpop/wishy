@@ -37,6 +37,29 @@
                 <div class="wishy-goal-nav goal wishy-rounded-bottom">
                     <a href="#" class="encourage" title="Encourage"  data-id="{{ $goal->id }}" data-category="{{ $goal->cathegory }}"><i class="fa fa-hand-peace-o mr-1" aria-hidden="true"></i><span class="encourage_text">{{ empty($has_encouraged) ? 'Encourage ' : 'Encouraged ' }}</span><span class="encourage_number">({{ $goal->nr_encouragements }})</span></a>
                     <a href="#" title="Comment" class="comment ml-3"><i class="fa fa-commenting-o mr-1" aria-hidden="true"></i>Comment</a>
+
+                    <div class="commenting col-12" data-mat="{{ $goal['id'] }}">
+
+                        <div class="row">
+                            <div class="col-11">
+                                <form class="w-100" action="{{ action('CommentController@new', ['post_id' => $goal['id'], 'type' => $goal['cathegory']])}}" method="post">
+                                    <div class="row">
+                                        <div class="col-10">
+                                            <input class="w-100" type="text" name="text" placeholder="Add new comment">
+                                        </div>
+                                        <div class="col-2">
+                                            <button data-category="{{$goal['cathegory']}}" class="commenting-buttons btn wishy-btn menu" type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-1">
+                                <button style="position: static; margin-left: -20px;" title="Close" class="btn wishy-btn menu closingButton" data-mat="{{ $goal['id'] }}"><i class="fa fa-times" aria-hidden="true"></i></button>
+                            </div>
+                        </div>
+
+                    </div>
+                    
                 </div>
             </div>
         @endforeach
