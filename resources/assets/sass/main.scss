@@ -538,3 +538,88 @@ li.dropdown-item {
     border-radius: 0 .25rem .25rem 0;
   }
 }
+
+.comment-profile-image {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+}
+
+.comments.row {
+  margin-top: 10px;
+  margin-left: 10px;
+  .links {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    .btn {
+      position: static;
+    }
+  }
+}
+
+.wishy-post-nav form {
+  input {
+    background: transparent;
+    border: 0px solid black;
+    border-bottom: 1px solid grey;
+    margin-top: 5px;
+    color: white;
+    &:focus {
+      border-bottom: 1px solid $gold;
+      outline: none;
+      box-shadow: none;
+  }
+  }
+  button {
+    &.btn.wishy-btn.menu {
+      position: static;
+    }
+  }
+}
+
+.post .comments {
+  background-color: #26273b;
+  margin-top: -14px;
+  color: white;
+  padding-top: 14px;
+  hr {
+    border: 1px solid white;
+    &:last-child {
+      border-width: 0;
+    }
+  }
+  input {
+    background: transparent;
+    border: 0px solid black;
+    border-bottom: 1px solid grey;
+    margin-top: 5px;
+    color: white;
+    &:focus {
+      border-bottom: 1px solid $gold;
+      outline: none;
+      box-shadow: none;
+    }
+  }
+  .row {
+    margin-right: 0;
+  }
+  &.row .links {
+    margin-left: auto;
+  }
+}
+
+.post .btn.wishy-btn {
+  border-radius: 50%;
+  box-shadow: 0 0px 8px $gold !important;
+  &.green {
+    background-color: #777777;
+    box-shadow: 0 0px 8px #777777 !important;
+    border-color: #777777;
+    &:hover {
+      background-color: darken(#777777, 10%);
+      box-shadow: 0 0px 8px darken(#777777, 10%) !important;
+      border-color: darken(#777777, 10%);
+    }
+  }
+}

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\UserDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Goals;
@@ -61,6 +62,9 @@ class HomeController extends Controller
                     ->where('user_has_friend.user_id', Auth::user()->id)
                     ->orwhere('posts.user_id', Auth::user()->id)->get()->toArray();
 
+                $user = User::find(Auth::user()->id);
+                $userDetail = UserDetail::where('user_id', '=', Auth::user()->id)->first();
+
                 $news = array_merge($goals, $wishes);
                 $news = array_merge($news, $posts);
                 $news = collect($news)->sortBy('updated_at')->toArray();
@@ -101,6 +105,12 @@ class HomeController extends Controller
                 $events_list = collect($events_list)->sortBy('date')->reverse()->toArray();
                 $events->events_list = $events_list;
                 $view->events = $events;
+                $view->headView = view('profile/head');
+                $view->headView->user = $user;
+                $view->headView->userDetail = $userDetail;
+                $view->headView->wishes = count($wishes);
+                $view->headView->goals = count($goals);
+                $view->headView->nr_friends = count($friends);
             }
         } else {
             $view = view('homepage/homepage');

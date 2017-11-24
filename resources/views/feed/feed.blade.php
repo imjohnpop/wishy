@@ -7,13 +7,16 @@
 @section('content')
     <div class="container mt-3">
         <div class="row">
-            <section class="wishy-profile col-3">
+            <section id="head" class="wishy-profile col-3">
+                <?= $headView ?>
                 <?=$friends?>
             </section>
-            <div id="goals" class="col-6">
+            <section id="goals" class="col-6 mx-auto">
                 <?=$posts?>
-            </div>
-            <?=$events?>
+            </section>
+            <section id="events" class="sticky-top">
+                <?=$events?>
+            </section>
         </div>
     </div>
     <?=$newPassView?>

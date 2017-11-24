@@ -59,7 +59,7 @@ Route::post('/encourage/{id}', 'EncourageController@upload');
     });
     
     Route::prefix('comment')->group(function () {
-        Route::post('/post/{post_id}', 'CommentController@new');
+        Route::post('/post/{post_id}/{type}', 'CommentController@new');
         Route::put('/post/{comment_id}', 'CommentController@update');
         Route::delete('/{comment_id}', 'CommentController@destroy');
     });
