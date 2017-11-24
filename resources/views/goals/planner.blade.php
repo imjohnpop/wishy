@@ -78,39 +78,39 @@
 <script src="/js/checklist.bundle.js"></script>
 
 <script>
-    // CHECKLISTS
-    $('#checkbox').click(function() {
-        $('#checklistInput').slideToggle();
-    });
-
-    $(document).ready(function() {
-        $('#checklistInput').hide();
-    });
-
-    $('#editButton').click(function() {
-        $('.editing').toggleClass('hidden');
-    });
-
-    $('#finishButton').click(function() {
-        var id = $('#checklists').data('goal');
-        $.ajax({
-            type: 'post',
-            url: '/api/goal/complete/' + id,
-            data: {
-            }
-        }).done((data) => {
-            $('#statusString').text('Achieved');
+    $(function() {
+        // CHECKLISTS
+        $('#checkbox').click(function() {
+            $('#checklistInput').slideToggle();
         });
+
+        $(document).ready(function() {
+            $('#checklistInput').hide();
+        });
+
+        $('#editButton').click(function() {
+            $('.editing').toggleClass('hidden');
+        });
+
+        $('#finishButton').click(function() {
+            let id = $('#checklists').data('goal');
+            $.ajax({
+                type: 'post',
+                url: '/api/goal/complete/' + id,
+                data: {
+                }
+            }).done((data) => {
+                $('#statusString').text('Achieved');
+            });
+        });
+
+        $('.optionsBtn').click(function() {
+            let id = $(this).data('id');
+
+            if($('.optionsBtn').data('id') == id) {
+                $(this).toggleClass('hidden');
+            }
+        });
+
     });
-
-    $('.optionsBtn').click(function() {
-        var id = $(this).data('id');
-
-        if($('.optionsBtn').data('id') == id) {
-            $(this).toggleClass('hidden');
-        }
-    })
-
-
-
 </script>

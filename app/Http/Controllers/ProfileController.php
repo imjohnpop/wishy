@@ -8,6 +8,7 @@ use App\Goals;
 use App\UserDetail;
 use App\Wishes;
 use App\UserHasFriend;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -163,11 +164,27 @@ class ProfileController extends Controller
         if($request->input('category')=='detail') {
 
             $self->validate($request, [
-                'country' => 'string|max:40',
-                'quote' => 'string|max:100',
-                'birthday' => 'date|date_format:Y-m-d|before:tomorrow',
-                'gender' => 'string|max:6',
+                'country' => 'string|max:40|nullable',
+                'quote' => 'string|max:100|nullable',
+                'month' => 'string|max:2|nullable',
+                'day' => 'string|max:2|nullable',
+                'year' => 'string|max:4|nullable',
+                'gender' => 'string|max:6|nullable',
             ]);
+
+            if($request->input("month")<10){
+                $month = '0' . $request->input("month");
+            } else {
+                $month = $request->input("month");
+            }
+
+            if($request->input("day")<10){
+                $day = '0' . $request->input("day");
+            } else {
+                $day = $request->input("day");
+            }
+
+            $birthday = $request->input("year").'-'.$month.'-'.$day ;
 
             $user_detail = UserDetail::where('user_id', Auth::user()->id)->first();
             if ($user_detail==null) {
@@ -175,7 +192,7 @@ class ProfileController extends Controller
                 $user_detail->fill([
                     'country' => $request->input('country'),
                     'quote' => $request->input('quote'),
-                    'birthday' => $request->input('birthday'),
+                    'birthday' => $birthday,
                     'gender' => $request->input('gender'),
                     'user_id' => Auth::user()->id,
                 ]);
@@ -183,7 +200,7 @@ class ProfileController extends Controller
                 $user_detail->update([
                     'country' => $request->input('country'),
                     'quote' => $request->input('quote'),
-                    'birthday' => $request->input('birthday'),
+                    'birthday' => $birthday,
                     'gender' => $request->input('gender'),
                 ]);
             }

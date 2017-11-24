@@ -35,45 +35,4 @@
 
     </div>
 </div>
-
-<script>
-    $('#search').keyup(function() {
-        var value = $('#search').val();
-
-        var id = $('.list').data('id');
-
-        if($(this).val() !== '') {
-            $('.list').addClass('hidden');
-            $.ajax({
-                type: 'get',
-                url: '/api/friends/' + id,
-                data: {
-                    term: value
-                }
-            }).done((data) => {
-                console.log(data);
-                $('.list2').empty();
-
-                for(var i = 0; i < data.length; i++) {
-                    $('.list2').append(
-                        '<div class="row mb-2">\n' +
-                        '                <div class="col-4 d-flex justify-content-around">\n' +
-                        '                    <img class="" src="/uploads/' + data[i].profile_picture + '" alt="Random profile picture">\n' +
-                        '                </div>\n' +
-                        '                <div class="col-8">\n' +
-                        '                    <a href="/profile/' + data[i].id + '"><p class="wishy-bold"><i class="fa fa-circle online" aria-hidden="true"></i>' + data[i].name + ' ' + data[i].surname + '</p></a>\n' +
-                        '                </div>\n' +
-                        '            </div>\n' +
-                        '            <hr>')
-                }
-            });
-        } else {
-            $('.list').removeClass('hidden');
-            $('.list2').empty();
-        }
-
-
-
-    })
-</script>
 {{--  END OF FRIENDS LIST PART --}}

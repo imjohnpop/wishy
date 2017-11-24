@@ -27,7 +27,6 @@ Route::get('/homepage', function () {
     return redirect('/');
 });
 
-
 // --------------- Feed Page ------------------------------------------
 
 

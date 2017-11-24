@@ -20,7 +20,7 @@
                     <div class="form-group d-flex justify-content-between">
                         <label for="country">Country:</label>
                         <select name="country" id="country">
-                            <option value=""{{ isset($userDetail->gender) && $userDetail->country=='' ?  'selected="selected"' : '' }}></option>
+                            <option value=""{{ isset($userDetail->gender) && $userDetail->country=='' ?  'selected="selected"' : '' }}>Country</option>
                             <option value="Afghanistan"{{ isset($userDetail->gender) && $userDetail->country=='Afghanistan' ?  'selected="selected"' : '' }}>Afghanistan</option>
                             <option value="Åland Islands"{{ isset($userDetail->gender) && $userDetail->country=='Åland Islands' ?  'selected="selected"' : '' }}>Åland Islands</option>
                             <option value="Albania"{{ isset($userDetail->gender) && $userDetail->country=='Albania' ?  'selected="selected"' : '' }}>Albania</option>
@@ -272,9 +272,10 @@
                             <option value="Zimbabwe"{{ isset($userDetail->gender) && $userDetail->country=='Zimbabwe' ?  'selected="selected"' : '' }}>Zimbabwe</option>
                         </select>
                     </div>
+
                     <div class="form-group">
                         <label for="birthday" class="control-label">Your birthday:</label>
-                        <input id="birthday"  lang="en" type="date" class="form-control" name="birthday" value={{ isset($userDetail->birthday) ? "$userDetail->birthday" : '' }}  min="1900-01-01" max="">
+                        <div id="birthday"></div>
                     </div>
 
                     <div class="form-group d-flex justify-content-between">

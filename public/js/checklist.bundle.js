@@ -442,7 +442,7 @@ var Checklist = function (_React$Component) {
                             'button',
                             { onClick: function onClick() {
                                     return _this5.deleteChecklist();
-                                }, className: 'btn' },
+                                }, className: 'btn pointer' },
                             _react2.default.createElement('i', { className: 'fa fa-trash-o', 'aria-hidden': 'true' })
                         )
                     )
@@ -575,7 +575,7 @@ var Check = function (_React$Component) {
                     { className: 'datepicker' },
                     _react2.default.createElement('input', { onChange: function onChange(event) {
                             return _this3.selecting(event);
-                        }, lang: 'en', type: 'date', value: this.state.date, name: 'dateselector' }),
+                        }, lang: 'en', type: 'date', value: this.state.date, name: 'dateselector', placeholder: 'yyyy-mm-dd' }),
                     _react2.default.createElement(
                         'span',
                         null,
@@ -657,7 +657,7 @@ var Newcheck = function (_React$Component) {
                     null,
                     _react2.default.createElement('i', { onClick: function onClick() {
                             return _this2.props.newCheck(_this2.state.value);
-                        }, className: 'fa fa-plus', 'aria-hidden': 'true' }),
+                        }, className: 'fa fa-plus pointer', 'aria-hidden': 'true' }),
                     _react2.default.createElement('input', { onChange: function onChange(event) {
                             return _this2.value(event);
                         }, className: 'ml-2', type: 'text', placeholder: 'Add new milestone' })

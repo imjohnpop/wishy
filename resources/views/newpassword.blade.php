@@ -11,9 +11,10 @@
                 <form class="mb-2" method="post" action="">
                     {{csrf_field()}}
                     <div class="form-group">
-                        <label for="current">Current Password</label>
-                        <input name="current" type="text" class="form-control" id="current" placeholder="Enter password">
+                        <label for="currentPassword">Current Password</label>
+                        <input name="currentPassword" type="password" class="form-control" id="currentPassword" placeholder="Enter current password">
                     </div>
+                    <!--
                     <div class="form-group">
                         <label for="new">New Password</label>
                         <input name="new" type="text" class="form-control" id="new" placeholder="Enter new">
@@ -23,6 +24,7 @@
                         <input name="confirm" type="text" class="form-control" id="confirm" placeholder="Confirm password">
                     </div>
                     <button type="submit" class="btn btn-gold">Submit</button>
+                    -->
                 </form>
             </div>
             <div class="modal-footer wishy-rounded-bottom bg-navy text-white">
