@@ -1,5 +1,5 @@
 {{--  FRIENDS LIST PART --}}
-<div class="wishy-profile wishy-friends-list col-12 mr-auto bg-light wishy-shadow-box-blue wishy-rounded mt-4">
+<div class="wishy-profile wishy-friends-list col-12 mr-auto bg-light wishy-shadow-box-blue wishy-rounded mt-4 sticky-top">
     <div class="wishy-profile-friends pt-2">
         <h4 class="wishy-bold text-uppercase text-center">{{ isset($friendships) ? '' : 'my' }} friends</h4>
     </div>

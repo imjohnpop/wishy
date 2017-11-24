@@ -14,12 +14,12 @@ class CommentController extends Controller
         $this->middleware('auth');
     }
     //
-    public function new($id, Request $request)
+    public function new($id, $type, Request $request)
     {
         $comment = new Comments();
         $comment->fill([
             'user_id' => Auth::user()->id,
-            'type' => $request->input('category'),
+            'type' => $type,
             'target_id' => $id,
             'text' => $request->input('text')
         ]);
