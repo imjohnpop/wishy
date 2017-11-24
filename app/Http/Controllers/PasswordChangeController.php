@@ -10,18 +10,18 @@ use Illuminate\Support\Facades\Hash;
 
 class PasswordChangeController extends Controller
 {
-    public function checkCurrent(Request $request, $id)
+    public function checkCurrent($id)
     {
         $user = User::where('id', $id)->first();
         $hashedPassword = $user['password'];
 
-        $inputPassword = $request->input('currentPassword');
+        $inputPassword = $_POST['currentPassword'];
 
         $passwordCheck = 'false';
         if (Hash::check($inputPassword, $hashedPassword)===true) {
             $passwordCheck = 'true';
         }
-        //var_dump(Hash::check($inputPassword, $hashedPassword));
+
         return $passwordCheck;
     }
 

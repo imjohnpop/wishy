@@ -514,6 +514,11 @@ label {
   left: 200px;
 }
 
+div.news {
+  position: relative;
+  left: 180px;
+}
+
 .wishy-link {
   font-weight: 400;
   color: #F9B800;
@@ -1132,5 +1137,10 @@ li.dropdown-item {
   outline: none;
   -webkit-box-shadow: none;
           box-shadow: none;
+}
+
+.comments img {
+  width: 60px;
+  height: 60px;
 }
 

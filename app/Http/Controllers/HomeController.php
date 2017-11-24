@@ -43,7 +43,7 @@ class HomeController extends Controller
                     ->join('users', 'goals.user_id', '=', 'users.id')
                     ->leftjoin('user_has_friend', 'user_has_friend.friend_id', '=', 'users.id')
                     ->leftjoin('users_detail', 'users.id', '=', 'users_detail.user_id')
-                    ->select('goals.*', 'users.name AS user_name', 'users.surname', 'status.tag', 'users_detail.profile_picture')
+                    ->select('users.id AS user_id', 'goals.*', 'users.name AS user_name', 'users.surname', 'status.tag', 'users_detail.profile_picture')
                     ->where([['is_public', 1], ['user_has_friend.user_id', Auth::user()->id]])
                     ->orwhere([['is_public', 1], ['goals.user_id', Auth::user()->id]])->get()->toArray();
 
@@ -51,14 +51,14 @@ class HomeController extends Controller
                     ->join('users', 'wishes.user_id', '=', 'users.id')
                     ->leftjoin('user_has_friend', 'user_has_friend.friend_id', '=', 'users.id')
                     ->leftjoin('users_detail', 'users.id', '=', 'users_detail.user_id')
-                    ->select('wishes.*', 'users.name AS user_name', 'users.surname', 'status.tag', 'users_detail.profile_picture')
+                    ->select('users.id AS user_id', 'wishes.*', 'users.name AS user_name', 'users.surname', 'status.tag', 'users_detail.profile_picture')
                     ->where([['is_public', 1], ['user_has_friend.user_id', Auth::user()->id]])
                     ->orwhere([['is_public', 1], ['wishes.user_id', Auth::user()->id]])->get()->toArray();
 
                 $posts = Post::join('users', 'posts.user_id', '=', 'users.id')
                     ->leftjoin('users_detail', 'users.id', '=', 'users_detail.user_id')
                     ->leftjoin('user_has_friend', 'user_has_friend.friend_id', '=', 'users.id')
-                    ->select('posts.id', 'posts.text AS description', 'users.name AS user_name', 'users.surname', 'posts.type', 'posts.created_at', 'posts.nr_encouragements', 'posts.cathegory', 'users_detail.profile_picture', 'posts.post_picture')
+                    ->select('users.id AS user_id', 'posts.id', 'posts.text AS description', 'users.name AS user_name', 'users.surname', 'posts.type', 'posts.created_at', 'posts.nr_encouragements', 'posts.cathegory', 'users_detail.profile_picture', 'posts.post_picture')
                     ->where('user_has_friend.user_id', Auth::user()->id)
                     ->orwhere('posts.user_id', Auth::user()->id)->get()->toArray();
 
@@ -78,7 +78,7 @@ class HomeController extends Controller
                     ->select('comments.*', 'users.name', 'users.surname', 'users_detail.profile_picture')
                     ->where('type', 'post')->get()->toArray();
                 $current_user_id = Auth::user()->id;
-                
+
                 $view = view('feed/feed');
                 $view->newPassView = view('/newpassword');
 
@@ -100,7 +100,7 @@ class HomeController extends Controller
                     ->select('users.id', 'users.name', 'users.surname', 'users_detail.birthday AS date')
                     ->where('user_has_friend.user_id', Auth::user()->id)
                     ->whereMonth('users_detail.birthday', date('m'))->get()->toArray();
-            
+
                 $events_list = array_merge($events_list, $birthdays);
                 $events_list = collect($events_list)->sortBy('date')->reverse()->toArray();
                 $events->events_list = $events_list;

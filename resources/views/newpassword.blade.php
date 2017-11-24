@@ -8,14 +8,14 @@
                 </button>
             </div>
             <div class="modal-body bg-navy text-white">
-                <form id="passwordChange" class="mb-2" method="post" action="" data-id="{{Illuminate\Support\Facades\Auth::user()->id}}">
+                <form id="passwordChange" class="mb-2" method="post" action="" data-id={{ Illuminate\Support\Facades\Auth::user()->id }}>
                     {{csrf_field()}}
                     <div id="current">
                         <div class="form-group">
                             <label for="currentPassword">Current Password</label>
                             <input name="currentPassword" type="password" class="form-control" id="currentPassword" placeholder="Enter current password">
                         </div>
-                        <button id="currentPasswordsubmit" type="button" class="btn btn-gold">Submit</button><div></div>
+                        <button id="currentPasswordSubmit" type="button" class="btn btn-gold">Submit</button><div></div>
                     </div>
                     <div id="newPass">
                         <div class="form-group">

@@ -93,6 +93,11 @@ label {
   }
 }
 
+div.news {
+  position: relative;
+  left:180px;
+}
+
 .wishy-link {
   font-weight: 400;
   color: $gold;
@@ -652,4 +657,8 @@ li.dropdown-item {
       box-shadow: none;
     }
   }
+}
+.comments img {
+  width: 60px;
+  height: 60px;
 }

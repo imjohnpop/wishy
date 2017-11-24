@@ -44,6 +44,7 @@ class GoalsController extends Controller
         $view = view('profile/planner');
         $planner = view('goals/planner');
         $head = view('profile/head');
+        $view->newPassView = view ('/newpassword');
 
         // head element
         $head->userDetail = $userDetail;

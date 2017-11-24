@@ -5,15 +5,14 @@ $(function() {
     $('#message').hide();
 
     // checking if the input password is matching with the current password
-    $('#currentPasswordsubmit').click(function(e) {
+    $('#currentPasswordSubmit').click(function(e) {
         e.preventDefault();
-        let $this = $('#currentPassword');
-        let value = $this.val();
-        let id = $this.data('id');
+        let value = $('#currentPassword').val();
+        let id = $('form#passwordChange').data('id');
         if(value !== '') {
             $.ajax({
                 method: 'post',
-                url: '/api/passwordCurrent/'+id,
+                url: '/api/passwordCurrent/' + id,
                 data: {
                     'currentPassword': value
                 }
@@ -38,7 +37,7 @@ $(function() {
         let confirm = $('#confirm').val();
         let form = $('form#passwordChange');
         let id = form.data('id');
-        if(newPass !== '' && newPass === confirm) {
+        if(newPass !== '' && newPass === confirm && newPass.length>=6) {
             $.ajax({
                 method: 'post',
                 url: '/api/passwordChange/new/'+id,
@@ -60,6 +59,10 @@ $(function() {
         } else if (newPass === '') {
             $('#message').html('<div id="error">' +
                 'You need to fill your new password!' +
+                '</div>');
+        } else if (newPass.length<6) {
+            $('#message').html('<div id="error">' +
+                'Password needs to be at least 6 characters long!' +
                 '</div>');
         }
     });
