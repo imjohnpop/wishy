@@ -114,7 +114,6 @@ class HomeController extends Controller
             }
         } else {
             $view = view('homepage/homepage');
-            $view->newPassView = view('/newpassword');
         }
         return $view;
     }

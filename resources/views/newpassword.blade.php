@@ -8,23 +8,27 @@
                 </button>
             </div>
             <div class="modal-body bg-navy text-white">
-                <form class="mb-2" method="post" action="">
+                <form id="passwordChange" class="mb-2" method="post" action="" data-id="{{Illuminate\Support\Facades\Auth::user()->id}}">
                     {{csrf_field()}}
-                    <div class="form-group">
-                        <label for="currentPassword">Current Password</label>
-                        <input name="currentPassword" type="password" class="form-control" id="currentPassword" placeholder="Enter current password">
+                    <div id="current">
+                        <div class="form-group">
+                            <label for="currentPassword">Current Password</label>
+                            <input name="currentPassword" type="password" class="form-control" id="currentPassword" placeholder="Enter current password">
+                        </div>
+                        <button id="currentPasswordsubmit" type="button" class="btn btn-gold">Submit</button><div></div>
                     </div>
-                    <!--
-                    <div class="form-group">
-                        <label for="new">New Password</label>
-                        <input name="new" type="text" class="form-control" id="new" placeholder="Enter new">
+                    <div id="newPass">
+                        <div class="form-group">
+                            <label for="new">New Password</label>
+                            <input name="new" type="text" class="form-control" id="new" placeholder="Enter new">
+                        </div>
+                        <div class="form-group">
+                            <label for="confirm">Password Confirmation</label>
+                            <input name="confirm" type="text" class="form-control" id="confirm" placeholder="Confirm password">
+                        </div>
+                        <button id="PasswordChangeSubmit" type="submit" class="btn btn-gold">Submit</button>
                     </div>
-                    <div class="form-group">
-                        <label for="confirm">Password Confirmation</label>
-                        <input name="confirm" type="text" class="form-control" id="confirm" placeholder="Confirm password">
-                    </div>
-                    <button type="submit" class="btn btn-gold">Submit</button>
-                    -->
+                    <div id="message"></div>
                 </form>
             </div>
             <div class="modal-footer wishy-rounded-bottom bg-navy text-white">

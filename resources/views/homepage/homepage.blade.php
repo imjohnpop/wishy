@@ -337,5 +337,4 @@
             </div>
         </div>
     </div>
-    <?=$newPassView?>
 @endsection

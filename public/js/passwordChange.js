@@ -1,19 +1,66 @@
 $(function() {
 
-    // checking if the input password is matching with the current password
-    $('#currentPassword').keyup(function() {
-        let value = $('#currentPassword').val();
+    $('#current').show();
+    $('#newPass').hide();
+    $('#message').hide();
 
-        if($(this).val() !== '') {
+    // checking if the input password is matching with the current password
+    $('#currentPasswordsubmit').click(function(e) {
+        e.preventDefault();
+        let $this = $('#currentPassword');
+        let value = $this.val();
+        let id = $this.data('id');
+        if(value !== '') {
             $.ajax({
-                method: 'get',
-                url: '/api/passwordCurrent',
+                method: 'post',
+                url: '/api/passwordCurrent/'+id,
                 data: {
-                    currentPassword: value
+                    'currentPassword': value
                 }
             }).done((data) => {
-                console.log(data);
+                if(data==='false') {
+                    $('#message').show();
+                    $('#message').html('<div id="error">' +
+                        'Password is not matching with current password!' +
+                        '</div>');
+                } else if (data==='true') {
+                    $('#message').hide();
+                    $('#current').hide();
+                    $('#newPass').show();
+                }
             });
+        }
+    });
+
+    $('#PasswordChangeSubmit').click(function(e) {
+        e.preventDefault();
+        let newPass = $('#new').val();
+        let confirm = $('#confirm').val();
+        let form = $('form#passwordChange');
+        let id = form.data('id');
+        if(newPass !== '' && newPass === confirm) {
+            $.ajax({
+                method: 'post',
+                url: '/api/passwordChange/new/'+id,
+                data: {
+                    'new': newPass
+                }
+            }).done((data) => {
+                if(data==='true') {
+                    form.before('<div id="success">' +
+                        'Password is changed' +
+                        '</div>');
+                    form.detach();
+                }
+            });
+        } else if (newPass !== confirm) {
+            $('#message').html('<div id="error">' +
+                'Passwords are not matching!' +
+                '</div>');
+        } else if (newPass === '') {
+            $('#message').html('<div id="error">' +
+                'You need to fill your new password!' +
+                '</div>');
         }
     });
 });
