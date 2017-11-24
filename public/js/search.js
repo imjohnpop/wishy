@@ -91,7 +91,7 @@ $(function() {
                         '                <div class="col-4 d-flex justify-content-around">\n' +
                         '                    <img class="" src="/uploads/' + data[i].profile_picture + '" alt="Random profile picture">\n' +
                         '                </div>\n' +
-                        '                <div class="col-8">\n' +
+                        '                <div class="col-8 d-flex align-items-end">\n' +
                         '                    <a href="/profile/' + data[i].id + '"><p class="wishy-bold"><i class="fa fa-circle online" aria-hidden="true"></i>' + data[i].name + ' ' + data[i].surname + '</p></a>\n' +
                         '                </div>\n' +
                         '            </div>\n' +

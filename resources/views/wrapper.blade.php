@@ -54,7 +54,7 @@
                         <p class="mb-1"><i class="fa fa-user" aria-hidden="true"></i></p>
                         <span>Me</span>
                     </a>
-                    <ul class="dropdown-menu dropdown-menu-right text-black" role="menu">
+                    <ul class="dropdown-menu dropdown-menu-right text-black" style="z-index: 1021;" role="menu">
                         <li class="dropdown-item">
                             <a href="/profile">
                                 Profile

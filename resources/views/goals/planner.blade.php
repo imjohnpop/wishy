@@ -32,11 +32,11 @@
                 <div class="col-8 mt-3">
                     <form action="{{ action('GoalsController@update', ['id' => $goal->id]) }}" method="post" enctype="multipart/form-data">
                         {{ csrf_field() }}
-                        <h2 class="editing">{{ $goal->name }}</h2>
-                        <h2 class="editing hidden"><input class="form-control" type="text" name="name" value="{{ $goal->name }}"></h2>
-                        <p class="editing">{{ $goal->description }}</p>
-                        <textarea class="form-control editing hidden" name="description" rows="4" type="text">{{ $goal->description }}</textarea>
-                        <div class="form-group editing hidden">
+                        <h2 class="editing-planner">{{ $goal->name }}</h2>
+                        <h2 class="editing-planner hidden"><input class="form-control" type="text" name="name" value="{{ $goal->name }}"></h2>
+                        <p class="editing-planner">{{ $goal->description }}</p>
+                        <textarea class="form-control editing-planner hidden" name="description" rows="4" type="text">{{ $goal->description }}</textarea>
+                        <div class="form-group editing-planner hidden">
                             <label for="goal_picture">Goal Picture</label>
                             <div class="col">
                                 <input name="goal_picture" type="file" class="form-control" id="goal_picture">
@@ -49,8 +49,8 @@
                                 <p class="wishy-bold text-uppercase text-secondary">encouragements</p>
                             </div>
                             <div class="col-2 text-center wishy-profile-bx">
-                                <h2 class="wishy-publicity editing"><?= ($goal->is_public == 1) ? '<i class="fa fa-check" aria-hidden="true"></i>' : '<i class="fa fa-times" aria-hidden="true"></i>' ?></h2>
-                                <h2 class="editing hidden"><input class="form-control" type="checkbox" name="is_public" <?= ($goal->is_public == 1) ? 'checked' : '' ?>></h2>
+                                <h2 class="wishy-publicity editing-planner"><?= ($goal->is_public == 1) ? '<i class="fa fa-check" aria-hidden="true"></i>' : '<i class="fa fa-times" aria-hidden="true"></i>' ?></h2>
+                                <h2 class="editing-planner hidden"><input class="form-control" type="checkbox" name="is_public" <?= ($goal->is_public == 1) ? 'checked' : '' ?>></h2>
                                 <p class="wishy-bold text-uppercase text-secondary">public</p>
                             </div>
                             <div class="col-5 text-center mt-1">
@@ -59,7 +59,7 @@
                             </div>
                         </div>
                         <div class="row d-flex justify-content-around mt-2">
-                            <button class="editing hidden btn wishy-btn" role="submit">Save changes</button>
+                            <button class="editing-planner hidden btn wishy-btn" role="submit">Save changes</button>
                         </div>
                     </form>
                     <hr>
@@ -89,7 +89,7 @@
         });
 
         $('#editButton').click(function() {
-            $('.editing').toggleClass('hidden');
+            $('.editing-planner').toggleClass('hidden');
         });
 
         $('#finishButton').click(function() {

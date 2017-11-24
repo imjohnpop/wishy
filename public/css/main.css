@@ -1051,7 +1051,7 @@ li.dropdown-item {
 }
 
 .post .comments hr:last-child {
-  border-width: 0;
+  border-color: transparent;
 }
 
 .post .comments input {
@@ -1095,5 +1095,9 @@ li.dropdown-item {
   -webkit-box-shadow: 0 0px 8px #5e5d5d !important;
           box-shadow: 0 0px 8px #5e5d5d !important;
   border-color: #5e5d5d;
+}
+
+.sticky-top {
+  top: 18px !important;
 }
 

@@ -586,7 +586,7 @@ li.dropdown-item {
   hr {
     border: 1px solid white;
     &:last-child {
-      border-width: 0;
+      border-color: transparent;
     }
   }
   input {
@@ -622,4 +622,8 @@ li.dropdown-item {
       border-color: darken(#777777, 10%);
     }
   }
+}
+
+.sticky-top {
+  top: 18px !important;
 }
