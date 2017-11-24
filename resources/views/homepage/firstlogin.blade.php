@@ -27,7 +27,7 @@
                         <label class="col control-label text-left" for="country">Country:</label>
                         <div class="col text-right">
                             <select name="country" id="country">
-                                <option value=""></option>
+                                <option value="">Country</option>
                                 <option value="Afghanistan">Afghanistan</option>
                                 <option value="Åland Islands">Åland Islands</option>
                                 <option value="Albania">Albania</option>
@@ -281,10 +281,8 @@
                         </div>
                     </div>
                     <div class="form-group d-flex justify-content-between">
-                        <label for="birthday" class="col control-label text-left">Your birthday:</label>
-                        <div class="col text-right">
-                            <input id="birthday" type="date" class="form-control" name="birthday" min="1900-01-01" max="">
-                        </div>
+                        <label for="birthday" class="control-label ml-3">Your birthday:</label>
+                        <div id="birthday" class="mr-3"></div>
                     </div>
 
                     <div class="form-group d-flex justify-content-between">

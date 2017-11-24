@@ -66,6 +66,6 @@
         $('.postEditBtn').click(function() {
             var id = $(this).data('id');
             $('.infoToChange[data-id='+ id +']').toggleClass('hidden');
-        })
+        });
     </script>
 </section>

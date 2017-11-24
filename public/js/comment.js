@@ -122,6 +122,7 @@ $('button.comment_update').click(function(e){
         }
     }).fail(function(){
         location.reload();
+        // $('#comment-section').load(document.URL +  ' #comment-section div');
     });
 });
 
@@ -133,6 +134,5 @@ $('a.comment_delete').click(function(e){
         method: 'DELETE'
     }).fail(function(){
         location.reload();
-
     });
 });

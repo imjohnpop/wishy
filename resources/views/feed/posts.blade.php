@@ -17,7 +17,7 @@
         }
 
         $this_comments = [];
-
+        
         foreach($comments as $comment)
         {
             if($comment['target_id'] == $new['id'])
@@ -25,7 +25,7 @@
                 $this_comments[] = $comment;
             }
         }
-
+        // dd($this_comments);
         $nr_comments = count($this_comments);
 
         $has_encouraged = Illuminate\Support\Facades\DB::table('encourage_upload')->where([['user_id', Illuminate\Support\Facades\Auth::user()->id], ['upload_id', $new['id']], ['category', $new['cathegory']]])->first();

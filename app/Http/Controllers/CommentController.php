@@ -47,4 +47,24 @@ class CommentController extends Controller
 
         return redirect()->action('ProfileController@index');        
     }
+
+    public function goals($id)
+    {
+        $comments = Comments::join('users', 'comments.user_id', '=', 'users.id')
+            ->leftjoin('users_detail', 'users.id', '=', 'users_detail.user_id')
+            ->select('comments.*', 'users.name', 'users.surname', 'users_detail.profile_picture')
+            ->where([['type', 'goal'], ['target_id', $id]])->get()->toArray();
+        
+        return $comments;
+    }
+    
+    public function posts($id)
+    {
+        $comments = Comments::join('users', 'comments.user_id', '=', 'users.id')
+            ->leftjoin('users_detail', 'users.id', '=', 'users_detail.user_id')
+            ->select('comments.*', 'users.name', 'users.surname', 'users_detail.profile_picture')
+            ->where([['type', 'post'], ['target_id', $id]])->get()->toArray();
+     
+        return $comments;
+    }
 }

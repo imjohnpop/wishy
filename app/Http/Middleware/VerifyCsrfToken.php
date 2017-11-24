@@ -15,6 +15,7 @@ class VerifyCsrfToken extends BaseVerifier
         'profile/*/friend',
         "/encourage/*",
         'comment/*/*',
-        'comment/*'
+        'comment/*',
+        'password/reset/check'
     ];
 }

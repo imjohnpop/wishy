@@ -1,11 +1,3 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: matejpolak
- * Date: 06.11.17
- * Time: 16:18
- */
-?>
 <!doctype html>
 <html lang="en" prefix="og: http//oqp.me/ns#">
 <head>
@@ -14,27 +6,26 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta name="description" content="Your gift and goals sharing social network. Don't you know witch present you should buy to your friends? We have a solution for you, check Wishy!">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:100,300,400,500,600,700" rel="stylesheet">
-
+    <link rel="stylesheet" href="http://jcrop-cdn.tapmodo.com/v0.9.12/css/jquery.Jcrop.min.css" type="text/css" />
     <link rel="stylesheet" href="/fullcalendar/dist/fullcalendar.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/main.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet">
 
     <title>@yield('title') | Wishy</title>
+
     <meta property="og:title" content="Wishy your gifts and dreams social network" />
     <meta property="og:type" content="social" />
     <meta property="og:url" content="http://www.wishy.test/" />
     <meta property="og:image" content="http://ia.media-imdb.com/images/rock.jpg" />
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.2.1.js"
+            integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+            crossorigin="anonymous"></script>
 </head>
 <body>
-<!-- jQuery -->
-<script
-        src="https://code.jquery.com/jquery-3.2.1.js"
-        integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
-        crossorigin="anonymous"></script>
-
 @if(auth()->check())
 <div class="container-fluid">
     <div class="row wishy-navbar">
@@ -101,88 +92,22 @@
     <!-- FONTAWESOME -->
 <script src="https://use.fontawesome.com/f1003c147a.js"></script>
     <!-- DATEPICKER FOR SAFARI -->
-
+<script src="/js/jquery-birthday-picker.min.js"></script>
+    <!-- JCROP -->
+<script src="http://jcrop-cdn.tapmodo.com/v0.9.12/js/jquery.Jcrop.min.js"></script>
+    <!-- SELECT2 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.full.js"></script>
     <!-- OWN SCRIPTS -->
 <script src="/js/profile.js"></script>
 <script src="/js/actions.js"></script>
 <script src="/js/comment.js"></script>
+<script src="/js/encourage.js"></script>
+<script src="/js/passwordChange.js"></script>
+<script src="/js/search.js"></script>
+<script src="/js/signInUp.js"></script>
     <!-- FULLCALENDAR -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.1/moment.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.6.2/fullcalendar.min.js"></script>
-    <!-- SELECT2 -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.full.js"></script>
 
-<script>
-        $("#friendsSearchBar").select2({
-            ajax: {
-                url: "/api/search/friends/",
-                dataType: 'json',
-                delay: 250,
-                data: function (params) {
-                    return {
-                        q: params.term, // search term
-                        page: params.page
-                    };
-                },
-                processResults: function (data, params) {
-                    // parse the results into the format expected by Select2
-                    // since we are using custom formatting functions we do not need to
-                    // alter the remote JSON data, except to indicate that infinite
-                    // scrolling can be used
-                    params.page = params.page || 1;
-
-                    return {
-                        results: data,
-                    };
-                },
-                cache: true
-            },
-            placeholder: 'Search for any user',
-            escapeMarkup: function (markup) { return markup; }, // let our custom formatter work
-            minimumInputLength: 1,
-            templateResult: formatRepo,
-            templateSelection: formatRepoSelection,
-        });
-
-
-    function formatRepo (repo) {
-        if (repo.loading) {
-            return repo.text;
-        }
-
-        var markup =
-            "<div class='select2-result-repository clearfix'>" +
-                "<div class='row'>" +
-                    "<div class='col-4 select2-result-repository__avatar'><img class='w-100' src='/uploads/" + repo.profile_picture + "' /></div>" +
-                    "<div class='col-8'>" +
-                        "<div class='select2-result-repository__title text-center'><h3>" + repo.name + " " + repo.surname + "</h3></div>" +
-                        "<hr>" +
-                        "<div class='row'>" +
-                            "<div class='col-4 text-center pr-0 wishy-line-heigth'>" +
-                                "<h2 class='wishy-bold'>" + repo.friends + "</h2>" +
-                                "<p class='wishy-bold text-uppercase text-secondary'>friends</p>" +
-                            "</div>" +
-                            "<div class='col-4 text-center wishy-profile-bx wishy-line-heigth'>" +
-                                "<h2 class='wishy-bold'>" + repo.wishes + "</h2>" +
-                                "<p class='wishy-bold text-uppercase text-secondary'>wishes</p>" +
-                            "</div>" +
-                            "<div class='col-4 text-center pl-0 wishy-line-heigth'>" +
-                                "<h2 class='wishy-bold'>" + repo.goals + "</h2>" +
-                                "<p class='wishy-bold text-uppercase text-secondary'>goals</p>" +
-                            "</div>" +
-                        "</div>" +
-                    "</div>" +
-                "</div>" +
-            "</div>";
-
-
-        return markup;
-    }
-
-    function formatRepoSelection (repo) {
-        return repo.full_name || repo.text;
-    }
-
-</script>
 </body>
 </html>

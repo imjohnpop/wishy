@@ -110,7 +110,7 @@ export default class Checklist extends React.Component {
                         <span><i className="fa fa-check-square-o" aria-hidden="true"></i>{ this.props.title }</span>
                     </div>
                     <div className="col-4 d-flex justify-content-end">
-                        <button onClick={ () => this.deleteChecklist() } className="btn"><i className="fa fa-trash-o" aria-hidden="true"></i></button>
+                        <button onClick={ () => this.deleteChecklist() } className="btn pointer"><i className="fa fa-trash-o" aria-hidden="true"></i></button>
                     </div>
                 </div>
 
