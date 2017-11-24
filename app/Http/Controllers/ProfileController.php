@@ -158,6 +158,17 @@ class ProfileController extends Controller
             $view->profiledetailView = view('profile/profiledetail');
             $view->wishgoalnavView = view('profile/wishgoal', ['friendships' => $friendships]);
 
+            $goal_comments = Comments::join('users', 'comments.user_id', '=', 'users.id')
+                ->leftjoin('users_detail', 'users.id', '=', 'users_detail.user_id')
+                ->select('comments.*', 'users.name', 'users.surname', 'users_detail.profile_picture')
+                ->where('type', 'goal')->get()->toArray();
+            $post_comments = Comments::join('users', 'comments.user_id', '=', 'users.id')
+                ->leftjoin('users_detail', 'users.id', '=', 'users_detail.user_id')
+                ->select('comments.*', 'users.name', 'users.surname', 'users_detail.profile_picture')
+                ->where('type', 'post')->get()->toArray();
+            $view->goalsView->goal_comments = $goal_comments;
+            $view->postsView->post_comments = $post_comments;
+
             return $view;
         }
 

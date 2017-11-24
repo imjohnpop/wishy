@@ -37,29 +37,29 @@ $(function() {
         }
 
         var markup =
-            "<div class='select2-result-repository clearfix'>" +
-            "<div class='row'>" +
-            "<div class='col-4 select2-result-repository__avatar'><img class='w-100' src='/uploads/" + repo.profile_picture + "' /></div>" +
-            "<div class='col-8'>" +
-            "<div class='select2-result-repository__title text-center'><h3>" + repo.name + " " + repo.surname + "</h3></div>" +
-            "<hr>" +
-            "<div class='row'>" +
-            "<div class='col-4 text-center pr-0 wishy-line-heigth'>" +
-            "<h2 class='wishy-bold'>" + repo.friends + "</h2>" +
-            "<p class='wishy-bold text-uppercase text-secondary'>friends</p>" +
-            "</div>" +
-            "<div class='col-4 text-center wishy-profile-bx wishy-line-heigth'>" +
-            "<h2 class='wishy-bold'>" + repo.wishes + "</h2>" +
-            "<p class='wishy-bold text-uppercase text-secondary'>wishes</p>" +
-            "</div>" +
-            "<div class='col-4 text-center pl-0 wishy-line-heigth'>" +
-            "<h2 class='wishy-bold'>" + repo.goals + "</h2>" +
-            "<p class='wishy-bold text-uppercase text-secondary'>goals</p>" +
-            "</div>" +
-            "</div>" +
-            "</div>" +
-            "</div>" +
-            "</div>";
+                "<div class='select2-result-repository clearfix'>" +
+                "<div class='row'>" +
+                "<div class='col-4 select2-result-repository__avatar'><img class='w-100' src='/uploads/" + repo.profile_picture + "' /></div>" +
+                "<div class='col-8'>" +
+                "<div class='select2-result-repository__title text-center'><h3>" + repo.name + " " + repo.surname + "</h3></div>" +
+                "<hr>" +
+                "<div class='row'>" +
+                "<div class='col-4 text-center pr-0 wishy-line-heigth'>" +
+                "<h2 class='wishy-bold'>" + repo.friends + "</h2>" +
+                "<p class='wishy-bold text-uppercase text-secondary'>friends</p>" +
+                "</div>" +
+                "<div class='col-4 text-center wishy-profile-bx wishy-line-heigth'>" +
+                "<h2 class='wishy-bold'>" + repo.wishes + "</h2>" +
+                "<p class='wishy-bold text-uppercase text-secondary'>wishes</p>" +
+                "</div>" +
+                "<div class='col-4 text-center pl-0 wishy-line-heigth'>" +
+                "<h2 class='wishy-bold'>" + repo.goals + "</h2>" +
+                "<p class='wishy-bold text-uppercase text-secondary'>goals</p>" +
+                "</div>" +
+                "</div>" +
+                "</div>" +
+                "</div>" +
+                "</div>";
         return markup;
     }
 

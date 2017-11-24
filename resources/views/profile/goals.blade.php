@@ -66,7 +66,7 @@ $nr_comments = count($goal_comments);
                     </div>
                 </div>
             </div>
-
+                @if(isset($goal_comments))
                 <div class="comments-goals main wishy-rounded-bottom" id="comment-section" data-mat="{{ $goal['id'] }}">
                     @foreach($goal_comments as $this_comment)
                         @if($this_comment['target_id'] == $goal['id'])
@@ -101,6 +101,7 @@ $nr_comments = count($goal_comments);
                         @endif
                     @endforeach
                 </div>
+                @endif
         @endforeach
     @else
         <div class="wish col-12 wishy-rounded wishy-shadow-box-blue bg-light py-3">
