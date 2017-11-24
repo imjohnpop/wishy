@@ -83,10 +83,11 @@ $(document).ready(function() {
     $('.commenting').addClass('hidden');
     $('.editing').addClass('hidden');
 
-    $('.main').slideUp();
+    $('.main').hide();
 });
 
 $('.startComment').click(function(e) {
+    console.log('click');
     e.preventDefault();
     var id = $(this).data('mat');
     $('.default[data-mat='+ id +']').toggleClass('hidden');

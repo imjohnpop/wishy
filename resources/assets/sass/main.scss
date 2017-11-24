@@ -558,7 +558,8 @@ li.dropdown-item {
   }
 }
 
-.wishy-post-nav form {
+.wishy-post-nav form,
+.wishy-goal-nav form {
   input {
     background: transparent;
     border: 0px solid black;
@@ -626,4 +627,29 @@ li.dropdown-item {
 
 .sticky-top {
   top: 18px !important;
+}
+
+.comments-goals.main {
+  background-color: $blue;
+  margin-top: -38px;
+  padding-top: 14px;
+  color: white;
+  hr {
+    border: 1px solid white;
+    &:last-child {
+      border-color: transparent;
+    }
+  }
+  input {
+    background: transparent;
+    border: 0px solid black;
+    border-bottom: 1px solid grey;
+    margin-top: 5px;
+    color: white;
+    &:focus {
+      border-bottom: 1px solid $gold;
+      outline: none;
+      box-shadow: none;
+    }
+  }
 }

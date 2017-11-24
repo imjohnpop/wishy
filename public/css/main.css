@@ -1020,7 +1020,8 @@ li.dropdown-item {
   position: static;
 }
 
-.wishy-post-nav form input {
+.wishy-post-nav form input,
+.wishy-goal-nav form input {
   background: transparent;
   border: 0px solid black;
   border-bottom: 1px solid grey;
@@ -1028,14 +1029,16 @@ li.dropdown-item {
   color: white;
 }
 
-.wishy-post-nav form input:focus {
+.wishy-post-nav form input:focus,
+.wishy-goal-nav form input:focus {
   border-bottom: 1px solid #F9B800;
   outline: none;
   -webkit-box-shadow: none;
           box-shadow: none;
 }
 
-.wishy-post-nav form button.btn.wishy-btn.menu {
+.wishy-post-nav form button.btn.wishy-btn.menu,
+.wishy-goal-nav form button.btn.wishy-btn.menu {
   position: static;
 }
 
@@ -1099,5 +1102,35 @@ li.dropdown-item {
 
 .sticky-top {
   top: 18px !important;
+}
+
+.comments-goals.main {
+  background-color: #26273b;
+  margin-top: -38px;
+  padding-top: 14px;
+  color: white;
+}
+
+.comments-goals.main hr {
+  border: 1px solid white;
+}
+
+.comments-goals.main hr:last-child {
+  border-color: transparent;
+}
+
+.comments-goals.main input {
+  background: transparent;
+  border: 0px solid black;
+  border-bottom: 1px solid grey;
+  margin-top: 5px;
+  color: white;
+}
+
+.comments-goals.main input:focus {
+  border-bottom: 1px solid #F9B800;
+  outline: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 

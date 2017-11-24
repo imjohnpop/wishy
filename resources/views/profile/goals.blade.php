@@ -1,3 +1,7 @@
+<?php
+
+$nr_comments = count($goal_comments);
+?>
 <section id="goals" class="d-none">
 @if (isset($friendships) && array_search($user->id, $friendships) === false)
     <div class="goal col-12 wishy-rounded wishy-shadow-box-blue bg-light">
@@ -24,7 +28,7 @@
                         </div>
                         <div class="goal-category">
                         @if (!isset($friendships))
-                            <a role="button" href="{{ action('GoalsController@view' , ['id' => $goal->id]) }}" class="btn wishy-btn menu" data-id="{{ $goal->id }}"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
+                            <a role="button" href="{{ action('GoalsController@view' , ['id' => $goal->id]) }}" class="btn wishy-btn menu" data-mat="{{ $goal->id }}"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
                         @endif
                             <p>Category: <span>{{ $goal->cathegory }}</span></p>
                         </div>
@@ -35,8 +39,10 @@
                     </div>
                 </div>
                 <div class="wishy-goal-nav goal wishy-rounded-bottom">
-                    <a href="#" class="encourage" title="Encourage"  data-id="{{ $goal->id }}" data-category="{{ $goal->cathegory }}"><i class="fa fa-hand-peace-o mr-1" aria-hidden="true"></i><span class="encourage_text">{{ empty($has_encouraged) ? 'Encourage ' : 'Encouraged ' }}</span><span class="encourage_number">({{ $goal->nr_encouragements }})</span></a>
-                    <a href="#" title="Comment" class="comment ml-3"><i class="fa fa-commenting-o mr-1" aria-hidden="true"></i>Comment</a>
+                    <div class="default" data-mat="{{ $goal['id'] }}">
+                        <a href="#" class="encourage" title="Encourage"  data-mat="{{ $goal->id }}" data-category="{{ $goal->cathegory }}"><i class="fa fa-hand-peace-o mr-1" aria-hidden="true"></i><span class="encourage_text">{{ empty($has_encouraged) ? 'Encourage ' : 'Encouraged ' }}</span><span class="encourage_number">({{ $goal->nr_encouragements }})</span></a>
+                        <a href="#" title="Comment" class="comment ml-3 startComment" data-mat="{{ $goal->id }}"><i class="fa fa-commenting-o mr-1" aria-hidden="true"></i>Comment</a>
+                    </div>
 
                     <div class="commenting col-12" data-mat="{{ $goal['id'] }}">
 
@@ -57,11 +63,44 @@
                                 <button style="position: static; margin-left: -20px;" title="Close" class="btn wishy-btn menu closingButton" data-mat="{{ $goal['id'] }}"><i class="fa fa-times" aria-hidden="true"></i></button>
                             </div>
                         </div>
-
                     </div>
-                    
                 </div>
             </div>
+
+                <div class="comments-goals main wishy-rounded-bottom" id="comment-section" data-mat="{{ $goal['id'] }}">
+                    @foreach($goal_comments as $this_comment)
+                        @if($this_comment['target_id'] == $goal['id'])
+                            <div class="comments row">
+                                <div class="col-3 m-auto">
+                                    <img class="comment-profile-image" src="/uploads/{{ $this_comment['profile_picture'] != null ? $this_comment['profile_picture'] : 'dummy.png' }}" alt="Profile picture">
+                                </div>
+
+                                <div class="col-6">
+                                    <h5>{{$this_comment['name']}} {{$this_comment['surname']}}</h5>
+                                    <sub>Added at: <span>{{$this_comment['created_at']}}</span></sub>
+                                    <p data-comment="{{ $this_comment['id'] }}">{{$this_comment['text']}}</p>
+                                    <div class="editing" data-comment="{{ $this_comment['id'] }}">
+                                        <form action="{{action('CommentController@update', ['id' => $this_comment['id']])}}">
+                                            <input type="text" name="text" value="{{$this_comment['text']}}">
+                                            <button style="position: static" class="comment_update btn wishy-btn green menu" type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+                                        </form>
+                                    </div>
+                                </div>
+
+                                <div class="col-3 d-flex">
+                                    @if($this_comment['user_id'] == $current_user_id)
+                                        <div class="links">
+                                            <button class="comment_edit btn wishy-btn green menu editBtn" data-comment="{{ $this_comment['id'] }}"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                                            <a role="button" class="comment_delete btn wishy-btn green menu" href="{{action('CommentController@destroy', ['id' => $this_comment['id']])}}"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                        </div>
+                                    @endif
+                                </div>
+
+                            </div>
+                            <hr>
+                        @endif
+                    @endforeach
+                </div>
         @endforeach
     @else
         <div class="wish col-12 wishy-rounded wishy-shadow-box-blue bg-light py-3">

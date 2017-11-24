@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Comments;
 use App\User;
 use App\Post;
 use App\Goals;
@@ -83,6 +84,23 @@ class ProfileController extends Controller
         $view->profiledetailView->userDetail = $userDetail;
         $view->changepictureView->userDetail = $userDetail;
         $view->wishgoalnavView = view('profile/wishgoal');
+
+        $goal_comments = Comments::join('users', 'comments.user_id', '=', 'users.id')
+            ->leftjoin('users_detail', 'users.id', '=', 'users_detail.user_id')
+            ->select('comments.*', 'users.name', 'users.surname', 'users_detail.profile_picture')
+            ->where('type', 'goal')->get()->toArray();
+        $post_comments = Comments::join('users', 'comments.user_id', '=', 'users.id')
+            ->leftjoin('users_detail', 'users.id', '=', 'users_detail.user_id')
+            ->select('comments.*', 'users.name', 'users.surname', 'users_detail.profile_picture')
+            ->where('type', 'post')->get()->toArray();
+        $current_user_id = Auth::user()->id;
+
+        $view->current_user_id = $current_user_id;
+
+        $view->goalsView->goal_comments = $goal_comments;
+        $view->postsView->post_comments = $post_comments;
+        $view->goalsView->current_user_id = $current_user_id;
+        $view->postsView->current_user_id = $current_user_id;
 
         return $view;
     }
