@@ -43,8 +43,4 @@ Route::get('/search/friends' , 'SearchController@search');
 
 Route::get('/friends/{id}' , 'SearchController@select');
 
-Route::get('/comment/goal/{id}' , 'CommentController@goals');
-
-Route::get('/comment/post/{id}' , 'CommentController@posts');
-
 Route::get('/passwordCurrent' , 'PasswordChangeController@checkCurrent');

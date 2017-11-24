@@ -9,7 +9,7 @@ export default class CommentDetail extends React.Component {
         return (
             
             <div class="col-9">
-            <h5>nombre y apellido del cerote</h5>
+            <h5> {this.props.name} {this.props.surname}</h5>
             <sub>Added at: <span>fecha de cuando añadieron esta mierda</span></sub>
             <p>Texto de la mierda</p>
             <EditForm />

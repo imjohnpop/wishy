@@ -21,7 +21,7 @@
             @foreach ($friends as $friend)
             <div class="row mb-2">
                 <div class="col-4 d-flex justify-content-around">
-                    <img class="" src="/uploads/{{ isset($friend['profile_picture']) ? $friend['profile_picture'] : 'default.jpg'}}" alt="Random profile picture">
+                    <img class="" src="/uploads/{{ isset($friend['profile_picture']) ? $friend['profile_picture'] : 'default.jpg'}}" alt="Profile picture">
                 </div>
                 <div class="col-8">
                     <a href="/profile/{{$friend['id']}}"><p class="wishy-bold"><i class="fa fa-circle online" aria-hidden="true"></i> {{$friend['user_name']}} {{$friend['surname']}}</p></a>

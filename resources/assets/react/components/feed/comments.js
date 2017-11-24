@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom'
+import ReactDOM from 'react-dom';
 
 import Comment from './comment';
 
@@ -16,7 +16,7 @@ export default class Comments extends React.Component {
 
         let category = $('a[title="Encourage"]').data('category');
         let target_id = $('a[title="Encourage"]').data('id');
-        this.refreshChecklists(target_id, category);
+        this.refreshComments(target_id, category);
 
     }
 
@@ -24,7 +24,7 @@ export default class Comments extends React.Component {
         let self = this;
         $.ajax({
             type: 'get',
-            url: '/api/' + category + '/' + target_id,
+            url: '/api/comment/' + category + '/' + target_id,
             data: {
             }
         }).done((data) => {
@@ -34,22 +34,20 @@ export default class Comments extends React.Component {
         });
     }
 
-
     render() {
     let comments = [];
     for(let i in this.state.comments) {
         comments[i] = <Comment refreshComments={ this.refreshComments.bind(this) }
-                            pic= {this.state.comments[i].profile_picture}
-                            name={this.state.lists[i].name}
-                            surname={this.state.lists[i].surname}
-                            date={this.state.lists[i].created_at}
-                            text={this.state.lists[i].text}
-                            id={this.state.lists[i].id}
-                            user_id={this.state.lists[i].user_id}
+                            name={this.state.comments[i].name}
+                            surname={this.state.comments[i].surname}
+                            date={this.state.comments[i].created_at}
+                            text={this.state.comments[i].text}
+                            id={this.state.comments[i].id}
+                            user_id={this.state.comments[i].user_id}
         />;
     }
     return (
-            <div class="comments" id="comment-section">
+            <div className="comments" id="comment-section">
                 { comments }
             </div>
         )

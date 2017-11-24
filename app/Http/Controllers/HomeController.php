@@ -90,7 +90,15 @@ class HomeController extends Controller
                 $posts = view('feed/posts', ['goal_comments' => $goal_comments, 'news' => $news, 'post_comments' => $post_comments, 'current_user_id'=>$current_user_id]);
                 $view->posts = $posts;
                 $events = view('feed/events');
-                $events_list = Events::get()->sortBy('updated_at')->toArray();
+                $events_list = Events::whereMonth('date', date('m'))->get()->toArray();
+                $birthdays = UserHasFriend::join('users', 'users.id', '=', 'user_has_friend.friend_id')
+                    ->leftjoin('users_detail', 'users.id', '=', 'users_detail.user_id')
+                    ->select('users.id', 'users.name', 'users.surname', 'users_detail.birthday AS date')
+                    ->where('user_has_friend.user_id', Auth::user()->id)
+                    ->whereMonth('users_detail.birthday', date('m'))->get()->toArray();
+            
+                $events_list = array_merge($events_list, $birthdays);
+                $events_list = collect($events_list)->sortBy('date')->reverse()->toArray();
                 $events->events_list = $events_list;
                 $view->events = $events;
             }

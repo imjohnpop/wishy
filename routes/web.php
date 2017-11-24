@@ -118,4 +118,4 @@ Route::post('/post/update/{id}', 'FeedController@update');
 
 Route::post('/post/{id}', 'FeedController@destroy');
 
-
+Route::get('/react-trial', 'CommentController@trial');
